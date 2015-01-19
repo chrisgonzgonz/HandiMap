@@ -1,10 +1,9 @@
-#import "AppDelegate.h"
+#import "SNRAppDelegate.h"
 
-@interface AppDelegate ()
-
+@interface SNRAppDelegate ()
 @end
 
-@implementation AppDelegate
+@implementation SNRAppDelegate
 
 - (UIWindow *)window {
   if (!_window) {

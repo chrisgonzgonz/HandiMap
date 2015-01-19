@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		93958EED1A6C8F9F00057481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EEC1A6C8F9F00057481 /* main.m */; };
-		93958EF01A6C8F9F00057481 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EEF1A6C8F9F00057481 /* AppDelegate.m */; };
-		93958EF31A6C8F9F00057481 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EF21A6C8F9F00057481 /* ViewController.m */; };
+		93958EF01A6C8F9F00057481 /* SNRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EEF1A6C8F9F00057481 /* SNRAppDelegate.m */; };
 		93958EF81A6C8F9F00057481 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93958EF71A6C8F9F00057481 /* Images.xcassets */; };
 		93958EFB1A6C8F9F00057481 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93958EF91A6C8F9F00057481 /* LaunchScreen.xib */; };
 		93958F071A6C8F9F00057481 /* SubwaySonarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F061A6C8F9F00057481 /* SubwaySonarTests.m */; };
+		93958F141A6C94A200057481 /* SNRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F131A6C94A200057481 /* SNRColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,15 +29,15 @@
 		93958EE71A6C8F9F00057481 /* SubwaySonar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubwaySonar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93958EEB1A6C8F9F00057481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93958EEC1A6C8F9F00057481 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		93958EEE1A6C8F9F00057481 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		93958EEF1A6C8F9F00057481 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		93958EF11A6C8F9F00057481 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		93958EF21A6C8F9F00057481 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		93958EEE1A6C8F9F00057481 /* SNRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAppDelegate.h; sourceTree = "<group>"; };
+		93958EEF1A6C8F9F00057481 /* SNRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAppDelegate.m; sourceTree = "<group>"; };
 		93958EF71A6C8F9F00057481 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93958EFA1A6C8F9F00057481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		93958F001A6C8F9F00057481 /* SubwaySonarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SubwaySonarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93958F051A6C8F9F00057481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93958F061A6C8F9F00057481 /* SubwaySonarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubwaySonarTests.m; sourceTree = "<group>"; };
+		93958F121A6C94A200057481 /* SNRColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRColor.h; path = Style/SNRColor.h; sourceTree = "<group>"; };
+		93958F131A6C94A200057481 /* SNRColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRColor.m; path = Style/SNRColor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +79,8 @@
 		93958EE91A6C8F9F00057481 /* SubwaySonar */ = {
 			isa = PBXGroup;
 			children = (
+				93958F111A6C944700057481 /* Style */,
 				93958F101A6C90D000057481 /* Initialize */,
-				93958EF11A6C8F9F00057481 /* ViewController.h */,
-				93958EF21A6C8F9F00057481 /* ViewController.m */,
 				93958EEA1A6C8F9F00057481 /* Supporting Files */,
 			);
 			path = SubwaySonar;
@@ -117,11 +116,20 @@
 		93958F101A6C90D000057481 /* Initialize */ = {
 			isa = PBXGroup;
 			children = (
-				93958EEE1A6C8F9F00057481 /* AppDelegate.h */,
-				93958EEF1A6C8F9F00057481 /* AppDelegate.m */,
+				93958EEE1A6C8F9F00057481 /* SNRAppDelegate.h */,
+				93958EEF1A6C8F9F00057481 /* SNRAppDelegate.m */,
 				93958EF91A6C8F9F00057481 /* LaunchScreen.xib */,
 			);
 			name = Initialize;
+			sourceTree = "<group>";
+		};
+		93958F111A6C944700057481 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				93958F121A6C94A200057481 /* SNRColor.h */,
+				93958F131A6C94A200057481 /* SNRColor.m */,
+			);
+			name = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,8 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93958EF31A6C8F9F00057481 /* ViewController.m in Sources */,
-				93958EF01A6C8F9F00057481 /* AppDelegate.m in Sources */,
+				93958EF01A6C8F9F00057481 /* SNRAppDelegate.m in Sources */,
+				93958F141A6C94A200057481 /* SNRColor.m in Sources */,
 				93958EED1A6C8F9F00057481 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
