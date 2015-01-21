@@ -1,6 +1,8 @@
 #import "SNRAppDelegate.h"
 
+// TODO: Delete these dependencies and create a flow object to handle UIViewControllers.
 #import "SNRColor.h"
+#import "SNRStartViewController.h"
 
 @implementation SNRAppDelegate
 
@@ -17,8 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  UIViewController *tmpViewController = [[UIViewController alloc] init];
-  tmpViewController.view.backgroundColor = [SNRColor mainColor];
+  UIViewController *tmpViewController = [[SNRStartViewController alloc] init];
   self.window.rootViewController = tmpViewController;
   return YES;
 }

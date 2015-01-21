@@ -15,6 +15,7 @@
 		93958F141A6C94A200057481 /* SNRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F131A6C94A200057481 /* SNRColor.m */; };
 		93958F171A6F483F00057481 /* SNRFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F161A6F483F00057481 /* SNRFont.m */; };
 		93958F1E1A6F4D5800057481 /* SNRLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F1D1A6F4D5800057481 /* SNRLabel.m */; };
+		93958F231A6F507700057481 /* SNRStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F221A6F507700057481 /* SNRStartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		93958F181A6F485300057481 /* SNRStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRStyle.h; path = Style/SNRStyle.h; sourceTree = "<group>"; };
 		93958F1C1A6F4D5800057481 /* SNRLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRLabel.h; path = UI/SNRLabel.h; sourceTree = "<group>"; };
 		93958F1D1A6F4D5800057481 /* SNRLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRLabel.m; path = UI/SNRLabel.m; sourceTree = "<group>"; };
+		93958F211A6F507700057481 /* SNRStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRStartViewController.h; path = Features/Sonar/SNRStartViewController.h; sourceTree = "<group>"; };
+		93958F221A6F507700057481 /* SNRStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRStartViewController.m; path = Features/Sonar/SNRStartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,7 @@
 		93958EE91A6C8F9F00057481 /* SubwaySonar */ = {
 			isa = PBXGroup;
 			children = (
+				93958F1F1A6F500500057481 /* Features */,
 				93958F101A6C90D000057481 /* Initialize */,
 				93958F111A6C944700057481 /* Style */,
 				93958F1B1A6F4D2E00057481 /* UI */,
@@ -150,6 +154,23 @@
 				93958F1D1A6F4D5800057481 /* SNRLabel.m */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		93958F1F1A6F500500057481 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				93958F201A6F501100057481 /* Sonar */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
+		93958F201A6F501100057481 /* Sonar */ = {
+			isa = PBXGroup;
+			children = (
+				93958F211A6F507700057481 /* SNRStartViewController.h */,
+				93958F221A6F507700057481 /* SNRStartViewController.m */,
+			);
+			name = Sonar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +277,7 @@
 				93958F141A6C94A200057481 /* SNRColor.m in Sources */,
 				93958F171A6F483F00057481 /* SNRFont.m in Sources */,
 				93958EED1A6C8F9F00057481 /* main.m in Sources */,
+				93958F231A6F507700057481 /* SNRStartViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
