@@ -7,7 +7,6 @@
 + (UIColor *)grayColor;
 + (UIColor *)lightColor;
 
-
 /// Colors used to add emphasis and highlight.
 + (UIColor *)mainColor;
 + (UIColor *)highlightColor;

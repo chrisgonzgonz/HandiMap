@@ -1,7 +1,6 @@
 #import "SNRAppDelegate.h"
 
-@interface SNRAppDelegate ()
-@end
+#import "SNRColor.h"
 
 @implementation SNRAppDelegate
 
@@ -19,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   UIViewController *tmpViewController = [[UIViewController alloc] init];
-  tmpViewController.view.backgroundColor = [UIColor greenColor];
+  tmpViewController.view.backgroundColor = [SNRColor mainColor];
   self.window.rootViewController = tmpViewController;
   return YES;
 }

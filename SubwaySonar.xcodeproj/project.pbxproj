@@ -13,6 +13,7 @@
 		93958EFB1A6C8F9F00057481 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93958EF91A6C8F9F00057481 /* LaunchScreen.xib */; };
 		93958F071A6C8F9F00057481 /* SubwaySonarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F061A6C8F9F00057481 /* SubwaySonarTests.m */; };
 		93958F141A6C94A200057481 /* SNRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F131A6C94A200057481 /* SNRColor.m */; };
+		93958F171A6F483F00057481 /* SNRFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F161A6F483F00057481 /* SNRFont.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,9 @@
 		93958F061A6C8F9F00057481 /* SubwaySonarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubwaySonarTests.m; sourceTree = "<group>"; };
 		93958F121A6C94A200057481 /* SNRColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRColor.h; path = Style/SNRColor.h; sourceTree = "<group>"; };
 		93958F131A6C94A200057481 /* SNRColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRColor.m; path = Style/SNRColor.m; sourceTree = "<group>"; };
+		93958F151A6F483F00057481 /* SNRFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRFont.h; path = Style/SNRFont.h; sourceTree = "<group>"; };
+		93958F161A6F483F00057481 /* SNRFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRFont.m; path = Style/SNRFont.m; sourceTree = "<group>"; };
+		93958F181A6F485300057481 /* SNRStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRStyle.h; path = Style/SNRStyle.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,9 @@
 			children = (
 				93958F121A6C94A200057481 /* SNRColor.h */,
 				93958F131A6C94A200057481 /* SNRColor.m */,
+				93958F151A6F483F00057481 /* SNRFont.h */,
+				93958F161A6F483F00057481 /* SNRFont.m */,
+				93958F181A6F485300057481 /* SNRStyle.h */,
 			);
 			name = Style;
 			sourceTree = "<group>";
@@ -233,6 +240,7 @@
 			files = (
 				93958EF01A6C8F9F00057481 /* SNRAppDelegate.m in Sources */,
 				93958F141A6C94A200057481 /* SNRColor.m in Sources */,
+				93958F171A6F483F00057481 /* SNRFont.m in Sources */,
 				93958EED1A6C8F9F00057481 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
