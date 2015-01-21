@@ -2,7 +2,7 @@
 
 @interface SNRFont : NSObject
 
-+ (UIFont *)defaultFontWithSize:(CGFloat)size;
-+ (UIFont *)defaultBoldFontWithSize:(CGFloat)size;
++ (UIFont *)defaultFont;
++ (UIFont *)titleFont;
 
 @end

@@ -13,18 +13,9 @@
   return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-  if (self = [super initWithCoder:aDecoder]) {
-    [self initialSetup];
-  }
-  return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame {
-  if (self = [super initWithFrame:frame]) {
-    [self initialSetup];
-  }
-  return self;
+- (void)layoutSubviews {
+  self.preferredMaxLayoutWidth = self.bounds.size.width;
+  [super layoutSubviews];
 }
 
 #pragma mark - Public
@@ -34,14 +25,20 @@
   return self;
 }
 
+- (instancetype)typeTitle {
+  self.font = [SNRFont titleFont];
+  return self;
+}
+
 #pragma mark - Private
 
 - (void)initialSetup {
   // TODO: Do this to all views somewhere else?
   self.translatesAutoresizingMaskIntoConstraints = NO;
   
-  self.font = [SNRFont defaultFontWithSize:self.font.pointSize];
+  self.font = [SNRFont defaultFont];
   self.textColor = [SNRColor darkColor];
+  self.numberOfLines = 0;
 }
 
 @end

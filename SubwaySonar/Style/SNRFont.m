@@ -3,14 +3,18 @@
 static NSString *const kDefaultFont = @"Avenir-Light";
 static NSString *const kDefaultBoldFont = @"Avenir-Medium";
 
+static CGFloat const kDefaultSize = 14.0f;
+static CGFloat const kTitleSize = 22.0f;
+
+
 @implementation SNRFont
 
-+ (UIFont *)defaultFontWithSize:(CGFloat)size {
-  return [UIFont fontWithName:kDefaultFont size:size];
++ (UIFont *)defaultFont {
+  return [UIFont fontWithName:kDefaultFont size:kDefaultSize];
 }
 
-+ (UIFont *)defaultBoldFontWithSize:(CGFloat)size {
-  return [UIFont fontWithName:kDefaultBoldFont size:size];
++ (UIFont *)titleFont {
+  return [UIFont fontWithName:kDefaultFont size:kTitleSize];
 }
 
 @end
