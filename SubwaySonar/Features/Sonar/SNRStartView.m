@@ -4,9 +4,7 @@
 #import "SNRLabel.h" // TODO: Create SNRViewsKit for UIKit subclasses.
 
 @interface SNRStartView()
-
 @property(nonatomic) SNRLabel *descriptionLabel;
-
 @end
 
 @implementation SNRStartView
@@ -41,7 +39,6 @@
 
 - (void)initialSetup {
   self.backgroundColor = [SNRColor mainColor];
-
   [self autolayoutViews];
 }
 
@@ -57,11 +54,11 @@
       views:viewBindings]];
 
   // Vertical layout
-//  [self addConstraints:[NSLayoutConstraint
-//      constraintsWithVisualFormat:@"V:|-[descriptionLabel]-|"
-//      options:0
-//      metrics:nil
-//      views:viewBindings]];
+  [self addConstraints:[NSLayoutConstraint
+      constraintsWithVisualFormat:@"V:|-[descriptionLabel]-|"
+      options:0
+      metrics:nil
+      views:viewBindings]];
 }
 
 @end
