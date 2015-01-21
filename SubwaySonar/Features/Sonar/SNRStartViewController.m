@@ -1,14 +1,13 @@
 #import "SNRStartViewController.h"
 
-#import "SNRColor.h"
+#import "SNRStartView.h"
 
 @implementation SNRStartViewController
 
 #pragma mark - Overrides
 
 - (void)loadView {
-  self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  self.view.backgroundColor = [SNRColor mainColor];
+  self.view = [[SNRStartView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 }
 
 @end

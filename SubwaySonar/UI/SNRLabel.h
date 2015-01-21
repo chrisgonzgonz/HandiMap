@@ -2,6 +2,6 @@
 
 @interface SNRLabel : UILabel
 
-- (void)invertTextColor;
+- (instancetype)invertTextColor;
 
 @end
