@@ -1,7 +1,7 @@
 #import "SNRStartView.h"
 
 #import "SNRColor.h"
-#import "SNRLabel.h" // TODO: Create SNRViewsKit for UIKit subclasses.
+#import "SNRViewsKit.h"
 
 @interface SNRStartView()
 @property(nonatomic) SNRLabel *descriptionLabel;
