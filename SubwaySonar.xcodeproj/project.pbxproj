@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9344F27E1A709BF8007BED0C /* SNRButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F27D1A709BF8007BED0C /* SNRButton.m */; };
+		9344F2811A70A030007BED0C /* SNRSonarFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F2801A70A030007BED0C /* SNRSonarFlow.m */; };
 		93958EED1A6C8F9F00057481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EEC1A6C8F9F00057481 /* main.m */; };
 		93958EF01A6C8F9F00057481 /* SNRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EEF1A6C8F9F00057481 /* SNRAppDelegate.m */; };
 		93958EF81A6C8F9F00057481 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93958EF71A6C8F9F00057481 /* Images.xcassets */; };
@@ -34,6 +35,8 @@
 		9344F2791A709B81007BED0C /* SNRViewsKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRViewsKit.h; path = UI/SNRViewsKit.h; sourceTree = "<group>"; };
 		9344F27C1A709BF8007BED0C /* SNRButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRButton.h; path = UI/SNRButton.h; sourceTree = "<group>"; };
 		9344F27D1A709BF8007BED0C /* SNRButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRButton.m; path = UI/SNRButton.m; sourceTree = "<group>"; };
+		9344F27F1A70A030007BED0C /* SNRSonarFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSonarFlow.h; path = Features/SNRSonarFlow.h; sourceTree = "<group>"; };
+		9344F2801A70A030007BED0C /* SNRSonarFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSonarFlow.m; path = Features/SNRSonarFlow.m; sourceTree = "<group>"; };
 		93958EE71A6C8F9F00057481 /* SubwaySonar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubwaySonar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93958EEB1A6C8F9F00057481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93958EEC1A6C8F9F00057481 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 				93958F251A6F605700057481 /* SNRStartView.m */,
 				93958F211A6F507700057481 /* SNRStartViewController.h */,
 				93958F221A6F507700057481 /* SNRStartViewController.m */,
+				9344F27F1A70A030007BED0C /* SNRSonarFlow.h */,
+				9344F2801A70A030007BED0C /* SNRSonarFlow.m */,
 			);
 			name = Sonar;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				93958F141A6C94A200057481 /* SNRColor.m in Sources */,
 				93958F261A6F605700057481 /* SNRStartView.m in Sources */,
 				93958F171A6F483F00057481 /* SNRFont.m in Sources */,
+				9344F2811A70A030007BED0C /* SNRSonarFlow.m in Sources */,
 				9344F27E1A709BF8007BED0C /* SNRButton.m in Sources */,
 				93958EED1A6C8F9F00057481 /* main.m in Sources */,
 				93958F231A6F507700057481 /* SNRStartViewController.m in Sources */,

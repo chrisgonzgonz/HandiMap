@@ -1,8 +1,13 @@
 #import "SNRAppDelegate.h"
 
-// TODO: Delete these dependencies and create a flow object to handle UIViewControllers.
 #import "SNRColor.h"
-#import "SNRStartViewController.h"
+#import "SNRSonarFlow.h"
+
+@interface SNRAppDelegate()
+// Putting this here for now so that it does not get released. Is there a better way?
+// TODO: Create an SNRFlow base class to remove this dependency.
+@property(nonatomic) SNRSonarFlow *rootFlow;
+@end
 
 @implementation SNRAppDelegate
 
@@ -19,8 +24,7 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  UIViewController *tmpViewController = [[SNRStartViewController alloc] init];
-  self.window.rootViewController = tmpViewController;
+  self.window.rootViewController = [[[SNRSonarFlow alloc] init] initialViewController];
   return YES;
 }
 
