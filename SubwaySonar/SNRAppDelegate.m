@@ -4,9 +4,11 @@
 #import "SNRSonarFlow.h"
 
 @interface SNRAppDelegate()
+
 // Putting this here for now so that it does not get released. Is there a better way?
 // TODO: Create an SNRFlow base class to remove this dependency.
 @property(nonatomic) SNRSonarFlow *rootFlow;
+
 @end
 
 @implementation SNRAppDelegate
