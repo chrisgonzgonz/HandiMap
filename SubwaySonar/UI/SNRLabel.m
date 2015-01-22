@@ -1,6 +1,6 @@
 #import "SNRLabel.h"
 
-#import "SNRStyle.h"
+#import "SNRStyleKit.h"
 
 @implementation SNRLabel
 

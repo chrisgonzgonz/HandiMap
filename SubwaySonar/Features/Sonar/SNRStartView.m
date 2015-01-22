@@ -1,6 +1,6 @@
 #import "SNRStartView.h"
 
-#import "SNRColor.h"
+#import "SNRStyleKit.h"
 #import "SNRViewsKit.h"
 
 @interface SNRStartView()
@@ -21,10 +21,8 @@
 
 - (UIButton *)sonarStartButton {
   if (!_sonarStartButton) {
-    _sonarStartButton = [[UIButton alloc] init];
-    _sonarStartButton.translatesAutoresizingMaskIntoConstraints = NO; // TODO: Create SNRButton.
+    _sonarStartButton = [[[[SNRButton alloc] init] largeButton] invertColors];
     [_sonarStartButton setTitle:@"Sonar Me Cap'n" forState:UIControlStateNormal];
-    [_sonarStartButton setTitleColor:[SNRColor highlightColor] forState:UIControlStateHighlighted];
     [self addSubview:_sonarStartButton];
   }
   return _sonarStartButton;
