@@ -14,7 +14,6 @@
     _descriptionLabel = [[[[SNRLabel alloc] init] typeTitle] invertTextColor];
     _descriptionLabel.text = @"Are you lost? Find the nearest subway.";
     _descriptionLabel.textAlignment = NSTextAlignmentCenter;
-    _descriptionLabel.backgroundColor = [SNRColor highlightColor];
     [self addSubview:self.descriptionLabel];
   }
   return _descriptionLabel;
@@ -25,7 +24,7 @@
     _sonarStartButton = [[UIButton alloc] init];
     _sonarStartButton.translatesAutoresizingMaskIntoConstraints = NO; // TODO: Create SNRButton.
     [_sonarStartButton setTitle:@"Sonar Me Cap'n" forState:UIControlStateNormal];
-    _sonarStartButton.backgroundColor = [SNRColor grayColor];
+    [_sonarStartButton setTitleColor:[SNRColor highlightColor] forState:UIControlStateHighlighted];
     [self addSubview:_sonarStartButton];
   }
   return _sonarStartButton;
