@@ -3,6 +3,6 @@
 @interface SNRStartView : UIView
 
 // TODO: Make this a SNRButton with default styling.
-@property(nonatomic) UIButton *sonarStart;
+@property(nonatomic) UIButton *sonarStartButton;
 
 @end

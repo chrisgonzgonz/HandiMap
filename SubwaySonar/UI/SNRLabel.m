@@ -15,7 +15,7 @@
 
 - (void)layoutSubviews {
   self.preferredMaxLayoutWidth = self.bounds.size.width;
-  [super layoutSubviews];
+  [super layoutSubviews]; // This allows for multiline labels as long as -numberOfLines == 0.
 }
 
 #pragma mark - Public

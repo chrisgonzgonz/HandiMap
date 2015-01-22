@@ -20,13 +20,15 @@
   return _descriptionLabel;
 }
 
-- (UIButton *)sonarStart {
-  if (!_sonarStart) {
-    _sonarStart = [[UIButton alloc] init];
-    [_sonarStart setTitle:@"Sonar Me Cap'n" forState:UIControlStateNormal];
-    [self addSubview:_sonarStart];
+- (UIButton *)sonarStartButton {
+  if (!_sonarStartButton) {
+    _sonarStartButton = [[UIButton alloc] init];
+    _sonarStartButton.translatesAutoresizingMaskIntoConstraints = NO; // TODO: Create SNRButton.
+    [_sonarStartButton setTitle:@"Sonar Me Cap'n" forState:UIControlStateNormal];
+    _sonarStartButton.backgroundColor = [SNRColor grayColor];
+    [self addSubview:_sonarStartButton];
   }
-  return _sonarStart;
+  return _sonarStartButton;
 }
 
 #pragma mark - Overrides
@@ -47,8 +49,9 @@
 
 - (void)autolayoutViews {
   SNRLabel *descriptionLabel = self.descriptionLabel;
-  UIButton *sonarStart = self.sonarStart;
-  NSDictionary *viewBindings = NSDictionaryOfVariableBindings(descriptionLabel, sonarStart);
+  UIButton *sonarStartButton = self.sonarStartButton;
+  NSDictionary *viewBindings = NSDictionaryOfVariableBindings(descriptionLabel,
+                                                              sonarStartButton);
 
   // Horizontal layout
   [self addConstraints:[NSLayoutConstraint
@@ -56,15 +59,16 @@
       options:NSLayoutFormatAlignAllCenterY
       metrics:nil
       views:viewBindings]];
-//  [self addConstraints:[NSLayoutConstraint
-//      constraintsWithVisualFormat:@"H:|-[sonarStart]-|"
-//      options:NSLayoutFormatAlignAllCenterY
-//      metrics:nil
-//      views:viewBindings]];
+  [self addConstraints:[NSLayoutConstraint
+      constraintsWithVisualFormat:@"H:|-[sonarStartButton]-|"
+      options:NSLayoutFormatAlignAllCenterY
+      metrics:nil
+      views:viewBindings]];
 
   // Vertical layout
+  NSString *verticalLayout = @"V:|-[descriptionLabel(sonarStartButton)]-[sonarStartButton(>=1)]-|";
   [self addConstraints:[NSLayoutConstraint
-      constraintsWithVisualFormat:@"V:|-[descriptionLabel(>=1)]-|"
+      constraintsWithVisualFormat:verticalLayout
       options:0
       metrics:nil
       views:viewBindings]];
