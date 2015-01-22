@@ -35,7 +35,7 @@
 #pragma mark - Target Actions
 
 - (void)startSonar:(UIButton *)sender {
-  NSLog(@"butter.");
+  [self.flow presentNext:self];
 }
 
 #pragma mark - Private

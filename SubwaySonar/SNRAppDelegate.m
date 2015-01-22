@@ -19,12 +19,19 @@
   return _window;
 }
 
+- (SNRSonarFlow *)rootFlow {
+  if (!_rootFlow) {
+    _rootFlow = [[SNRSonarFlow alloc] init];
+  }
+  return _rootFlow;
+}
+
 #pragma mark - Protocols
 #pragma mark UIApplicationDelegate
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  self.window.rootViewController = [[[SNRSonarFlow alloc] init] initialViewController];
+  self.window.rootViewController = [self.rootFlow initialViewController];
   return YES;
 }
 

@@ -180,12 +180,12 @@
 		93958F201A6F501100057481 /* Sonar */ = {
 			isa = PBXGroup;
 			children = (
+				9344F27F1A70A030007BED0C /* SNRSonarFlow.h */,
+				9344F2801A70A030007BED0C /* SNRSonarFlow.m */,
 				93958F241A6F605700057481 /* SNRStartView.h */,
 				93958F251A6F605700057481 /* SNRStartView.m */,
 				93958F211A6F507700057481 /* SNRStartViewController.h */,
 				93958F221A6F507700057481 /* SNRStartViewController.m */,
-				9344F27F1A70A030007BED0C /* SNRSonarFlow.h */,
-				9344F2801A70A030007BED0C /* SNRSonarFlow.m */,
 			);
 			name = Sonar;
 			sourceTree = "<group>";
