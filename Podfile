@@ -1,8 +1,8 @@
 platform :ios, '7.0'
 
-target 'SubwaySonar' do
+target 'HandiMap' do
 end
 
-target 'SubwaySonarTests' do
+target 'HandiMapTests' do
 end
 
