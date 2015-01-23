@@ -1,6 +1,5 @@
 #import "SNRAppDelegate.h"
 
-#import "SNRColor.h"
 #import "SNRSonarFlow.h"
 
 @interface SNRAppDelegate()
