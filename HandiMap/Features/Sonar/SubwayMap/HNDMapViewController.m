@@ -1,5 +1,7 @@
 #import "HNDMapViewController.h"
 
+#import "HNDSubwayMapView.h"
+
 @interface HNDMapViewController ()
 
 @property(nonatomic) HNDSonarFlow *flow;
@@ -13,6 +15,10 @@
     _flow = flow;
   }
   return self;
+}
+
+- (void)loadView {
+  self.view = [[HNDSubwayMapView alloc] init];
 }
 
 @end

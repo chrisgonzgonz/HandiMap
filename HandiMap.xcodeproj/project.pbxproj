@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		72835F361A74419100CD23D2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72835F351A74419100CD23D2 /* Default-568h@2x.png */; };
 		72835F391A74433800CD23D2 /* HNDSubwayMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72835F381A74433800CD23D2 /* HNDSubwayMapView.m */; };
+		72835F3B1A74452200CD23D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72835F3A1A74452200CD23D2 /* MapKit.framework */; };
 		9319746A1A74397000BF7EAD /* HNDMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 931974691A74397000BF7EAD /* HNDMapViewController.m */; };
 		9344F27E1A709BF8007BED0C /* HNDButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F27D1A709BF8007BED0C /* HNDButton.m */; };
 		9344F2811A70A030007BED0C /* HNDSonarFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F2801A70A030007BED0C /* HNDSonarFlow.m */; };
@@ -33,9 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		72835F351A74419100CD23D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		72835F351A74419100CD23D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../Default-568h@2x.png"; sourceTree = "<group>"; };
 		72835F371A74433800CD23D2 /* HNDSubwayMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDSubwayMapView.h; sourceTree = "<group>"; };
 		72835F381A74433800CD23D2 /* HNDSubwayMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSubwayMapView.m; sourceTree = "<group>"; };
+		72835F3A1A74452200CD23D2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		931974681A74397000BF7EAD /* HNDMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDMapViewController.h; sourceTree = "<group>"; };
 		931974691A74397000BF7EAD /* HNDMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDMapViewController.m; sourceTree = "<group>"; };
 		9344F2791A709B81007BED0C /* HNDViewsKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDViewsKit.h; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72835F3B1A74452200CD23D2 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72835F3C1A74454200CD23D2 /* AppleFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				72835F3A1A74452200CD23D2 /* MapKit.framework */,
+			);
+			name = AppleFrameworks;
+			sourceTree = "<group>";
+		};
 		931974671A74394A00BF7EAD /* SubwayMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +107,7 @@
 		93958EDE1A6C8F9E00057481 = {
 			isa = PBXGroup;
 			children = (
-				72835F351A74419100CD23D2 /* Default-568h@2x.png */,
+				72835F3C1A74454200CD23D2 /* AppleFrameworks */,
 				93958EE91A6C8F9F00057481 /* HandiMap */,
 				93958F031A6C8F9F00057481 /* HandiMapTests */,
 				93958EE81A6C8F9F00057481 /* Products */,
@@ -130,6 +141,7 @@
 				93958EF71A6C8F9F00057481 /* Images.xcassets */,
 				93958EEB1A6C8F9F00057481 /* Info.plist */,
 				93958EEC1A6C8F9F00057481 /* main.m */,
+				72835F351A74419100CD23D2 /* Default-568h@2x.png */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
