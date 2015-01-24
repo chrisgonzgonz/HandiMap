@@ -110,8 +110,7 @@
 				93958F1B1A6F4D2E00057481 /* UI */,
 				93958EEA1A6C8F9F00057481 /* Supporting Files */,
 			);
-			name = HandiMap;
-			path = SubwaySonar;
+			path = HandiMap;
 			sourceTree = "<group>";
 		};
 		93958EEA1A6C8F9F00057481 /* Supporting Files */ = {
@@ -417,7 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = SubwaySonar/Info.plist;
+				INFOPLIST_FILE = HandiMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HandiMap;
@@ -428,7 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = SubwaySonar/Info.plist;
+				INFOPLIST_FILE = HandiMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HandiMap;
@@ -447,7 +446,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SubwaySonarTests/Info.plist;
+				INFOPLIST_FILE = HandiMapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = HandiMapTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SubwaySonar.app/SubwaySonar";
@@ -462,7 +461,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SubwaySonarTests/Info.plist;
+				INFOPLIST_FILE = HandiMapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = HandiMapTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SubwaySonar.app/SubwaySonar";
