@@ -1,20 +1,20 @@
-#import "SNRStartView.h"
+#import "HNDStartView.h"
 
-#import "SNRStyleKit.h"
-#import "SNRViewsKit.h"
+#import "HNDStyleKit.h"
+#import "HNDViewsKit.h"
 
-@interface SNRStartView()
-@property(nonatomic) SNRLabel *descriptionLabel;
+@interface HNDStartView()
+@property(nonatomic) HNDLabel *descriptionLabel;
 @end
 
-@implementation SNRStartView
+@implementation HNDStartView
 
-- (SNRLabel *)descriptionLabel {
+- (HNDLabel *)descriptionLabel {
   if (!_descriptionLabel) {
-    _descriptionLabel = [[[[SNRLabel alloc] init] typeTitle] invertTextColor];
+    _descriptionLabel = [[[[HNDLabel alloc] init] typeTitle] invertTextColor];
     _descriptionLabel.text = @"Are you lost? Find the nearest subway.";
     _descriptionLabel.textAlignment = NSTextAlignmentCenter;
-    _descriptionLabel.backgroundColor = [SNRColor highlightColor];
+    _descriptionLabel.backgroundColor = [HNDColor highlightColor];
     [self addSubview:self.descriptionLabel];
   }
   return _descriptionLabel;
@@ -22,9 +22,9 @@
 
 - (UIButton *)sonarStartButton {
   if (!_sonarStartButton) {
-    _sonarStartButton = [[[[SNRButton alloc] init] largeButton] invertColors];
+    _sonarStartButton = [[[[HNDButton alloc] init] largeButton] invertColors];
     [_sonarStartButton setTitle:@"Sonar Me Cap'n" forState:UIControlStateNormal];
-    _sonarStartButton.backgroundColor = [SNRColor grayColor];
+    _sonarStartButton.backgroundColor = [HNDColor grayColor];
     [self addSubview:_sonarStartButton];
   }
   return _sonarStartButton;
@@ -42,12 +42,12 @@
 #pragma mark - Private
 
 - (void)initialSetup {
-  self.backgroundColor = [SNRColor mainColor];
+  self.backgroundColor = [HNDColor mainColor];
   [self autolayoutViews];
 }
 
 - (void)autolayoutViews {
-  SNRLabel *descriptionLabel = self.descriptionLabel;
+  HNDLabel *descriptionLabel = self.descriptionLabel;
   UIButton *sonarStartButton = self.sonarStartButton;
   NSDictionary *viewBindings = NSDictionaryOfVariableBindings(descriptionLabel,
                                                               sonarStartButton);

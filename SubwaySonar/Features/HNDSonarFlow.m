@@ -1,17 +1,17 @@
-#import "SNRSonarFlow.h"
+#import "HNDSonarFlow.h"
 
-#import "SNRStartViewController.h"
+#import "HNDStartViewController.h"
 
-@implementation SNRSonarFlow
+@implementation HNDSonarFlow
 
 #pragma mark - Public
 
 - (UIViewController *)initialViewController {
-  return [[SNRStartViewController alloc] initInFlow:self];
+  return [[HNDStartViewController alloc] initInFlow:self];
 }
 
 - (void)presentNext:(UIViewController *)sender {
-  if ([sender isKindOfClass:[SNRStartViewController class]]) {
+  if ([sender isKindOfClass:[HNDStartViewController class]]) {
     [self presentNearestSubwaysListFrom:sender];
   } else {
     NSAssert(NO, @"Flow does not know how to handle %@", [sender class]);

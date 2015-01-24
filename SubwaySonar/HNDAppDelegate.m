@@ -1,16 +1,16 @@
-#import "SNRAppDelegate.h"
+#import "HNDAppDelegate.h"
 
-#import "SNRSonarFlow.h"
+#import "HNDSonarFlow.h"
 
-@interface SNRAppDelegate()
+@interface HNDAppDelegate()
 
 // Putting this here for now so that it does not get released. Is there a better way?
-// TODO: Create an SNRFlow base class to remove this dependency.
-@property(nonatomic) SNRSonarFlow *rootFlow;
+// TODO: Create an HNDFlow base class to remove this dependency.
+@property(nonatomic) HNDSonarFlow *rootFlow;
 
 @end
 
-@implementation SNRAppDelegate
+@implementation HNDAppDelegate
 
 - (UIWindow *)window {
   if (!_window) {
@@ -20,9 +20,9 @@
   return _window;
 }
 
-- (SNRSonarFlow *)rootFlow {
+- (HNDSonarFlow *)rootFlow {
   if (!_rootFlow) {
-    _rootFlow = [[SNRSonarFlow alloc] init];
+    _rootFlow = [[HNDSonarFlow alloc] init];
   }
   return _rootFlow;
 }

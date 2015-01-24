@@ -1,8 +1,8 @@
-#import "SNRButton.h"
+#import "HNDButton.h"
 
-#import "SNRStyleKit.h"
+#import "HNDStyleKit.h"
 
-@implementation SNRButton
+@implementation HNDButton
 
 #pragma mark - Overrides
 
@@ -16,12 +16,12 @@
 #pragma mark - Public
 
 - (instancetype)invertColors {
-  [self setTitleColor:[SNRColor lightColor] forState:UIControlStateNormal];
+  [self setTitleColor:[HNDColor lightColor] forState:UIControlStateNormal];
   return self;
 }
 
 - (instancetype)largeButton {
-  self.titleLabel.font = [SNRFont titleFont];
+  self.titleLabel.font = [HNDFont titleFont];
   return self;
 }
 
@@ -31,9 +31,9 @@
   // TODO: Do this to all views somewhere else?
   self.translatesAutoresizingMaskIntoConstraints = NO;
 
-  self.titleLabel.font = [SNRFont defaultFont];
-  [self setTitleColor:[SNRColor mainColor] forState:UIControlStateNormal];
-  [self setTitleColor:[SNRColor highlightColor] forState:UIControlStateHighlighted];
+  self.titleLabel.font = [HNDFont defaultFont];
+  [self setTitleColor:[HNDColor mainColor] forState:UIControlStateNormal];
+  [self setTitleColor:[HNDColor highlightColor] forState:UIControlStateHighlighted];
 }
 
 @end

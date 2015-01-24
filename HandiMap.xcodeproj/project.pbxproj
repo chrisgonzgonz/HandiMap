@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9344F27E1A709BF8007BED0C /* SNRButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F27D1A709BF8007BED0C /* SNRButton.m */; };
-		9344F2811A70A030007BED0C /* SNRSonarFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F2801A70A030007BED0C /* SNRSonarFlow.m */; };
+		9344F27E1A709BF8007BED0C /* HNDButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F27D1A709BF8007BED0C /* HNDButton.m */; };
+		9344F2811A70A030007BED0C /* HNDSonarFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F2801A70A030007BED0C /* HNDSonarFlow.m */; };
 		93958EED1A6C8F9F00057481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EEC1A6C8F9F00057481 /* main.m */; };
-		93958EF01A6C8F9F00057481 /* SNRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EEF1A6C8F9F00057481 /* SNRAppDelegate.m */; };
+		93958EF01A6C8F9F00057481 /* HNDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EEF1A6C8F9F00057481 /* HNDAppDelegate.m */; };
 		93958EF81A6C8F9F00057481 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93958EF71A6C8F9F00057481 /* Images.xcassets */; };
 		93958EFB1A6C8F9F00057481 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93958EF91A6C8F9F00057481 /* LaunchScreen.xib */; };
-		93958F141A6C94A200057481 /* SNRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F131A6C94A200057481 /* SNRColor.m */; };
-		93958F171A6F483F00057481 /* SNRFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F161A6F483F00057481 /* SNRFont.m */; };
-		93958F1E1A6F4D5800057481 /* SNRLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F1D1A6F4D5800057481 /* SNRLabel.m */; };
-		93958F231A6F507700057481 /* SNRStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F221A6F507700057481 /* SNRStartViewController.m */; };
-		93958F261A6F605700057481 /* SNRStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F251A6F605700057481 /* SNRStartView.m */; };
+		93958F141A6C94A200057481 /* HNDColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F131A6C94A200057481 /* HNDColor.m */; };
+		93958F171A6F483F00057481 /* HNDFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F161A6F483F00057481 /* HNDFont.m */; };
+		93958F1E1A6F4D5800057481 /* HNDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F1D1A6F4D5800057481 /* HNDLabel.m */; };
+		93958F231A6F507700057481 /* HNDStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F221A6F507700057481 /* HNDStartViewController.m */; };
+		93958F261A6F605700057481 /* HNDStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F251A6F605700057481 /* HNDStartView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,31 +31,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9344F2791A709B81007BED0C /* SNRViewsKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRViewsKit.h; path = UI/SNRViewsKit.h; sourceTree = "<group>"; };
-		9344F27C1A709BF8007BED0C /* SNRButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRButton.h; path = UI/SNRButton.h; sourceTree = "<group>"; };
-		9344F27D1A709BF8007BED0C /* SNRButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRButton.m; path = UI/SNRButton.m; sourceTree = "<group>"; };
-		9344F27F1A70A030007BED0C /* SNRSonarFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRSonarFlow.h; path = Features/SNRSonarFlow.h; sourceTree = "<group>"; };
-		9344F2801A70A030007BED0C /* SNRSonarFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRSonarFlow.m; path = Features/SNRSonarFlow.m; sourceTree = "<group>"; };
+		9344F2791A709B81007BED0C /* HNDViewsKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDViewsKit.h; path = UI/HNDViewsKit.h; sourceTree = "<group>"; };
+		9344F27C1A709BF8007BED0C /* HNDButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDButton.h; path = UI/HNDButton.h; sourceTree = "<group>"; };
+		9344F27D1A709BF8007BED0C /* HNDButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNDButton.m; path = UI/HNDButton.m; sourceTree = "<group>"; };
+		9344F27F1A70A030007BED0C /* HNDSonarFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDSonarFlow.h; path = Features/HNDSonarFlow.h; sourceTree = "<group>"; };
+		9344F2801A70A030007BED0C /* HNDSonarFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNDSonarFlow.m; path = Features/HNDSonarFlow.m; sourceTree = "<group>"; };
 		93958EE71A6C8F9F00057481 /* HandiMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandiMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93958EEB1A6C8F9F00057481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93958EEC1A6C8F9F00057481 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		93958EEE1A6C8F9F00057481 /* SNRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNRAppDelegate.h; sourceTree = "<group>"; };
-		93958EEF1A6C8F9F00057481 /* SNRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNRAppDelegate.m; sourceTree = "<group>"; };
+		93958EEE1A6C8F9F00057481 /* HNDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNDAppDelegate.h; sourceTree = "<group>"; };
+		93958EEF1A6C8F9F00057481 /* HNDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNDAppDelegate.m; sourceTree = "<group>"; };
 		93958EF71A6C8F9F00057481 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93958EFA1A6C8F9F00057481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		93958F001A6C8F9F00057481 /* HandiMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HandiMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93958F051A6C8F9F00057481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93958F121A6C94A200057481 /* SNRColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRColor.h; path = Style/SNRColor.h; sourceTree = "<group>"; };
-		93958F131A6C94A200057481 /* SNRColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRColor.m; path = Style/SNRColor.m; sourceTree = "<group>"; };
-		93958F151A6F483F00057481 /* SNRFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRFont.h; path = Style/SNRFont.h; sourceTree = "<group>"; };
-		93958F161A6F483F00057481 /* SNRFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRFont.m; path = Style/SNRFont.m; sourceTree = "<group>"; };
-		93958F181A6F485300057481 /* SNRStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRStyleKit.h; path = Style/SNRStyleKit.h; sourceTree = "<group>"; };
-		93958F1C1A6F4D5800057481 /* SNRLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRLabel.h; path = UI/SNRLabel.h; sourceTree = "<group>"; };
-		93958F1D1A6F4D5800057481 /* SNRLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRLabel.m; path = UI/SNRLabel.m; sourceTree = "<group>"; };
-		93958F211A6F507700057481 /* SNRStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRStartViewController.h; path = Features/Sonar/SNRStartViewController.h; sourceTree = "<group>"; };
-		93958F221A6F507700057481 /* SNRStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRStartViewController.m; path = Features/Sonar/SNRStartViewController.m; sourceTree = "<group>"; };
-		93958F241A6F605700057481 /* SNRStartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRStartView.h; path = Features/Sonar/SNRStartView.h; sourceTree = "<group>"; };
-		93958F251A6F605700057481 /* SNRStartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRStartView.m; path = Features/Sonar/SNRStartView.m; sourceTree = "<group>"; };
+		93958F121A6C94A200057481 /* HNDColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDColor.h; path = Style/HNDColor.h; sourceTree = "<group>"; };
+		93958F131A6C94A200057481 /* HNDColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNDColor.m; path = Style/HNDColor.m; sourceTree = "<group>"; };
+		93958F151A6F483F00057481 /* HNDFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDFont.h; path = Style/HNDFont.h; sourceTree = "<group>"; };
+		93958F161A6F483F00057481 /* HNDFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNDFont.m; path = Style/HNDFont.m; sourceTree = "<group>"; };
+		93958F181A6F485300057481 /* HNDStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDStyleKit.h; path = Style/HNDStyleKit.h; sourceTree = "<group>"; };
+		93958F1C1A6F4D5800057481 /* HNDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDLabel.h; path = UI/HNDLabel.h; sourceTree = "<group>"; };
+		93958F1D1A6F4D5800057481 /* HNDLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNDLabel.m; path = UI/HNDLabel.m; sourceTree = "<group>"; };
+		93958F211A6F507700057481 /* HNDStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDStartViewController.h; path = Features/Sonar/HNDStartViewController.h; sourceTree = "<group>"; };
+		93958F221A6F507700057481 /* HNDStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNDStartViewController.m; path = Features/Sonar/HNDStartViewController.m; sourceTree = "<group>"; };
+		93958F241A6F605700057481 /* HNDStartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDStartView.h; path = Features/Sonar/HNDStartView.h; sourceTree = "<group>"; };
+		93958F251A6F605700057481 /* HNDStartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNDStartView.m; path = Features/Sonar/HNDStartView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +76,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		931974631A74332F00BF7EAD /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		93958EDE1A6C8F9E00057481 = {
 			isa = PBXGroup;
 			children = (
@@ -137,8 +144,8 @@
 		93958F101A6C90D000057481 /* Initialize */ = {
 			isa = PBXGroup;
 			children = (
-				93958EEE1A6C8F9F00057481 /* SNRAppDelegate.h */,
-				93958EEF1A6C8F9F00057481 /* SNRAppDelegate.m */,
+				93958EEE1A6C8F9F00057481 /* HNDAppDelegate.h */,
+				93958EEF1A6C8F9F00057481 /* HNDAppDelegate.m */,
 				93958EF91A6C8F9F00057481 /* LaunchScreen.xib */,
 			);
 			name = Initialize;
@@ -147,11 +154,11 @@
 		93958F111A6C944700057481 /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				93958F121A6C94A200057481 /* SNRColor.h */,
-				93958F131A6C94A200057481 /* SNRColor.m */,
-				93958F151A6F483F00057481 /* SNRFont.h */,
-				93958F161A6F483F00057481 /* SNRFont.m */,
-				93958F181A6F485300057481 /* SNRStyleKit.h */,
+				93958F121A6C94A200057481 /* HNDColor.h */,
+				93958F131A6C94A200057481 /* HNDColor.m */,
+				93958F151A6F483F00057481 /* HNDFont.h */,
+				93958F161A6F483F00057481 /* HNDFont.m */,
+				93958F181A6F485300057481 /* HNDStyleKit.h */,
 			);
 			name = Style;
 			sourceTree = "<group>";
@@ -159,11 +166,11 @@
 		93958F1B1A6F4D2E00057481 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				9344F27C1A709BF8007BED0C /* SNRButton.h */,
-				9344F27D1A709BF8007BED0C /* SNRButton.m */,
-				93958F1C1A6F4D5800057481 /* SNRLabel.h */,
-				93958F1D1A6F4D5800057481 /* SNRLabel.m */,
-				9344F2791A709B81007BED0C /* SNRViewsKit.h */,
+				9344F27C1A709BF8007BED0C /* HNDButton.h */,
+				9344F27D1A709BF8007BED0C /* HNDButton.m */,
+				93958F1C1A6F4D5800057481 /* HNDLabel.h */,
+				93958F1D1A6F4D5800057481 /* HNDLabel.m */,
+				9344F2791A709B81007BED0C /* HNDViewsKit.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -171,6 +178,7 @@
 		93958F1F1A6F500500057481 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				931974631A74332F00BF7EAD /* New Group */,
 				93958F201A6F501100057481 /* Sonar */,
 			);
 			name = Features;
@@ -179,12 +187,12 @@
 		93958F201A6F501100057481 /* Sonar */ = {
 			isa = PBXGroup;
 			children = (
-				9344F27F1A70A030007BED0C /* SNRSonarFlow.h */,
-				9344F2801A70A030007BED0C /* SNRSonarFlow.m */,
-				93958F241A6F605700057481 /* SNRStartView.h */,
-				93958F251A6F605700057481 /* SNRStartView.m */,
-				93958F211A6F507700057481 /* SNRStartViewController.h */,
-				93958F221A6F507700057481 /* SNRStartViewController.m */,
+				9344F27F1A70A030007BED0C /* HNDSonarFlow.h */,
+				9344F2801A70A030007BED0C /* HNDSonarFlow.m */,
+				93958F241A6F605700057481 /* HNDStartView.h */,
+				93958F251A6F605700057481 /* HNDStartView.m */,
+				93958F211A6F507700057481 /* HNDStartViewController.h */,
+				93958F221A6F507700057481 /* HNDStartViewController.m */,
 			);
 			name = Sonar;
 			sourceTree = "<group>";
@@ -288,15 +296,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93958F1E1A6F4D5800057481 /* SNRLabel.m in Sources */,
-				93958EF01A6C8F9F00057481 /* SNRAppDelegate.m in Sources */,
-				93958F141A6C94A200057481 /* SNRColor.m in Sources */,
-				93958F261A6F605700057481 /* SNRStartView.m in Sources */,
-				93958F171A6F483F00057481 /* SNRFont.m in Sources */,
-				9344F2811A70A030007BED0C /* SNRSonarFlow.m in Sources */,
-				9344F27E1A709BF8007BED0C /* SNRButton.m in Sources */,
+				93958F1E1A6F4D5800057481 /* HNDLabel.m in Sources */,
+				93958EF01A6C8F9F00057481 /* HNDAppDelegate.m in Sources */,
+				93958F141A6C94A200057481 /* HNDColor.m in Sources */,
+				93958F261A6F605700057481 /* HNDStartView.m in Sources */,
+				93958F171A6F483F00057481 /* HNDFont.m in Sources */,
+				9344F2811A70A030007BED0C /* HNDSonarFlow.m in Sources */,
+				9344F27E1A709BF8007BED0C /* HNDButton.m in Sources */,
 				93958EED1A6C8F9F00057481 /* main.m in Sources */,
-				93958F231A6F507700057481 /* SNRStartViewController.m in Sources */,
+				93958F231A6F507700057481 /* HNDStartViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,8 +1,8 @@
-#import "SNRLabel.h"
+#import "HNDLabel.h"
 
-#import "SNRStyleKit.h"
+#import "HNDStyleKit.h"
 
-@implementation SNRLabel
+@implementation HNDLabel
 
 #pragma mark - Overrides
 
@@ -21,12 +21,12 @@
 #pragma mark - Public
 
 - (instancetype)invertTextColor {
-  self.textColor = [SNRColor lightColor];
+  self.textColor = [HNDColor lightColor];
   return self;
 }
 
 - (instancetype)typeTitle {
-  self.font = [SNRFont titleFont];
+  self.font = [HNDFont titleFont];
   return self;
 }
 
@@ -36,8 +36,8 @@
   // TODO: Do this to all views somewhere else?
   self.translatesAutoresizingMaskIntoConstraints = NO;
   
-  self.font = [SNRFont defaultFont];
-  self.textColor = [SNRColor darkColor];
+  self.font = [HNDFont defaultFont];
+  self.textColor = [HNDColor darkColor];
   self.numberOfLines = 0;
 }
 

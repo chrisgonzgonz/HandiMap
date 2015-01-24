@@ -1,5 +1,5 @@
 @import UIKit;
 
-@interface SNRAppDelegate : UIResponder <UIApplicationDelegate>
+@interface HNDAppDelegate : UIResponder <UIApplicationDelegate>
 @property(strong, nonatomic) UIWindow *window;
 @end

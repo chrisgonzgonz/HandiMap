@@ -1,6 +1,6 @@
 @import UIKit;
 
-@interface SNRFont : NSObject
+@interface HNDFont : NSObject
 
 + (UIFont *)defaultFont;
 + (UIFont *)titleFont;

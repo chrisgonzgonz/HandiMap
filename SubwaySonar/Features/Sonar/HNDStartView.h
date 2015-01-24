@@ -1,5 +1,5 @@
 @import UIKit;
 
-@interface SNRStartView : UIView
+@interface HNDStartView : UIView
 @property(nonatomic) UIButton *sonarStartButton;
 @end

@@ -1,6 +1,6 @@
 @import UIKit;
 
-@interface SNRColor : NSObject
+@interface HNDColor : NSObject
 
 /// Background and text colors.
 + (UIColor *)darkColor;

@@ -1,22 +1,22 @@
-#import "SNRStartViewController.h"
+#import "HNDStartViewController.h"
 
-#import "SNRSonarFlow.h"
-#import "SNRStartView.h"
+#import "HNDSonarFlow.h"
+#import "HNDStartView.h"
 
-@interface SNRStartViewController()
+@interface HNDStartViewController()
 
-// TODO: Create SNRViewController base class. It should have a weak reference to a generic flow.
-@property(nonatomic, weak) SNRSonarFlow *flow;
+// TODO: Create HNDViewController base class. It should have a weak reference to a generic flow.
+@property(nonatomic, weak) HNDSonarFlow *flow;
 
-@property(nonatomic) SNRStartView *view;
+@property(nonatomic) HNDStartView *view;
 
 @end
 
-@implementation SNRStartViewController
+@implementation HNDStartViewController
 
 #pragma mark - Overrides
 
-- (instancetype)initInFlow:(SNRSonarFlow *)flow {
+- (instancetype)initInFlow:(HNDSonarFlow *)flow {
   if (self = [super init]) {
     self.flow = flow;
   }
@@ -24,7 +24,7 @@
 }
 
 - (void)loadView {
-  self.view = [[SNRStartView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  self.view = [[HNDStartView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 }
 
 - (void)viewDidLoad {

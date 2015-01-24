@@ -1,11 +1,11 @@
-#import "SNRColor.h"
+#import "HNDColor.h"
 
 /// This class uses the following theme from Kuler:
 /// \link https://color.adobe.com/Quiet-Cry-color-theme-124171/
 
 static const CGFloat kEightBitColorRange = 255.0f;
 
-@implementation SNRColor
+@implementation HNDColor
 
 + (UIColor *)darkColor {
   return [self rgbWithRed:28 green:29 blue:33];

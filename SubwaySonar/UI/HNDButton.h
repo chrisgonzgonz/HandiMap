@@ -1,6 +1,6 @@
 @import UIKit;
 
-@interface SNRButton : UIButton
+@interface HNDButton : UIButton
 - (instancetype)invertColors;
 - (instancetype)largeButton;
 @end

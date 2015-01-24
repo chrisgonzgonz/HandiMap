@@ -1,7 +1,7 @@
-#import "SNRAppDelegate.h"
+#import "HNDAppDelegate.h"
 
 int main(int argc, char * argv[]) {
   @autoreleasepool {
-      return UIApplicationMain(argc, argv, nil, NSStringFromClass([SNRAppDelegate class]));
+      return UIApplicationMain(argc, argv, nil, NSStringFromClass([HNDAppDelegate class]));
   }
 }
