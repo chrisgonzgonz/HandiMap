@@ -1,9 +1,9 @@
 @import UIKit;
 
-@class HNDSonarFlow;
+@class HNDMapFlow;
 
 @interface HNDMapViewController : UIViewController
 
-- (instancetype)initInFlow:(HNDSonarFlow *)flow;
+- (instancetype)initInFlow:(HNDMapFlow *)flow;
 
 @end

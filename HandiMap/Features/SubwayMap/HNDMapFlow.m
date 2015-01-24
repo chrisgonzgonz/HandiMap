@@ -1,9 +1,8 @@
-#import "HNDSonarFlow.h"
+#import "HNDMapFlow.h"
 
 #import "HNDMapViewController.h"
-#import "HNDStartViewController.h"
 
-@implementation HNDSonarFlow
+@implementation HNDMapFlow
 
 #pragma mark - Public
 
@@ -12,11 +11,11 @@
 }
 
 - (void)presentNext:(UIViewController *)sender {
-  if ([sender isKindOfClass:[HNDStartViewController class]]) {
-    [self presentNearestSubwaysListFrom:sender];
-  } else {
-    NSAssert(NO, @"Flow does not know how to handle %@", [sender class]);
-  }
+//  if ([sender isKindOfClass:[HNDStartViewController class]]) {
+//    [self presentNearestSubwaysListFrom:sender];
+//  } else {
+//    NSAssert(NO, @"Flow does not know how to handle %@", [sender class]);
+//  }
 }
 
 #pragma mark - Private

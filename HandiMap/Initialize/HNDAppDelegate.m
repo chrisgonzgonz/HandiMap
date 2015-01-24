@@ -1,6 +1,6 @@
 #import "HNDAppDelegate.h"
 
-#import "HNDSonarFlow.h"
+#import "HNDMapFlow.h"
 
 @implementation HNDAppDelegate
 
@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  self.window.rootViewController = [[[HNDSonarFlow alloc] init] initialViewController];
+  self.window.rootViewController = [[[HNDMapFlow alloc] init] initialViewController];
   return YES;
 }
 

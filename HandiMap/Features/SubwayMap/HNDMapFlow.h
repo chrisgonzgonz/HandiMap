@@ -2,7 +2,7 @@
 
 @class UIViewController;
 
-@interface HNDSonarFlow : NSObject
+@interface HNDMapFlow : NSObject
 - (UIViewController *)initialViewController;
 - (void)presentNext:(UIViewController *)sender;
 @end

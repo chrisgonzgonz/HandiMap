@@ -12,15 +12,13 @@
 		72835F3B1A74452200CD23D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72835F3A1A74452200CD23D2 /* MapKit.framework */; };
 		9319746A1A74397000BF7EAD /* HNDMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 931974691A74397000BF7EAD /* HNDMapViewController.m */; };
 		9344F27E1A709BF8007BED0C /* HNDButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F27D1A709BF8007BED0C /* HNDButton.m */; };
-		9344F2811A70A030007BED0C /* HNDSonarFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F2801A70A030007BED0C /* HNDSonarFlow.m */; };
+		9344F2811A70A030007BED0C /* HNDMapFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F2801A70A030007BED0C /* HNDMapFlow.m */; };
 		93958EED1A6C8F9F00057481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EEC1A6C8F9F00057481 /* main.m */; };
 		93958EF01A6C8F9F00057481 /* HNDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958EEF1A6C8F9F00057481 /* HNDAppDelegate.m */; };
 		93958EF81A6C8F9F00057481 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93958EF71A6C8F9F00057481 /* Images.xcassets */; };
 		93958F141A6C94A200057481 /* HNDColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F131A6C94A200057481 /* HNDColor.m */; };
 		93958F171A6F483F00057481 /* HNDFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F161A6F483F00057481 /* HNDFont.m */; };
 		93958F1E1A6F4D5800057481 /* HNDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F1D1A6F4D5800057481 /* HNDLabel.m */; };
-		93958F231A6F507700057481 /* HNDStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F221A6F507700057481 /* HNDStartViewController.m */; };
-		93958F261A6F605700057481 /* HNDStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93958F251A6F605700057481 /* HNDStartView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		72835F351A74419100CD23D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../Default-568h@2x.png"; sourceTree = "<group>"; };
+		72835F351A74419100CD23D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		72835F371A74433800CD23D2 /* HNDSubwayMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDSubwayMapView.h; sourceTree = "<group>"; };
 		72835F381A74433800CD23D2 /* HNDSubwayMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSubwayMapView.m; sourceTree = "<group>"; };
 		72835F3A1A74452200CD23D2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -43,8 +41,8 @@
 		9344F2791A709B81007BED0C /* HNDViewsKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDViewsKit.h; sourceTree = "<group>"; };
 		9344F27C1A709BF8007BED0C /* HNDButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDButton.h; sourceTree = "<group>"; };
 		9344F27D1A709BF8007BED0C /* HNDButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDButton.m; sourceTree = "<group>"; };
-		9344F27F1A70A030007BED0C /* HNDSonarFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDSonarFlow.h; sourceTree = "<group>"; };
-		9344F2801A70A030007BED0C /* HNDSonarFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSonarFlow.m; sourceTree = "<group>"; };
+		9344F27F1A70A030007BED0C /* HNDMapFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDMapFlow.h; sourceTree = "<group>"; };
+		9344F2801A70A030007BED0C /* HNDMapFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDMapFlow.m; sourceTree = "<group>"; };
 		93958EE71A6C8F9F00057481 /* HandiMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandiMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93958EEB1A6C8F9F00057481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93958EEC1A6C8F9F00057481 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,10 +58,6 @@
 		93958F181A6F485300057481 /* HNDStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStyleKit.h; sourceTree = "<group>"; };
 		93958F1C1A6F4D5800057481 /* HNDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDLabel.h; sourceTree = "<group>"; };
 		93958F1D1A6F4D5800057481 /* HNDLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDLabel.m; sourceTree = "<group>"; };
-		93958F211A6F507700057481 /* HNDStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStartViewController.h; sourceTree = "<group>"; };
-		93958F221A6F507700057481 /* HNDStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStartViewController.m; sourceTree = "<group>"; };
-		93958F241A6F605700057481 /* HNDStartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStartView.h; sourceTree = "<group>"; };
-		93958F251A6F605700057481 /* HNDStartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStartView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +84,14 @@
 			children = (
 				72835F3A1A74452200CD23D2 /* MapKit.framework */,
 			);
-			name = AppleFrameworks;
+			path = AppleFrameworks;
+			sourceTree = "<group>";
+		};
+		72835F3D1A7454A300CD23D2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		931974671A74394A00BF7EAD /* SubwayMap */ = {
@@ -100,6 +101,8 @@
 				72835F381A74433800CD23D2 /* HNDSubwayMapView.m */,
 				931974681A74397000BF7EAD /* HNDMapViewController.h */,
 				931974691A74397000BF7EAD /* HNDMapViewController.m */,
+				9344F27F1A70A030007BED0C /* HNDMapFlow.h */,
+				9344F2801A70A030007BED0C /* HNDMapFlow.m */,
 			);
 			path = SubwayMap;
 			sourceTree = "<group>";
@@ -126,6 +129,7 @@
 		93958EE91A6C8F9F00057481 /* HandiMap */ = {
 			isa = PBXGroup;
 			children = (
+				72835F3D1A7454A300CD23D2 /* CoreData */,
 				93958F1F1A6F500500057481 /* Features */,
 				93958F101A6C90D000057481 /* Initialize */,
 				93958F111A6C944700057481 /* Style */,
@@ -198,23 +202,9 @@
 		93958F1F1A6F500500057481 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				93958F201A6F501100057481 /* Sonar */,
+				931974671A74394A00BF7EAD /* SubwayMap */,
 			);
 			path = Features;
-			sourceTree = "<group>";
-		};
-		93958F201A6F501100057481 /* Sonar */ = {
-			isa = PBXGroup;
-			children = (
-				931974671A74394A00BF7EAD /* SubwayMap */,
-				9344F27F1A70A030007BED0C /* HNDSonarFlow.h */,
-				9344F2801A70A030007BED0C /* HNDSonarFlow.m */,
-				93958F241A6F605700057481 /* HNDStartView.h */,
-				93958F251A6F605700057481 /* HNDStartView.m */,
-				93958F211A6F507700057481 /* HNDStartViewController.h */,
-				93958F221A6F507700057481 /* HNDStartViewController.m */,
-			);
-			path = Sonar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,13 +310,11 @@
 				93958F1E1A6F4D5800057481 /* HNDLabel.m in Sources */,
 				93958EF01A6C8F9F00057481 /* HNDAppDelegate.m in Sources */,
 				93958F141A6C94A200057481 /* HNDColor.m in Sources */,
-				93958F261A6F605700057481 /* HNDStartView.m in Sources */,
 				93958F171A6F483F00057481 /* HNDFont.m in Sources */,
-				9344F2811A70A030007BED0C /* HNDSonarFlow.m in Sources */,
+				9344F2811A70A030007BED0C /* HNDMapFlow.m in Sources */,
 				72835F391A74433800CD23D2 /* HNDSubwayMapView.m in Sources */,
 				9344F27E1A709BF8007BED0C /* HNDButton.m in Sources */,
 				93958EED1A6C8F9F00057481 /* main.m in Sources */,
-				93958F231A6F507700057481 /* HNDStartViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
