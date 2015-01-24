@@ -1,5 +1,6 @@
 #import "HNDSonarFlow.h"
 
+#import "HNDMapViewController.h"
 #import "HNDStartViewController.h"
 
 @implementation HNDSonarFlow
@@ -7,7 +8,7 @@
 #pragma mark - Public
 
 - (UIViewController *)initialViewController {
-  return [[HNDStartViewController alloc] initInFlow:self];
+  return [[HNDMapViewController alloc] initInFlow:self];
 }
 
 - (void)presentNext:(UIViewController *)sender {
