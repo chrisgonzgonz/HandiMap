@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="HNDOutage" representedClassName="HNDOutage" syncable="YES">
+        <attribute name="ada" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="equipmentType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="estimatedReturnOfService" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="outageStartDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="reason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routesAffected" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serving" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="station" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HNDStation" inverseName="outages" inverseEntity="HNDStation" syncable="YES"/>
+    </entity>
+    <entity name="HNDStation" representedClassName="HNDStation" syncable="YES">
+        <attribute name="accessibleRoutes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ada" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="servedRoutes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="stationLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="stationLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="stationName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="outages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HNDOutage" inverseName="station" inverseEntity="HNDOutage" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="HNDStation" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="HNDOutage" positionX="-54" positionY="45" width="128" height="193"/>
+    </elements>
+</model>

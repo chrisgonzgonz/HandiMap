@@ -2,6 +2,9 @@
 
 #import "HNDSubwayMapView.h"
 #import <MapKit/MapKit.h>
+#import "HNDCoreDataManager.h"
+#import "HNDOutage.h"
+#import "HNDStation.h"
 
 @interface HNDMapViewController () <MKMapViewDelegate>
 

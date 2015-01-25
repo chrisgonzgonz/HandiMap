@@ -21,7 +21,6 @@
 }
 
 #pragma mark - Private
-
 - (void)autolayoutViews {
   self.translatesAutoresizingMaskIntoConstraints = NO;
   self.mapView.translatesAutoresizingMaskIntoConstraints = NO;
