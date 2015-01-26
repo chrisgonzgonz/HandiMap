@@ -5,6 +5,7 @@
 #import "HNDCoreDataManager.h"
 #import "HNDOutage.h"
 #import "HNDStation.h"
+#import "HNDJobNetworkManager.h"
 
 @interface HNDMapViewController () <MKMapViewDelegate>
 
@@ -29,6 +30,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.view.mapView.delegate = self;
+  
+  [[HNDJobNetworkManager sharedManager] getStationsWithCompletionBlock:nil];
 }
 
 @end

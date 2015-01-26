@@ -2,7 +2,8 @@
 
 @interface HNDJobNetworkManager : AFHTTPSessionManager
 
-- (void)getStations;
-- (void)getOutages;
+- (void)getStationsWithCompletionBlock:(void(^)())completion;
+- (void)getOutagesWithCompletionBlock:(void(^)())completion;
 
++ (instancetype)sharedManager;
 @end
