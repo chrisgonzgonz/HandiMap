@@ -19,6 +19,16 @@ static NSString * const kDataModelURL = @"HandiMap";
 
 #pragma mark - Public
 
++ (instancetype)sharedManager {
+    static HNDCoreDataManager *_sharedManager= nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedManager = [[HNDCoreDataManager alloc] init];
+    });
+    
+    return _sharedManager;
+}
+
 - (NSManagedObjectContext *)mainContext {
   if (!_mainContext) {
     _mainContext =

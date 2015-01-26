@@ -18,4 +18,5 @@
 /// \param context is expected to be a worker context.
 - (void)saveContext:(NSManagedObjectContext *)context;
 
++ (instancetype)sharedManager;
 @end

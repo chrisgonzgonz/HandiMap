@@ -1,5 +1,5 @@
 #import "HNDJobNetworkManager.h"
-static NSString * const kBaseURL = @"https://subway-access.herokuapp.com";
+static NSString * const kBaseURL = @"https://handimap.herokuapp.com/";
 static NSString * const kTestURL = @"https://api.forecast.io/forecast/a2de94fbad075d965ae224240b90f4c9/";
 @implementation HNDJobNetworkManager
 
@@ -14,7 +14,7 @@ static NSString * const kTestURL = @"https://api.forecast.io/forecast/a2de94fbad
 }
 
 - (instancetype)init {
-  if (self = [super initWithBaseURL:[NSURL URLWithString:kTestURL]]) {
+  if (self = [super initWithBaseURL:[NSURL URLWithString:kBaseURL]]) {
     
   }
   return self;
@@ -22,9 +22,11 @@ static NSString * const kTestURL = @"https://api.forecast.io/forecast/a2de94fbad
 
 - (void)getStationsWithCompletionBlock:(void (^)())completion {
   
-  [self GET:@"stations.json" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+  [self GET:@"stations" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
     NSLog(@"JSON: %@ TYPE: %@", responseObject, [responseObject class]);
-    completion();
+    if (completion) {
+      completion();
+    }
   } failure:^(NSURLSessionDataTask *task, NSError *error) {
     NSLog(@"%@ Error: %@", task.response, error.localizedDescription);
   }];
@@ -33,9 +35,11 @@ static NSString * const kTestURL = @"https://api.forecast.io/forecast/a2de94fbad
 
 - (void)getOutagesWithCompletionBlock:(void (^)())completion {
   
-  [self GET:@"outages.json" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+  [self GET:@"outages" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
     NSLog(@"JSON: %@ TYPE: %@", responseObject, [responseObject class]);
-    completion();
+    if (completion) {
+      completion();
+    }
   } failure:^(NSURLSessionDataTask *task, NSError *error) {
     NSLog(@"%@ Error: %@", task.response, error.localizedDescription);
   }];
