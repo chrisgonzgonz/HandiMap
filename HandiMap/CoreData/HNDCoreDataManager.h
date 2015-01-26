@@ -10,6 +10,9 @@
 /// used on the main thread. Do not do write operations with this context.
 @property (nonatomic, readonly) NSManagedObjectContext *mainContext;
 
+/// TODO(gonzo): Docs!!!
++ (instancetype)sharedManager;
+
 /// \return a new context to be used with write operations. Is is child context of the main context.
 - (NSManagedObjectContext *)newWorkerContext;
 
@@ -18,5 +21,4 @@
 /// \param context is expected to be a worker context.
 - (void)saveContext:(NSManagedObjectContext *)context;
 
-+ (instancetype)sharedManager;
 @end
