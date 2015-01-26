@@ -10,8 +10,7 @@
 /// used on the main thread. Do not do write operations with this context.
 @property (nonatomic, readonly) NSManagedObjectContext *mainContext;
 
-/// \return a new context to be used with write operations, and
-/// is a child context of the main context.
+/// \return a new context to be used with write operations. Is is child context of the main context.
 - (NSManagedObjectContext *)newWorkerContext;
 
 /// Saves the context, which will propogate changes through the main context, and saves the
