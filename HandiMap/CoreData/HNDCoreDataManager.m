@@ -3,14 +3,18 @@
 #import <CoreData/CoreData.h>
 
 static NSString * const kDataModelURL = @"HandiMap";
+
 @interface HNDCoreDataManager ()
 
-@property (nonatomic) NSManagedObjectContext *masterContext;
 @property (nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic) NSManagedObjectContext *masterContext;
+
+// Changes readonly properties to readwrite.
 @property (nonatomic, readwrite) NSManagedObjectContext *mainContext;
 
 @end
+
 @implementation HNDCoreDataManager
 
 
