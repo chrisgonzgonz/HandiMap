@@ -105,9 +105,9 @@
 		72835F3D1A7454A300CD23D2 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				72F339F21A745779009D79AA /* HandiMap.xcdatamodeld */,
 				72835F3E1A74556000CD23D2 /* HNDCoreDataManager.h */,
 				72835F3F1A74556000CD23D2 /* HNDCoreDataManager.m */,
-				72F339F21A745779009D79AA /* HandiMap.xcdatamodeld */,
 				72F339F81A74655F009D79AA /* HNDOutage.h */,
 				72F339F91A74655F009D79AA /* HNDOutage.m */,
 				72F339F51A74655F009D79AA /* HNDStation.h */,
