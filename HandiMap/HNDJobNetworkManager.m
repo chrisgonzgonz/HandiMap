@@ -1,6 +1,8 @@
 #import "HNDJobNetworkManager.h"
+
 static NSString * const kBaseURL = @"https://handimap.herokuapp.com/";
 static NSString * const kTestURL = @"https://api.forecast.io/forecast/a2de94fbad075d965ae224240b90f4c9/";
+
 @implementation HNDJobNetworkManager
 
 + (instancetype)sharedManager {
@@ -14,9 +16,7 @@ static NSString * const kTestURL = @"https://api.forecast.io/forecast/a2de94fbad
 }
 
 - (instancetype)init {
-  if (self = [super initWithBaseURL:[NSURL URLWithString:kBaseURL]]) {
-    
-  }
+  if (self = [super initWithBaseURL:[NSURL URLWithString:kBaseURL]]) {}
   return self;
 }
 
