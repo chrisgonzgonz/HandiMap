@@ -12,6 +12,9 @@
 		72835F3B1A74452200CD23D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72835F3A1A74452200CD23D2 /* MapKit.framework */; };
 		72835F401A74556000CD23D2 /* HNDCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72835F3F1A74556000CD23D2 /* HNDCoreDataManager.m */; };
 		72835F421A74557C00CD23D2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72835F411A74557C00CD23D2 /* CoreData.framework */; };
+		72BD4EE61A7888310086AD11 /* HNDDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BD4EE51A7888310086AD11 /* HNDDataStore.m */; };
+		72BD4EE91A788B210086AD11 /* HNDOutage+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BD4EE81A788B210086AD11 /* HNDOutage+Convenience.m */; };
+		72BD4EED1A788B400086AD11 /* HNDStation+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BD4EEC1A788B400086AD11 /* HNDStation+Convenience.m */; };
 		72EEC13B1A74767500CF496A /* HNDJobNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EEC13A1A74767500CF496A /* HNDJobNetworkManager.m */; };
 		72F339F41A745779009D79AA /* HandiMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72F339F21A745779009D79AA /* HandiMap.xcdatamodeld */; };
 		72F339F71A74655F009D79AA /* HNDStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F339F61A74655F009D79AA /* HNDStation.m */; };
@@ -48,6 +51,12 @@
 		72835F3E1A74556000CD23D2 /* HNDCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDCoreDataManager.h; sourceTree = "<group>"; };
 		72835F3F1A74556000CD23D2 /* HNDCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDCoreDataManager.m; sourceTree = "<group>"; };
 		72835F411A74557C00CD23D2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		72BD4EE41A7888310086AD11 /* HNDDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDDataStore.h; sourceTree = "<group>"; };
+		72BD4EE51A7888310086AD11 /* HNDDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDDataStore.m; sourceTree = "<group>"; };
+		72BD4EE71A788B210086AD11 /* HNDOutage+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HNDOutage+Convenience.h"; sourceTree = "<group>"; };
+		72BD4EE81A788B210086AD11 /* HNDOutage+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HNDOutage+Convenience.m"; sourceTree = "<group>"; };
+		72BD4EEB1A788B400086AD11 /* HNDStation+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HNDStation+Convenience.h"; sourceTree = "<group>"; };
+		72BD4EEC1A788B400086AD11 /* HNDStation+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HNDStation+Convenience.m"; sourceTree = "<group>"; };
 		72EEC1391A74767500CF496A /* HNDJobNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDJobNetworkManager.h; sourceTree = "<group>"; };
 		72EEC13A1A74767500CF496A /* HNDJobNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDJobNetworkManager.m; sourceTree = "<group>"; };
 		72F339F31A745779009D79AA /* HandiMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HandiMap.xcdatamodel; sourceTree = "<group>"; };
@@ -120,8 +129,21 @@
 				72F339F91A74655F009D79AA /* HNDOutage.m */,
 				72F339F51A74655F009D79AA /* HNDStation.h */,
 				72F339F61A74655F009D79AA /* HNDStation.m */,
+				72BD4EE41A7888310086AD11 /* HNDDataStore.h */,
+				72BD4EE51A7888310086AD11 /* HNDDataStore.m */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		72BD4EEA1A788B260086AD11 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				72BD4EE71A788B210086AD11 /* HNDOutage+Convenience.h */,
+				72BD4EE81A788B210086AD11 /* HNDOutage+Convenience.m */,
+				72BD4EEB1A788B400086AD11 /* HNDStation+Convenience.h */,
+				72BD4EEC1A788B400086AD11 /* HNDStation+Convenience.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		72EEC1381A7473AE00CF496A /* Networking */ = {
@@ -170,6 +192,7 @@
 		93958EE91A6C8F9F00057481 /* HandiMap */ = {
 			isa = PBXGroup;
 			children = (
+				72BD4EEA1A788B260086AD11 /* Categories */,
 				72EEC1381A7473AE00CF496A /* Networking */,
 				72835F3D1A7454A300CD23D2 /* CoreData */,
 				93958F1F1A6F500500057481 /* Features */,
@@ -407,7 +430,10 @@
 				93958F141A6C94A200057481 /* HNDColor.m in Sources */,
 				72F339F41A745779009D79AA /* HandiMap.xcdatamodeld in Sources */,
 				93958F171A6F483F00057481 /* HNDFont.m in Sources */,
+				72BD4EE61A7888310086AD11 /* HNDDataStore.m in Sources */,
 				72EEC13B1A74767500CF496A /* HNDJobNetworkManager.m in Sources */,
+				72BD4EE91A788B210086AD11 /* HNDOutage+Convenience.m in Sources */,
+				72BD4EED1A788B400086AD11 /* HNDStation+Convenience.m in Sources */,
 				9344F2811A70A030007BED0C /* HNDMapFlow.m in Sources */,
 				72F339F71A74655F009D79AA /* HNDStation.m in Sources */,
 				72835F391A74433800CD23D2 /* HNDSubwayMapView.m in Sources */,
