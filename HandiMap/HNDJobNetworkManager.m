@@ -20,12 +20,11 @@ static NSString * const kTestURL = @"https://api.forecast.io/forecast/a2de94fbad
   return self;
 }
 
-- (void)getStationsWithCompletionBlock:(void (^)())completion {
+- (void)getStationsWithCompletionBlock:(void (^)(id response))completion {
   
   [self GET:@"stations" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-    NSLog(@"JSON: %@ TYPE: %@", responseObject, [responseObject class]);
     if (completion) {
-      completion();
+      completion(responseObject);
     }
   } failure:^(NSURLSessionDataTask *task, NSError *error) {
     NSLog(@"%@ Error: %@", task.response, error.localizedDescription);
@@ -33,12 +32,10 @@ static NSString * const kTestURL = @"https://api.forecast.io/forecast/a2de94fbad
   
 }
 
-- (void)getOutagesWithCompletionBlock:(void (^)())completion {
-  
+- (void)getOutagesWithCompletionBlock:(void (^)(id response))completion {
   [self GET:@"outages" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-    NSLog(@"JSON: %@ TYPE: %@", responseObject, [responseObject class]);
     if (completion) {
-      completion();
+      completion(responseObject);
     }
   } failure:^(NSURLSessionDataTask *task, NSError *error) {
     NSLog(@"%@ Error: %@", task.response, error.localizedDescription);

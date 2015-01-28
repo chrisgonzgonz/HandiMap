@@ -8,6 +8,7 @@
 #import "HNDOutage.h"
 #import "HNDStation.h"
 #import "HNDSubwayMapView.h"
+#import "HNDDataStore.h"
 
 static CGFloat const kHNDMapCoordSpan = 0.5f;
 
@@ -30,6 +31,8 @@ static CGFloat const kHNDMapCoordSpan = 0.5f;
   [super viewDidLoad];
   [self setupViews];
   [self getCurrentLocation];
+  
+  [[HNDDataStore sharedStore] loadStations];
 }
 
 #pragma mark - Public
