@@ -20,13 +20,13 @@ static NSString * const kDataModelURL = @"HandiMap";
 #pragma mark - Public
 
 + (instancetype)sharedManager {
-    static HNDCoreDataManager *_sharedManager= nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedManager = [[HNDCoreDataManager alloc] init];
-    });
-    
-    return _sharedManager;
+  static HNDCoreDataManager *_sharedManager= nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedManager = [[HNDCoreDataManager alloc] init];
+  });
+  
+  return _sharedManager;
 }
 
 - (NSManagedObjectContext *)mainContext {
@@ -46,10 +46,12 @@ static NSString * const kDataModelURL = @"HandiMap";
 }
 
 - (void)saveContext:(NSManagedObjectContext *)context {
-  [context save:nil];
-  if (context.parentContext) {
-    [self saveContext:context.parentContext];
-  }
+  [context performBlock:^{
+    [context save:nil];
+    if (context.parentContext) {
+      [self saveContext:context.parentContext];
+    }
+  }];
 }
 
 #pragma mark - Core Data Stack
