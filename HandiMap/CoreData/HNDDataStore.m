@@ -10,6 +10,8 @@
 
 #import "HNDJobNetworkManager.h"
 #import "HNDCoreDataManager.h"
+#import <CoreData/NSManagedObjectContext.h>
+#import "HNDStation+Convenience.h"
 
 @implementation HNDDataStore
 
@@ -24,7 +26,18 @@
 }
 
 - (void)loadStations {
-  
+  NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
+  HNDJobNetworkManager *networkManager = [HNDJobNetworkManager sharedManager];
+  [networkManager getStationsWithCompletionBlock:^(id response) {
+    [workerContext performBlock:^{
+      for (NSDictionary *dictionary in response) {
+        NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDStation" inManagedObjectContext:workerContext];
+        HNDStation *currentStation = [[HNDStation alloc] initWithEntity:ed insertIntoManagedObjectContext:workerContext andDictionary:dictionary];
+      }
+      NSLog(@"about to save");
+      [[HNDCoreDataManager sharedManager] saveContext:workerContext];
+    }];
+  }];
 }
 
 - (void)loadOutages {

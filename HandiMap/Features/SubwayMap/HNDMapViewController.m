@@ -7,6 +7,7 @@
 #import "HNDOutage.h"
 #import "HNDStation.h"
 #import "HNDSubwayMapView.h"
+#import "HNDDataStore.h"
 
 @interface HNDMapViewController () <MKMapViewDelegate>
 
@@ -32,6 +33,8 @@
   [super viewDidLoad];
   [self setupOutlets];
   [self bindViews];
+  
+  [[HNDDataStore sharedStore] loadStations];
 }
 
 #pragma mark - Public
