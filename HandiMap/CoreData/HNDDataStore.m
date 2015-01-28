@@ -18,8 +18,7 @@
 
 - (void)loadStations {
   NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
-  HNDJobNetworkManager *networkManager = [HNDJobNetworkManager sharedManager];
-  [networkManager getStationsWithCompletionBlock:^(id response) {
+  [[HNDJobNetworkManager sharedManager] getStationsWithCompletionBlock:^(id response) {
     [workerContext performBlock:^{
       for (NSDictionary *dictionary in response) {
         NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDStation"
