@@ -5,5 +5,6 @@
 @interface HNDSubwayMapView : UIView
 
 @property (nonatomic) MKMapView *mapView;
+@property (nonatomic) UILabel *selectedFilterView;
 
 @end
