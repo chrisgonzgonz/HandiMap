@@ -5,7 +5,3 @@ target 'HandiMap' do
   pod 'AFNetworking', :head
   pod 'INTULocationManager', :head
 end
-
-target 'HandiMapTests' do
-end
-
