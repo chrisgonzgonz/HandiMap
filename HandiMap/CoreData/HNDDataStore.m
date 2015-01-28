@@ -1,8 +1,9 @@
 #import "HNDDataStore.h"
 
-#import "HNDJobNetworkManager.h"
-#import "HNDCoreDataManager.h"
 #import <CoreData/NSManagedObjectContext.h>
+
+#import "HNDCoreDataManager.h"
+#import "HNDJobNetworkManager.h"
 #import "HNDStation+Convenience.h"
 
 @implementation HNDDataStore

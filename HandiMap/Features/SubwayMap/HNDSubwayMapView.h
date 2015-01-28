@@ -4,7 +4,7 @@
 
 @interface HNDSubwayMapView : UIView
 
-@property (nonatomic) MKMapView *mapView;
-@property (nonatomic) UILabel *selectedFilterView;
+@property(nonatomic, readonly) MKMapView *mapView;
+@property(nonatomic, readonly) UIButton *selectedFilterBtnView;
 
 @end

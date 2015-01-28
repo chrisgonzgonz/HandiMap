@@ -32,10 +32,7 @@
 
 #pragma mark - Private
 
-- (void)initialSetup {
-  // TODO: Do this to all views somewhere else?
-  self.translatesAutoresizingMaskIntoConstraints = NO;
-  
+- (void)initialSetup {  
   self.font = [HNDFont defaultFont];
   self.textColor = [HNDColor darkColor];
   self.numberOfLines = 0;

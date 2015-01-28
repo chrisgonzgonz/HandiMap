@@ -13,6 +13,11 @@
   return self;
 }
 
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+  [super setBackgroundColor:backgroundColor];
+  [self setTitleColor:backgroundColor forState:UIControlStateHighlighted];
+}
+
 #pragma mark - Public
 
 - (instancetype)invertColors {
@@ -33,7 +38,6 @@
 
   self.titleLabel.font = [HNDFont defaultFont];
   [self setTitleColor:[HNDColor mainColor] forState:UIControlStateNormal];
-  [self setTitleColor:[HNDColor highlightColor] forState:UIControlStateHighlighted];
 }
 
 @end
