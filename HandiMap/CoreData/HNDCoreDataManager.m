@@ -46,10 +46,11 @@ static NSString * const kDataModelURL = @"HandiMap";
 }
 
 - (void)saveContext:(NSManagedObjectContext *)context {
+  NSManagedObjectContext *__weak weakContext = context;
   [context performBlock:^{
-    [context save:nil];
-    if (context.parentContext) {
-      [self saveContext:context.parentContext];
+    [weakContext save:nil];
+    if (weakContext.parentContext) {
+      [self saveContext:weakContext.parentContext];
     }
   }];
 }
@@ -79,11 +80,17 @@ static NSString * const kDataModelURL = @"HandiMap";
     _persistentStoreCoordinator =
         [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
     NSError *error = nil;
+    NSDictionary *persistentStoreConnectionOptions = @{
+      NSMigratePersistentStoresAutomaticallyOption: @YES,
+      NSInferMappingModelAutomaticallyOption: @YES
+    };
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                    configuration:nil
                                                              URL:self.persistentStoreURL
-                                                         options:nil
+                                                         options:persistentStoreConnectionOptions
                                                            error:&error]) {
+      // TODO(gonzo): Increment the managedObjectModel and re-attempt to create the
+      // persistentStoreCoordinator once. Then throw an exception if still failing.
       NSLog(@"Could not create persistent store with error: %@, %@", error, error.userInfo);
     }
   }

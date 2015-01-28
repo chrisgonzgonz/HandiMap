@@ -23,9 +23,22 @@
 #pragma mark - Private
 
 - (void)autolayoutViews {
+  [self turnOffAutoResizing];
   NSDictionary *views = NSDictionaryOfVariableBindings(_mapView);
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_mapView]|" options:0 metrics:nil views:views]];
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_mapView]|" options:0 metrics:nil views:views]];
+
+  // Horizontal layout
+  [self addConstraints:[NSLayoutConstraint
+      constraintsWithVisualFormat:@"H:|[_mapView]|"
+                          options:0
+                          metrics:nil
+                            views:views]];
+
+  // Vertical layout
+  [self addConstraints:[NSLayoutConstraint
+      constraintsWithVisualFormat:@"V:|[_mapView]|"
+                          options:0
+                          metrics:nil
+                            views:views]];
 }
 
 - (void)turnOffAutoResizing {
