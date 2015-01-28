@@ -44,6 +44,12 @@ static CGFloat const kHNDMapCoordSpan = 0.5f;
   return self;
 }
 
+#pragma mark - TargetActions
+
+- (void)showFilterView:(UIButton *)sender {
+  NSLog(@"I will show you the filter view");
+}
+
 #pragma mark - Protocols
 #pragma mark MKMapViewDelegate
 
@@ -60,6 +66,10 @@ static CGFloat const kHNDMapCoordSpan = 0.5f;
 - (void)setupViews {
   self.view.mapView.showsUserLocation = YES;
   self.view.mapView.delegate = self;
+
+  [self.view.selectedFilterBtnView addTarget:self
+                                      action:@selector(showFilterView:)
+                            forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)getCurrentLocation {
