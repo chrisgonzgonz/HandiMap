@@ -1,11 +1,3 @@
-//
-//  HNDDataStore.m
-//  HandiMap
-//
-//  Created by Chris Gonzales on 1/27/15.
-//  Copyright (c) 2015 FSDC. All rights reserved.
-//
-
 #import "HNDDataStore.h"
 
 #import "HNDJobNetworkManager.h"
@@ -15,14 +7,13 @@
 
 @implementation HNDDataStore
 
-+ (instancetype)sharedStore
-{
-    static HNDDataStore *_sharedDataStore = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedDataStore = [[HNDDataStore   alloc] init];
-    });
-    return _sharedDataStore;
++ (instancetype)sharedStore {
+  static HNDDataStore *_sharedDataStore = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedDataStore = [[HNDDataStore alloc] init];
+  });
+  return _sharedDataStore;
 }
 
 - (void)loadStations {
@@ -31,10 +22,12 @@
   [networkManager getStationsWithCompletionBlock:^(id response) {
     [workerContext performBlock:^{
       for (NSDictionary *dictionary in response) {
-        NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDStation" inManagedObjectContext:workerContext];
-        HNDStation *currentStation = [[HNDStation alloc] initWithEntity:ed insertIntoManagedObjectContext:workerContext andDictionary:dictionary];
+        NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDStation"
+                                              inManagedObjectContext:workerContext];
+        HNDStation *currentStation = [[HNDStation alloc] initWithEntity:ed
+                                         insertIntoManagedObjectContext:workerContext
+                                                          andDictionary:dictionary];
       }
-      NSLog(@"about to save");
       [[HNDCoreDataManager sharedManager] saveContext:workerContext];
     }];
   }];
