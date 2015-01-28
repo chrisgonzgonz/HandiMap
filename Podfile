@@ -1,7 +1,9 @@
 platform :ios, '7.0'
+inhibit_all_warnings!
 
 target 'HandiMap' do
-  pod "AFNetworking", "~> 2.4"
+  pod 'AFNetworking', :head
+  pod 'INTULocationManager', :head
 end
 
 target 'HandiMapTests' do
