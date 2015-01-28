@@ -1,6 +1,7 @@
 #import "HNDMapViewController.h"
 
 @import MapKit;
+#import "INTULocationManager.h"
 
 #import "HNDCoreDataManager.h"
 #import "HNDJobNetworkManager.h"
@@ -8,16 +9,13 @@
 #import "HNDStation.h"
 #import "HNDSubwayMapView.h"
 
+static CGFloat const kHNDMapCoordSpan = 0.5f;
+
 @interface HNDMapViewController () <MKMapViewDelegate>
-
+// TODO: Extract this into a UIViewController base class if you ever feel like it.
 @property(nonatomic) HNDMapFlow *flow;
-
 // Casting the root view.
 @property(nonatomic) HNDSubwayMapView *view;
-
-// IBOutlet copycats. These need to be set from the root view.
-@property(nonatomic, weak) MKMapView *mapView;
-
 @end
 
 @implementation HNDMapViewController
@@ -30,8 +28,8 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self setupOutlets];
-  [self bindViews];
+  [self setupViews];
+  [self getCurrentLocation];
 }
 
 #pragma mark - Public
@@ -43,15 +41,47 @@
   return self;
 }
 
+#pragma mark - Protocols
+#pragma mark MKMapViewDelegate
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+  MKCoordinateRegion mapRegion;
+  mapRegion.center = userLocation.coordinate;
+  mapRegion.span.latitudeDelta = kHNDMapCoordSpan;
+  mapRegion.span.longitudeDelta = kHNDMapCoordSpan;
+  [mapView setRegion:mapRegion animated:YES];
+}
+
 #pragma mark - Private
 
-- (void)setupOutlets {
-  self.mapView = self.view.mapView;
+- (void)setupViews {
+  self.view.mapView.showsUserLocation = YES;
+  self.view.mapView.delegate = self;
 }
 
-- (void)bindViews {
-  self.mapView.delegate = self;
+- (void)getCurrentLocation {
+  // INTULocationManager gets CLLocationManager permission in addition to the current location.
+  // I think MKMapView automatically will update the current location and call back to
+  // it's delegate. If this is confirmed, the INTULocationManager pod can be removed,
+  // but we need to manually handle asking for CLLocationManager permissions.
+
+  // TODO: Get a stream and update values. If this is not needed, then INTULocationManager,
+  // can be deleted.
+  [[INTULocationManager sharedInstance]
+      requestLocationWithDesiredAccuracy:INTULocationAccuracyHouse
+                                 timeout:10
+                                   block:^(CLLocation *currentLocation,
+                                           INTULocationAccuracy achievedAccuracy,
+                                           INTULocationStatus status) {
+    if (status == INTULocationStatusSuccess) {
+      NSLog(@"Location: %@", currentLocation);
+    } else {
+      NSLog(@"Could not get location. FML.");
+    }
+  }];
 }
+
+#pragma mark - To Delete
 
 // TODO: remove this!
 - (void)tempFakeData {
