@@ -12,6 +12,7 @@ NSString *const kSubwayLineCellId = @"subway line cell reuse identifier";
   if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
 
     self.backgroundColor = [HNDColor lightColor];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 
     _lineLabel = [[[[HNDLabel alloc] init] typeTitle] invertTextColor];
     _lineLabel.textAlignment = NSTextAlignmentCenter;
@@ -67,7 +68,7 @@ NSString *const kSubwayLineCellId = @"subway line cell reuse identifier";
 #pragma mark - Private
 
 - (void)autolayoutViews {
-  [self turnOffAutoResizing];
+  _subwayLinesTableView.translatesAutoresizingMaskIntoConstraints = NO;
   NSDictionary *viewBindings = NSDictionaryOfVariableBindings(_subwayLinesTableView);
 
   // Horizontal layout
@@ -83,18 +84,6 @@ NSString *const kSubwayLineCellId = @"subway line cell reuse identifier";
                           options:0
                           metrics:nil
                             views:viewBindings]];
-}
-
-
-- (void)turnOffAutoResizing {
-  [self turnOffAutoResizingForView:self];
-}
-
-- (void)turnOffAutoResizingForView:(UIView *)view {
-  view.translatesAutoresizingMaskIntoConstraints = NO;
-  for (UIView *subView in view.subviews) {
-    [self turnOffAutoResizingForView:subView];
-  }
 }
 
 @end

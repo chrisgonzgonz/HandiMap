@@ -60,6 +60,7 @@ static NSString *const kNoFilterText = @"All Lines";
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  NSLog(@"I like it when you touch me ;}");
 //  [self.flow presentNext:self];
 }
 

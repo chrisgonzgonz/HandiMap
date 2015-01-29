@@ -30,7 +30,7 @@ static CGFloat const kHNDMapCoordSpan = 0.5f;
   [self setupViews];
   [self getCurrentLocation];
   
-  [[HNDDataStore sharedStore] loadStations];
+//  [[HNDDataStore sharedStore] loadStations];
 }
 
 #pragma mark - TargetActions

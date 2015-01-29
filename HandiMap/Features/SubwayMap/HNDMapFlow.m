@@ -3,12 +3,24 @@
 #import "HNDMapViewController.h"
 #import "HNDSubwayLineFilterViewController.h"
 
+@interface HNDMapFlow()
+@property(nonatomic) UINavigationController *navController;
+@end
+
 @implementation HNDMapFlow
+
+- (UINavigationController *)navController {
+  if (!_navController) {
+    _navController = [[UINavigationController alloc]
+      initWithRootViewController:[self rootVC]];
+  }
+  return _navController;
+}
 
 #pragma mark - Public
 
 - (UIViewController *)initialViewController {
-  return [[HNDSubwayLineFilterViewController alloc] initInFlow:self];
+  return self.navController;
 }
 
 - (void)presentNext:(UIViewController *)sender {
@@ -20,6 +32,10 @@
 }
 
 #pragma mark - Private
+
+- (UIViewController *)rootVC {
+  return [[HNDSubwayLineFilterViewController alloc] initInFlow:self];
+}
 
 - (void)presentNearestSubwaysListFrom:(UIViewController *)viewController {
   UIViewController *tmpViewController = [[UIViewController alloc] init]; // TODO: Pass in self.
