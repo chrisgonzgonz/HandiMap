@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
   self.window.rootViewController = [[[HNDMapFlow alloc] init] initialViewController];
   return YES;
 }

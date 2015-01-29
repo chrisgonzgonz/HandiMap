@@ -1,7 +1,10 @@
 #import "HNDMapFlow.h"
 
+#import "HNDColor.h"
 #import "HNDMapViewController.h"
 #import "HNDSubwayLineFilterViewController.h"
+
+static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 @interface HNDMapFlow()
 @property(nonatomic) UINavigationController *navController;
@@ -12,7 +15,9 @@
 - (UINavigationController *)navController {
   if (!_navController) {
     _navController = [[UINavigationController alloc]
-      initWithRootViewController:[self rootVC]];
+        initWithRootViewController:[self rootVC]];
+    _navController.navigationBar.translucent = NO;
+    _navController.navigationBar.barTintColor = [HNDColor mainColor];
   }
   return _navController;
 }
