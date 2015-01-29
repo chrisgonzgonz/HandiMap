@@ -1,5 +1,7 @@
 #import <UIKit/UIKit.h>
 
+extern NSString *const kSubwayLineCellId;
+
 @interface HNDSubwayLineCell : UITableViewCell
 @end
 

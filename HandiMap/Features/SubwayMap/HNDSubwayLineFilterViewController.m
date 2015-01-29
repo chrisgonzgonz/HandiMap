@@ -36,19 +36,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return [[UITableViewCell alloc] init];
+  HNDSubwayLineCell *cell =
+      [self.view.subwayLinesTableView dequeueReusableCellWithIdentifier:kSubwayLineCellId];
+  return cell;
 }
 
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+  NSLog(@"Touch me ;]");
 }
 
 #pragma mark - Private
 
 - (void)setupViews {
-
+  self.view.subwayLinesTableView.dataSource = self;
+  self.view.subwayLinesTableView.delegate = self;
 }
 
 @end
