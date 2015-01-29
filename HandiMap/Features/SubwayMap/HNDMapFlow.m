@@ -12,7 +12,7 @@
 static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 @interface HNDMapFlow()
-@property(nonatomic) UINavigationController *navController;
+@property(nonatomic, weak) UINavigationController *navController;
 @property(nonatomic) LCZoomTransition *transition;
 @end
 
