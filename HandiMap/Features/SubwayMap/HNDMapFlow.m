@@ -23,6 +23,7 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
         initWithRootViewController:[self rootVC]];
     _navController.navigationBar.translucent = NO;
     _navController.navigationBar.barTintColor = [HNDColor mainColor];
+    _navController.navigationBar.tintColor = [HNDColor lightColor];
   }
   return _navController;
 }
@@ -31,6 +32,7 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 - (UIViewController *)initialViewController {
   [self setNavTitleText:kDefaultNavigationTitle];
+  self.navController.topViewController.title = @"";
   return self.navController;
 }
 
