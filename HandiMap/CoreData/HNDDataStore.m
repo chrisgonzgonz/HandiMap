@@ -34,6 +34,7 @@
   }];
 }
 
+//TODO(gonzo): clear current outages before adding new ones
 - (void)loadOutages {
   NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
   [[HNDJobNetworkManager sharedManager] getOutagesWithCompletionBlock:^(id response) {
@@ -53,11 +54,6 @@
           NSLog(@"No station for this outage");
         }
         
-//        NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDManagedStation"
-//                                              inManagedObjectContext:workerContext];
-//        HNDManagedStation *currentStation = [[HNDManagedStation alloc] initWithEntity:ed
-//                                         insertIntoManagedObjectContext:workerContext
-//                                                          andDictionary:station];
         for (NSDictionary *outage in station[@"outages"]) {
           NSEntityDescription *outageEntityDescription = [NSEntityDescription entityForName:@"HNDManagedOutage" inManagedObjectContext:workerContext];
           HNDManagedOutage *newOutage = [[HNDManagedOutage alloc] initWithEntity:outageEntityDescription insertIntoManagedObjectContext:workerContext andDictionary:outage];
