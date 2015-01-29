@@ -29,7 +29,8 @@
 #pragma mark - Private
 
 - (void)autolayoutViews {
-  [self turnOffAutoResizing];
+  _mapView.translatesAutoresizingMaskIntoConstraints = NO;
+  _selectedFilterBtnView.translatesAutoresizingMaskIntoConstraints = NO;
   NSDictionary *views = NSDictionaryOfVariableBindings(_mapView,
                                                        _selectedFilterBtnView);
 
@@ -64,7 +65,6 @@
 }
 
 - (void)turnOffAutoResizingForView:(UIView *)view {
-  view.translatesAutoresizingMaskIntoConstraints = NO;
   for (UIView *subView in view.subviews) {
     [self turnOffAutoResizingForView:subView];
   }

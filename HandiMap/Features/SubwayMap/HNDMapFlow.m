@@ -1,5 +1,8 @@
 #import "HNDMapFlow.h"
 
+#import "UINavigationController+Block.h"
+#import "LCZoomTransition.h"
+
 #import "HNDColor.h"
 #import "HNDLabel.h"
 #import "HNDMapViewController.h"
@@ -9,6 +12,7 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 @interface HNDMapFlow()
 @property(nonatomic) UINavigationController *navController;
+@property(nonatomic) LCZoomTransition *transition;
 @end
 
 @implementation HNDMapFlow
@@ -26,32 +30,46 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 #pragma mark - Public
 
 - (UIViewController *)initialViewController {
-  HNDLabel *navTitle = [[[[HNDLabel alloc] init] invertTextColor] typeTitle];
-  navTitle.text = kDefaultNavigationTitle;
-  [navTitle sizeToFit];
-
-  self.navController.topViewController.navigationItem.titleView = navTitle;
+  [self setNavTitleText:kDefaultNavigationTitle];
   return self.navController;
 }
 
 - (void)presentNext:(UIViewController *)sender {
-//  if ([sender isKindOfClass:[HNDStartViewController class]]) {
-//    [self presentNearestSubwaysListFrom:sender];
-//  } else {
-//    NSAssert(NO, @"Flow does not know how to handle %@", [sender class]);
-//  }
+  if ([sender isKindOfClass:[HNDSubwayLineFilterViewController class]]) {
+    [self presentMapViewFrom:(HNDSubwayLineFilterViewController *)sender];
+  } else {
+    NSAssert(NO, @"Flow does not know how to handle %@", [sender class]);
+  }
 }
 
 #pragma mark - Private
+
+- (void)setNavTitleText:(NSString *)navText {
+  HNDLabel *navTitle = [[[[HNDLabel alloc] init] invertTextColor] typeTitle];
+  navTitle.text = navText;
+  [navTitle sizeToFit];
+
+  self.navController.topViewController.navigationItem.titleView = navTitle;
+}
 
 - (UIViewController *)rootVC {
   return [[HNDSubwayLineFilterViewController alloc] initInFlow:self];
 }
 
-- (void)presentNearestSubwaysListFrom:(UIViewController *)viewController {
-  UIViewController *tmpViewController = [[UIViewController alloc] init]; // TODO: Pass in self.
-  tmpViewController.view.backgroundColor = [UIColor purpleColor];
-  [viewController presentViewController:tmpViewController animated:YES completion:nil];
+- (void)presentMapViewFrom:(HNDSubwayLineFilterViewController *)viewController {
+  // Does this need to be instantiated for each transition?
+//  self.transition = [[LCZoomTransition alloc] initWithNavigationController:self.navController];
+//  self.transition.sourceView = viewController.selectedCell;
+
+  HNDMapViewController *destinationVC = [[HNDMapViewController alloc] initInFlow:self];
+//  viewController.selectedLine ... pass this into the map view
+
+  [self.navController pushViewController:destinationVC animated:YES onCompletion:^{
+//    UIPinchGestureRecognizer *pinchRecognizer =
+//    [[UIPinchGestureRecognizer alloc] initWithTarget:self.transition
+//                                              action:@selector(handlePinch:)];
+//    [viewController.view addGestureRecognizer:pinchRecognizer];
+  }];
 }
 
 @end

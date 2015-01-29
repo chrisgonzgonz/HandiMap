@@ -15,6 +15,7 @@ static NSString *const kNoFilterText = @"All Lines";
 @property(nonatomic) HNDSubwayListView *view;
 // Makes readonly into readwrite.
 @property(nonatomic, readwrite) HNDSubwayLine *selectedLine;
+@property(nonatomic, readwrite) UITableViewCell *selectedCell;
 @end
 
 @implementation HNDSubwayLineFilterViewController
@@ -45,6 +46,23 @@ static NSString *const kNoFilterText = @"All Lines";
   return [self configureCell:cell atIndexPath:indexPath];
 }
 
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  self.selectedLine = (indexPath.row < self.subwayList.lines.count)
+      ? self.subwayList.lines[indexPath.row] : nil;
+  self.selectedCell = [self.view.subwayLinesTableView cellForRowAtIndexPath:indexPath];
+  NSLog(@"about to present");
+  [self.flow presentNext:self];
+}
+
+#pragma mark - Private
+
+- (void)setupViews {
+  self.view.subwayLinesTableView.dataSource = self;
+  self.view.subwayLinesTableView.delegate = self;
+}
+
 - (UITableViewCell *)configureCell:(HNDSubwayLineCell *)cell atIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.row < self.subwayList.lines.count) {
     HNDSubwayLine *subwayLine = self.subwayList.lines[indexPath.row];
@@ -57,18 +75,5 @@ static NSString *const kNoFilterText = @"All Lines";
   return cell;
 }
 
-#pragma mark UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSLog(@"I like it when you touch me ;}");
-//  [self.flow presentNext:self];
-}
-
-#pragma mark - Private
-
-- (void)setupViews {
-  self.view.subwayLinesTableView.dataSource = self;
-  self.view.subwayLinesTableView.delegate = self;
-}
 
 @end
