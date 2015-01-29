@@ -34,7 +34,29 @@
 }
 
 - (void)loadOutages {
-  
+  NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
+  [[HNDJobNetworkManager sharedManager] getOutagesWithCompletionBlock:^(id response) {
+    [workerContext performBlock:^{
+      for (NSDictionary *dictionary in response) {
+        NSNumber *stationNumber = dictionary[@"station_id"];
+        NSFetchRequest *stationFetch = [NSFetchRequest fetchRequestWithEntityName:@"HNDStation"];
+        NSPredicate *stationPredicate = [NSPredicate predicateWithFormat:@"stationId == %@", stationNumber];
+        stationFetch.predicate = stationPredicate;
+        NSError *fetchError = nil;
+        NSArray *stations = [workerContext executeFetchRequest:stationFetch error:&fetchError];
+        if (fetchError) {
+          NSLog(@"Fetch error: %@", fetchError.localizedDescription);
+        }
+        
+        NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDStation"
+                                              inManagedObjectContext:workerContext];
+        HNDStation *currentStation = [[HNDStation alloc] initWithEntity:ed
+                                         insertIntoManagedObjectContext:workerContext
+                                                          andDictionary:dictionary];
+      }
+      [[HNDCoreDataManager sharedManager] saveContext:workerContext];
+    }];
+  }];
 }
 
 @end

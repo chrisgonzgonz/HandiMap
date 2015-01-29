@@ -33,6 +33,7 @@ static CGFloat const kHNDMapCoordSpan = 0.5f;
   [self getCurrentLocation];
   
   [[HNDDataStore sharedStore] loadStations];
+  [[HNDDataStore sharedStore] loadOutages];
 }
 
 #pragma mark - Public
