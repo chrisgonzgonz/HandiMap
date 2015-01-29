@@ -2,7 +2,9 @@
 
 @implementation HNDOutage (Convenience)
 
-- (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context andDictionary:(NSDictionary *)dictionary {
+- (instancetype)initWithEntity:(NSEntityDescription *)entity
+    insertIntoManagedObjectContext:(NSManagedObjectContext *)context
+                     andDictionary:(NSDictionary *)dictionary {
   self = [self initWithEntity:entity insertIntoManagedObjectContext:context];
   [self mapJSONwithDictionary:dictionary];
   return self;

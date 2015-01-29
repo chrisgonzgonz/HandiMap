@@ -2,6 +2,8 @@
 
 @interface HNDStation (Convenience)
 
-- (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context andDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithEntity:(NSEntityDescription *)entity
+    insertIntoManagedObjectContext:(NSManagedObjectContext *)context
+                     andDictionary:(NSDictionary *)dictionary;
 
 @end
