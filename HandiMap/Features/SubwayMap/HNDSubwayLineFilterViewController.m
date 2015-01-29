@@ -1,12 +1,13 @@
 #import "HNDSubwayLineFilterViewController.h"
 
 #import "HNDSubwayLinesList.h"
+#import "HNDSubwayListView.h"
 
 @interface HNDSubwayLineFilterViewController() <UITableViewDataSource,
                                                 UITableViewDelegate>
 
 // Casts self.view
-
+@property(nonatomic) HNDSubwayListView *view;
 
 @property(nonatomic) HNDSubwayLinesList *subwayList;
 
@@ -15,6 +16,10 @@
 @implementation HNDSubwayLineFilterViewController
 
 #pragma mark - Overrides
+
+- (void)loadView {
+  self.view = [[HNDSubwayListView alloc] init];
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];

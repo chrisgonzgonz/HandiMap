@@ -8,6 +8,7 @@
 @implementation HNDSubwayMapView
 
 #pragma mark - Override
+
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
     _mapView = [[MKMapView alloc] init];
@@ -24,6 +25,7 @@
   return self;
 }
 
+// TODO: Extract this into a base class.
 #pragma mark - Private
 
 - (void)autolayoutViews {

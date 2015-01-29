@@ -1,4 +1,4 @@
-#import "HNDSubwayLine+Protected.h"
+#import "HNDSubwayLine.h"
 
 static NSString *const kRouteSeperator = @" ";
 

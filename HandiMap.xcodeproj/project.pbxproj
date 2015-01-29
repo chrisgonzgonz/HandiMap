@@ -32,6 +32,7 @@
 		939E680D1A79BC6600D6042E /* HNDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E680C1A79BC6600D6042E /* HNDViewController.m */; };
 		939E68121A79C72200D6042E /* HNDSubwayLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E68111A79C72200D6042E /* HNDSubwayLine.m */; };
 		939E68161A79D72800D6042E /* HNDSubwayLinesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E68151A79D72800D6042E /* HNDSubwayLinesList.m */; };
+		939E68191A79E6A200D6042E /* HNDSubwayListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E68181A79E6A200D6042E /* HNDSubwayListView.m */; };
 		D08B6E8CEC772382727646A5 /* libPods-HandiMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 395C6B622C090215A350EE31 /* libPods-HandiMap.a */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,8 @@
 		939E68131A79CAE400D6042E /* HNDSubwayLine+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HNDSubwayLine+Protected.h"; sourceTree = "<group>"; };
 		939E68141A79D72800D6042E /* HNDSubwayLinesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDSubwayLinesList.h; sourceTree = "<group>"; };
 		939E68151A79D72800D6042E /* HNDSubwayLinesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSubwayLinesList.m; sourceTree = "<group>"; };
+		939E68171A79E6A200D6042E /* HNDSubwayListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDSubwayListView.h; sourceTree = "<group>"; };
+		939E68181A79E6A200D6042E /* HNDSubwayListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSubwayListView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +289,8 @@
 			children = (
 				939E68081A79BB5100D6042E /* HNDSubwayLineFilterViewController.h */,
 				939E68091A79BB5100D6042E /* HNDSubwayLineFilterViewController.m */,
+				939E68171A79E6A200D6042E /* HNDSubwayListView.h */,
+				939E68181A79E6A200D6042E /* HNDSubwayListView.m */,
 			);
 			name = SubwayLinesFilter;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				939E680D1A79BC6600D6042E /* HNDViewController.m in Sources */,
 				72BD4EE61A7888310086AD11 /* HNDDataStore.m in Sources */,
 				72EEC13B1A74767500CF496A /* HNDJobNetworkManager.m in Sources */,
+				939E68191A79E6A200D6042E /* HNDSubwayListView.m in Sources */,
 				72BD4EE91A788B210086AD11 /* HNDOutage+Convenience.m in Sources */,
 				939E680A1A79BB5100D6042E /* HNDSubwayLineFilterViewController.m in Sources */,
 				939E68121A79C72200D6042E /* HNDSubwayLine.m in Sources */,
