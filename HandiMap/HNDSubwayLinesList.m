@@ -1,9 +1,9 @@
-#import "HNDSubwayLineList.h"
+#import "HNDSubwayLinesList.h"
 
 #import "HNDColor.h"
 #import "HNDSubwayLine+Protected.h"
 
-@implementation HNDSubwayLineList
+@implementation HNDSubwayLinesList
 
 @synthesize lines = _lines; // Why is this needed?
 

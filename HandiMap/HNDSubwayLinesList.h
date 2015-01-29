@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
 
-@interface HNDSubwayLineList : NSObject
+@interface HNDSubwayLinesList : NSObject
 @property(nonatomic, readonly) NSArray *lines;
 @end
