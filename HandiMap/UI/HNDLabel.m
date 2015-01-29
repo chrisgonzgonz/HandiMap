@@ -30,6 +30,11 @@
   return self;
 }
 
+- (instancetype)typeLargeText {
+  self.font = [HNDFont titleFont];
+  return self;
+}
+
 #pragma mark - Private
 
 - (void)initialSetup {  

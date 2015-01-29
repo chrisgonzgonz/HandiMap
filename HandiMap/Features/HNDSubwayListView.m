@@ -14,7 +14,7 @@ NSString *const kSubwayLineCellId = @"subway line cell reuse identifier";
     self.backgroundColor = [HNDColor lightColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    _lineLabel = [[[[HNDLabel alloc] init] typeTitle] invertTextColor];
+    _lineLabel = [[[[HNDLabel alloc] init] typeLargeText] invertTextColor];
     _lineLabel.textAlignment = NSTextAlignmentCenter;
 
     [self addSubview:_lineLabel];

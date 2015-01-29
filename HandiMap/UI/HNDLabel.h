@@ -7,4 +7,6 @@
 // TODO: This should be a subclass (eg: HNDTitleLabel).
 - (instancetype)typeTitle;
 
+- (instancetype)typeLargeText;
+
 @end

@@ -1,6 +1,7 @@
 #import "HNDMapFlow.h"
 
 #import "HNDColor.h"
+#import "HNDLabel.h"
 #import "HNDMapViewController.h"
 #import "HNDSubwayLineFilterViewController.h"
 
@@ -25,6 +26,11 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 #pragma mark - Public
 
 - (UIViewController *)initialViewController {
+  HNDLabel *navTitle = [[[[HNDLabel alloc] init] invertTextColor] typeTitle];
+  navTitle.text = kDefaultNavigationTitle;
+  [navTitle sizeToFit];
+
+  self.navController.topViewController.navigationItem.titleView = navTitle;
   return self.navController;
 }
 
