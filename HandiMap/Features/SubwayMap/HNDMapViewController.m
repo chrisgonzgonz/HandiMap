@@ -13,7 +13,7 @@
 static CGFloat const kHNDMapCoordSpan = 0.5f;
 
 @interface HNDMapViewController () <MKMapViewDelegate>
-// Casting the root view.
+// Casts root view.
 @property(nonatomic) HNDSubwayMapView *view;
 @end
 

@@ -1,5 +1,4 @@
-#import <UIKit/UIKit.h>
+#import "HNDViewController.h"
 
-@interface HNDSubwayLineFilterViewController : UIViewController
-
+@interface HNDSubwayLineFilterViewController : HNDViewController
 @end

@@ -8,7 +8,7 @@
 #pragma mark - Public
 
 - (UIViewController *)initialViewController {
-  return [[HNDMapViewController alloc] initInFlow:self];
+  return [[HNDSubwayLineFilterViewController alloc] initInFlow:self];
 }
 
 - (void)presentNext:(UIViewController *)sender {
