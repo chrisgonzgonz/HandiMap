@@ -1,5 +1,6 @@
 #import "HNDSubwayLineFilterViewController.h"
 
+#import "HNDSubwayLine.h"
 #import "HNDSubwayLinesList.h"
 #import "HNDSubwayListView.h"
 
@@ -38,6 +39,13 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   HNDSubwayLineCell *cell =
       [self.view.subwayLinesTableView dequeueReusableCellWithIdentifier:kSubwayLineCellId];
+  return [self configureCell:cell atIndexPath:indexPath];
+}
+
+- (UITableViewCell *)configureCell:(HNDSubwayLineCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+  HNDSubwayLine *subwayLine = self.subwayList.lines[indexPath.row];
+  cell.lineLabel.text = subwayLine.lineText;
+  cell.backgroundColor = subwayLine.lineColor;
   return cell;
 }
 

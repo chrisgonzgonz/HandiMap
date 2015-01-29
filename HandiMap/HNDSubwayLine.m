@@ -16,7 +16,7 @@ static NSString *const kRouteSeperator = @" ";
 
 - (NSString *)lineText {
   NSSortDescriptor *sortDescriptor =
-      [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:NO];
+      [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
   return [[self.routes sortedArrayUsingDescriptors:@[sortDescriptor]]
       componentsJoinedByString:kRouteSeperator];
 }
