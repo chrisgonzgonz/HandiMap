@@ -3,17 +3,13 @@
 #import "HNDColor.h"
 #import "HNDSubwayLine+Protected.h"
 
-@interface HNDSubwayLineList()
-
-@end
-
 @implementation HNDSubwayLineList
 
 @synthesize lines = _lines; // Why is this needed?
 
 #pragma mark - Public
 
-- (NSArray *)subwayLines {
+- (NSArray *)lines {
   if (!_lines) {
     _lines = [self hardcodedLines];
   }
