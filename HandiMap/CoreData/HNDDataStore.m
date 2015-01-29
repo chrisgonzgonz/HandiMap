@@ -4,7 +4,7 @@
 
 #import "HNDCoreDataManager.h"
 #import "HNDJobNetworkManager.h"
-#import "HNDStation+Convenience.h"
+#import "HNDManagedStation+Convenience.h"
 
 @implementation HNDDataStore
 
@@ -24,7 +24,7 @@
       for (NSDictionary *dictionary in response) {
         NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDStation"
                                               inManagedObjectContext:workerContext];
-        HNDStation *currentStation = [[HNDStation alloc] initWithEntity:ed
+        HNDManagedStation *currentStation = [[HNDManagedStation alloc] initWithEntity:ed
                                          insertIntoManagedObjectContext:workerContext
                                                           andDictionary:dictionary];
       }

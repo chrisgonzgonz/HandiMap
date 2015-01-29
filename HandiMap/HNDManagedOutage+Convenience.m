@@ -1,6 +1,6 @@
-#import "HNDOutage+Convenience.h"
+#import "HNDManagedOutage+Convenience.h"
 
-@implementation HNDOutage (Convenience)
+@implementation HNDManagedOutage (Convenience)
 
 - (instancetype)initWithEntity:(NSEntityDescription *)entity
     insertIntoManagedObjectContext:(NSManagedObjectContext *)context

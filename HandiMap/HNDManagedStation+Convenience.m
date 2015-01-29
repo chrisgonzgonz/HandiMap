@@ -1,6 +1,6 @@
-#import "HNDStation+Convenience.h"
+#import "HNDManagedStation+Convenience.h"
 
-@implementation HNDStation (Convenience)
+@implementation HNDManagedStation (Convenience)
 
 - (instancetype)initWithEntity:(NSEntityDescription *)entity
     insertIntoManagedObjectContext:(NSManagedObjectContext *)context

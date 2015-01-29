@@ -10,15 +10,11 @@ static NSString *const kNoFilterText = @"All Lines";
 
 @interface HNDSubwayLineFilterViewController() <UITableViewDataSource,
                                                 UITableViewDelegate>
-
 @property(nonatomic) HNDSubwayLinesList *subwayList;
-
 // Casts self.view
 @property(nonatomic) HNDSubwayListView *view;
-
 // Makes readonly into readwrite.
 @property(nonatomic, readwrite) HNDSubwayLine *selectedLine;
-
 @end
 
 @implementation HNDSubwayLineFilterViewController
