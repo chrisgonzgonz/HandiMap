@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C81h" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="HNDManagedOutage" representedClassName="HNDManagedOutage" syncable="YES">
         <attribute name="ada" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="equipmentType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="estimatedReturnOfService" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="outageStartDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="estimatedReturnOfService" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="outageStartDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reason" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="routesAffected" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="serving" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="stationId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="station" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HNDManagedStation" inverseName="outages" inverseEntity="HNDManagedStation" syncable="YES"/>
     </entity>
@@ -23,7 +23,7 @@
         <relationship name="outages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HNDManagedOutage" inverseName="station" inverseEntity="HNDManagedOutage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="HNDManagedStation" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="HNDManagedOutage" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="HNDManagedOutage" positionX="0" positionY="0" width="128" height="193"/>
+        <element name="HNDManagedStation" positionX="0" positionY="0" width="128" height="165"/>
     </elements>
 </model>

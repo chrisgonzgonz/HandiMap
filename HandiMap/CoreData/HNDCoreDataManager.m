@@ -80,14 +80,14 @@ static NSString * const kDataModelURL = @"HandiMap";
     _persistentStoreCoordinator =
         [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
     NSError *error = nil;
-    NSDictionary *persistentStoreConnectionOptions = @{
-      NSMigratePersistentStoresAutomaticallyOption: @YES,
-      NSInferMappingModelAutomaticallyOption: @YES
-    };
+//    NSDictionary *persistentStoreConnectionOptions = @{
+//      NSMigratePersistentStoresAutomaticallyOption: @YES,
+//      NSInferMappingModelAutomaticallyOption: @YES
+//    };
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                    configuration:nil
                                                              URL:self.persistentStoreURL
-                                                         options:persistentStoreConnectionOptions
+                                                         options:nil
                                                            error:&error]) {
       // TODO(gonzo): Increment the managedObjectModel and re-attempt to create the
       // persistentStoreCoordinator once. Then throw an exception if still failing.

@@ -37,8 +37,8 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
 #pragma mark - Public
 
 - (instancetype)initInFlow:(HNDMapFlow *)flow {
-  if (self = [super init]) {
-    _flow = flow;
+  if (self = [super initInFlow:flow]) {
+//    additional setup if necessary
   }
   return self;
 }

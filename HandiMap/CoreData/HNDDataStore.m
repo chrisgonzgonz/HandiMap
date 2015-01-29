@@ -5,6 +5,7 @@
 #import "HNDCoreDataManager.h"
 #import "HNDJobNetworkManager.h"
 #import "HNDManagedStation+Convenience.h"
+#import "HNDManagedOutage+Convenience.h"
 
 @implementation HNDDataStore
 
@@ -22,7 +23,7 @@
   [[HNDJobNetworkManager sharedManager] getStationsWithCompletionBlock:^(id response) {
     [workerContext performBlock:^{
       for (NSDictionary *dictionary in response) {
-        NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDStation"
+        NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDManagedStation"
                                               inManagedObjectContext:workerContext];
         HNDManagedStation *currentStation = [[HNDManagedStation alloc] initWithEntity:ed
                                          insertIntoManagedObjectContext:workerContext
@@ -37,9 +38,9 @@
   NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
   [[HNDJobNetworkManager sharedManager] getOutagesWithCompletionBlock:^(id response) {
     [workerContext performBlock:^{
-      for (NSDictionary *dictionary in response) {
-        NSNumber *stationNumber = dictionary[@"station_id"];
-        NSFetchRequest *stationFetch = [NSFetchRequest fetchRequestWithEntityName:@"HNDStation"];
+      for (NSDictionary *station in response) {
+        NSString *stationNumber = station[@"station_id"];
+        NSFetchRequest *stationFetch = [NSFetchRequest fetchRequestWithEntityName:@"HNDManagedStation"];
         NSPredicate *stationPredicate = [NSPredicate predicateWithFormat:@"stationId == %@", stationNumber];
         stationFetch.predicate = stationPredicate;
         NSError *fetchError = nil;
@@ -47,12 +48,21 @@
         if (fetchError) {
           NSLog(@"Fetch error: %@", fetchError.localizedDescription);
         }
+        HNDManagedStation *currentStation = [stations firstObject];
+        if (!currentStation) {
+          NSLog(@"No station for this outage");
+        }
         
-        NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDStation"
-                                              inManagedObjectContext:workerContext];
-        HNDStation *currentStation = [[HNDStation alloc] initWithEntity:ed
-                                         insertIntoManagedObjectContext:workerContext
-                                                          andDictionary:dictionary];
+//        NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDManagedStation"
+//                                              inManagedObjectContext:workerContext];
+//        HNDManagedStation *currentStation = [[HNDManagedStation alloc] initWithEntity:ed
+//                                         insertIntoManagedObjectContext:workerContext
+//                                                          andDictionary:station];
+        for (NSDictionary *outage in station[@"outages"]) {
+          NSEntityDescription *outageEntityDescription = [NSEntityDescription entityForName:@"HNDManagedOutage" inManagedObjectContext:workerContext];
+          HNDManagedOutage *newOutage = [[HNDManagedOutage alloc] initWithEntity:outageEntityDescription insertIntoManagedObjectContext:workerContext andDictionary:outage];
+          newOutage.station = currentStation;
+        }
       }
       [[HNDCoreDataManager sharedManager] saveContext:workerContext];
     }];
