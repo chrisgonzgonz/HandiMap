@@ -1,4 +1,4 @@
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 @interface HNDLabel : UILabel
 
