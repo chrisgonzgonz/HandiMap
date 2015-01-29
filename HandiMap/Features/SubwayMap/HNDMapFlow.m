@@ -6,6 +6,7 @@
 #import "HNDColor.h"
 #import "HNDLabel.h"
 #import "HNDMapViewController.h"
+#import "HNDSubwayLine.h"
 #import "HNDSubwayLineFilterViewController.h"
 
 static NSString *const kDefaultNavigationTitle = @"HandiMap";
@@ -32,7 +33,6 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 - (UIViewController *)initialViewController {
   [self setNavTitleText:kDefaultNavigationTitle];
-  self.navController.topViewController.title = @"";
   return self.navController;
 }
 
@@ -55,7 +55,9 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 }
 
 - (UIViewController *)rootVC {
-  return [[HNDSubwayLineFilterViewController alloc] initInFlow:self];
+  UIViewController *rootVC = [[HNDSubwayLineFilterViewController alloc] initInFlow:self];
+  rootVC.title = @"";
+  return rootVC;
 }
 
 - (void)presentMapViewFrom:(HNDSubwayLineFilterViewController *)viewController {
@@ -63,15 +65,20 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 //  self.transition = [[LCZoomTransition alloc] initWithNavigationController:self.navController];
 //  self.transition.sourceView = viewController.selectedCell;
 
-  HNDMapViewController *destinationVC = [[HNDMapViewController alloc] initInFlow:self];
-//  viewController.selectedLine ... pass this into the map view
 
-  [self.navController pushViewController:destinationVC animated:YES onCompletion:^{
+  HNDSubwayLine *selectedLine = viewController.selectedLine;
+
+  HNDMapViewController *destinationVC = [[HNDMapViewController alloc] initInFlow:self];
+  destinationVC.title = selectedLine.lineText;
+
+  [self.navController pushViewController:destinationVC animated:YES];
+
+//  [self.navController pushViewController:destinationVC animated:YES onCompletion:^{
 //    UIPinchGestureRecognizer *pinchRecognizer =
 //    [[UIPinchGestureRecognizer alloc] initWithTarget:self.transition
 //                                              action:@selector(handlePinch:)];
 //    [viewController.view addGestureRecognizer:pinchRecognizer];
-  }];
+//  }];
 }
 
 @end

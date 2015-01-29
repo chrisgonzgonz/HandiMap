@@ -52,7 +52,6 @@ static NSString *const kNoFilterText = @"All Lines";
   self.selectedLine = (indexPath.row < self.subwayList.lines.count)
       ? self.subwayList.lines[indexPath.row] : nil;
   self.selectedCell = [self.view.subwayLinesTableView cellForRowAtIndexPath:indexPath];
-  NSLog(@"about to present");
   [self.flow presentNext:self];
 }
 

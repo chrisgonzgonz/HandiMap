@@ -10,7 +10,7 @@
 #import "HNDSubwayMapView.h"
 #import "HNDDataStore.h"
 
-static CGFloat const kHNDMapCoordSpan = 0.5f;
+static CGFloat const kHNDMapCoordSpan = 0.1f;
 
 @interface HNDMapViewController () <MKMapViewDelegate>
 // Casts root view.
