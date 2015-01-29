@@ -2,10 +2,6 @@
 
 #import "HNDMapFlow.h"
 
-@interface HNDViewController ()
-@property(nonatomic) HNDMapFlow *flow;
-@end
-
 @implementation HNDViewController
 
 - (instancetype)initInFlow:(HNDMapFlow *)flow {

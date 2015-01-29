@@ -10,7 +10,11 @@ NSString *const kSubwayLineCellId = @"subway line cell reuse identifier";
 - (instancetype)initWithStyle:(UITableViewCellStyle)style
               reuseIdentifier:(NSString *)reuseIdentifier {
   if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+
+    self.backgroundColor = [HNDColor lightColor];
+
     _lineLabel = [[[[HNDLabel alloc] init] typeTitle] invertTextColor];
+    _lineLabel.textAlignment = NSTextAlignmentCenter;
 
     [self addSubview:_lineLabel];
     [self autoLayoutViews];
@@ -35,18 +39,6 @@ NSString *const kSubwayLineCellId = @"subway line cell reuse identifier";
                           options:0
                           metrics:nil
                             views:viewBindings]];
-}
-
-// TODO: Find a good place to have this.
-- (void)turnOffAutoResizing {
-  [self turnOffAutoResizingForView:self];
-}
-
-- (void)turnOffAutoResizingForView:(UIView *)view {
-  view.translatesAutoresizingMaskIntoConstraints = NO;
-  for (UIView *subView in view.subviews) {
-    [self turnOffAutoResizingForView:subView];
-  }
 }
 
 @end
