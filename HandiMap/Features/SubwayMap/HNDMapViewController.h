@@ -1,9 +1,6 @@
-@import UIKit;
+#import "HNDViewController.h"
 
 @class HNDMapFlow;
 
-@interface HNDMapViewController : UIViewController
-
-- (instancetype)initInFlow:(HNDMapFlow *)flow;
-
+@interface HNDMapViewController : HNDViewController
 @end

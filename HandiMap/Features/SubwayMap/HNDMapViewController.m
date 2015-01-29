@@ -1,6 +1,6 @@
 #import "HNDMapViewController.h"
 
-@import MapKit;
+#import <MapKit/MapKit.h>
 #import "INTULocationManager.h"
 
 #import "HNDCoreDataManager.h"
@@ -13,8 +13,6 @@
 static CGFloat const kHNDMapCoordSpan = 0.5f;
 
 @interface HNDMapViewController () <MKMapViewDelegate>
-// TODO: Extract this into a UIViewController base class if you ever feel like it.
-@property(nonatomic) HNDMapFlow *flow;
 // Casting the root view.
 @property(nonatomic) HNDSubwayMapView *view;
 @end
@@ -33,15 +31,6 @@ static CGFloat const kHNDMapCoordSpan = 0.5f;
   [self getCurrentLocation];
   
   [[HNDDataStore sharedStore] loadStations];
-}
-
-#pragma mark - Public
-
-- (instancetype)initInFlow:(HNDMapFlow *)flow {
-  if (self = [super init]) {
-    _flow = flow;
-  }
-  return self;
 }
 
 #pragma mark - TargetActions
