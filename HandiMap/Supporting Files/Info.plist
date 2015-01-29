@@ -32,11 +32,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-
-  <!-- CoreLocation Permissions for iOS8 and iOS7 - -->
-  <key>NSLocationUsageDescription</key>
-  <string>Where you at?</string>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>Where you at?</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>NSLocationUsageDescription</key>
+	<string>Where you at?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Where you at?</string>
 </dict>
 </plist>

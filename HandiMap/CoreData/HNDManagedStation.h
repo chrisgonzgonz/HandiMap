@@ -1,8 +1,8 @@
 #import <CoreData/CoreData.h>
 
-@class HNDOutage;
+@class HNDManagedOutage;
 
-@interface HNDStation : NSManagedObject
+@interface HNDManagedStation : NSManagedObject
 
 @property (nonatomic, retain) NSString * stationId;
 @property (nonatomic, retain) NSString * stationName;
@@ -14,10 +14,10 @@
 @property (nonatomic, retain) NSSet *outages;
 @end
 
-@interface HNDStation (CoreDataGeneratedAccessors)
+@interface HNDManagedStation (CoreDataGeneratedAccessors)
 
-- (void)addOutagesObject:(HNDOutage *)value;
-- (void)removeOutagesObject:(HNDOutage *)value;
+- (void)addOutagesObject:(HNDManagedOutage *)value;
+- (void)removeOutagesObject:(HNDManagedOutage *)value;
 - (void)addOutages:(NSSet *)values;
 - (void)removeOutages:(NSSet *)values;
 

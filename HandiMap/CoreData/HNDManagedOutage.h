@@ -1,8 +1,8 @@
 #import <CoreData/CoreData.h>
 
-@class HNDStation;
+@class HNDManagedStation;
 
-@interface HNDOutage : NSManagedObject
+@interface HNDManagedOutage : NSManagedObject
 
 @property (nonatomic, retain) NSString * stationId;
 @property (nonatomic, retain) NSString * serving;
@@ -13,6 +13,6 @@
 @property (nonatomic, retain) NSDate * estimatedReturnOfService;
 @property (nonatomic, retain) NSNumber * ada;
 @property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) HNDStation *station;
+@property (nonatomic, retain) HNDManagedStation *station;
 
 @end

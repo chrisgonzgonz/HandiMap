@@ -1,4 +1,4 @@
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 @interface HNDLabel : UILabel
 
@@ -6,5 +6,7 @@
 
 // TODO: This should be a subclass (eg: HNDTitleLabel).
 - (instancetype)typeTitle;
+
+- (instancetype)typeLargeText;
 
 @end

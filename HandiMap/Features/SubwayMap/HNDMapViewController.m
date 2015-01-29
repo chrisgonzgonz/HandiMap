@@ -1,21 +1,19 @@
 #import "HNDMapViewController.h"
 
-@import MapKit;
+#import <MapKit/MapKit.h>
 #import "INTULocationManager.h"
 
 #import "HNDCoreDataManager.h"
 #import "HNDJobNetworkManager.h"
-#import "HNDOutage.h"
-#import "HNDStation.h"
+#import "HNDManagedOutage.h"
+#import "HNDManagedStation.h"
 #import "HNDSubwayMapView.h"
 #import "HNDDataStore.h"
 
-static CGFloat const kHNDMapCoordSpan = 0.5f;
+static CGFloat const kHNDMapCoordSpan = 0.1f;
 
 @interface HNDMapViewController () <MKMapViewDelegate>
-// TODO: Extract this into a UIViewController base class if you ever feel like it.
-@property(nonatomic) HNDMapFlow *flow;
-// Casting the root view.
+// Casts root view.
 @property(nonatomic) HNDSubwayMapView *view;
 @end
 
@@ -49,6 +47,7 @@ static CGFloat const kHNDMapCoordSpan = 0.5f;
 
 - (void)showFilterView:(UIButton *)sender {
   NSLog(@"I will show you the filter view");
+//  [[HNDDataStore sharedStore] loadStations];
 }
 
 #pragma mark - Protocols
@@ -67,10 +66,6 @@ static CGFloat const kHNDMapCoordSpan = 0.5f;
 - (void)setupViews {
   self.view.mapView.showsUserLocation = YES;
   self.view.mapView.delegate = self;
-
-  [self.view.selectedFilterBtnView addTarget:self
-                                      action:@selector(showFilterView:)
-                            forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)getCurrentLocation {
@@ -102,22 +97,22 @@ static CGFloat const kHNDMapCoordSpan = 0.5f;
   HNDCoreDataManager *cdManager = [HNDCoreDataManager sharedManager];
   NSManagedObjectContext *workerContext = [cdManager newWorkerContext];
   //  [[HNDJobNetworkManager sharedManager] getOutagesWithCompletionBlock:nil];
-  HNDStation *station1 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDStation"
+  HNDManagedStation *station1 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDStation"
                                                        inManagedObjectContext:workerContext];
   station1.stationName = @"FapKing";
-  HNDStation *station2 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDStation"
+  HNDManagedStation *station2 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDStation"
                                                        inManagedObjectContext:workerContext];
   station2.stationName = @"SchlickQueen";
 
-  HNDOutage *outage1 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
+  HNDManagedOutage *outage1 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
                                                      inManagedObjectContext:workerContext];
   outage1.reason = @"Ball Cheez";
-  HNDOutage *outage2 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
+  HNDManagedOutage *outage2 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
                                                      inManagedObjectContext:workerContext];
   outage2.reason = @"Ball Cheddar";
   [station1 addOutages:[NSSet setWithArray:@[outage1, outage2]]];
 
-  HNDOutage *outage3 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
+  HNDManagedOutage *outage3 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
                                                      inManagedObjectContext:workerContext];
   outage3.reason = @"Ball Chizz";
   [station2 addOutagesObject:outage3];

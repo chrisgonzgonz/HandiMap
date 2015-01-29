@@ -1,16 +1,10 @@
-//
-//  HNDStation+Convenience.m
-//  HandiMap
-//
-//  Created by Chris Gonzales on 1/27/15.
-//  Copyright (c) 2015 FSDC. All rights reserved.
-//
+#import "HNDManagedStation+Convenience.h"
 
-#import "HNDStation+Convenience.h"
+@implementation HNDManagedStation (Convenience)
 
-@implementation HNDStation (Convenience)
-
-- (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context andDictionary:(NSDictionary *)dictionary {
+- (instancetype)initWithEntity:(NSEntityDescription *)entity
+    insertIntoManagedObjectContext:(NSManagedObjectContext *)context
+                     andDictionary:(NSDictionary *)dictionary {
   self = [self initWithEntity:entity insertIntoManagedObjectContext:context];
   [self mapJSONwithDictionary:dictionary];
   return self;

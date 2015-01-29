@@ -17,4 +17,8 @@ static CGFloat const kTitleSize = 22.0f;
   return [UIFont fontWithName:kDefaultFont size:kTitleSize];
 }
 
++ (UIFont *)largeFont {
+  return [UIFont fontWithName:kDefaultBoldFont size:kTitleSize];
+}
+
 @end

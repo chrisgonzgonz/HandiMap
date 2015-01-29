@@ -1,8 +1,8 @@
-#import "HNDOutage.h"
+#import "HNDManagedOutage.h"
 
-#import "HNDStation.h"
+#import "HNDManagedStation.h"
 
-@implementation HNDOutage
+@implementation HNDManagedOutage
 
 @dynamic stationId;
 @dynamic serving;
