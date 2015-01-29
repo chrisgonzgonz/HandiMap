@@ -23,6 +23,7 @@
 #pragma mark - Private
 
 - (NSArray *)hardcodedLines {
+
   /// Colors from \link http://en.wikipedia.org/wiki/List_of_New_York_City_Subway_lines
   UIColor *ACEColor         = UIColorFromHex(0x2850ad);
   UIColor *BDFMColor        = UIColorFromHex(0xff6319);
@@ -35,6 +36,7 @@
   UIColor *JiggaColor       = UIColorFromHex(0x996633);
   UIColor *SColor           = UIColorFromHex(0x808183);
 
+  // Routes
   NSSet *ACERoutes         = [NSSet setWithArray:@[@"A", @"C", @"E"]];
   NSSet *BDFMRoutes        = [NSSet setWithArray:@[@"B", @"D", @"F", @"M"]];
   NSSet *NQRRoutes         = [NSSet setWithArray:@[@"N", @"Q", @"R"]];
