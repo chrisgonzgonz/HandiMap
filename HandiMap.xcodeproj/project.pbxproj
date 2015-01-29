@@ -33,6 +33,8 @@
 		939E68121A79C72200D6042E /* HNDSubwayLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E68111A79C72200D6042E /* HNDSubwayLine.m */; };
 		939E68161A79D72800D6042E /* HNDSubwayLinesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E68151A79D72800D6042E /* HNDSubwayLinesList.m */; };
 		939E68191A79E6A200D6042E /* HNDSubwayListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E68181A79E6A200D6042E /* HNDSubwayListView.m */; };
+		93C6618D1A79FCFF00C38058 /* HNDStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C6618C1A79FCFF00C38058 /* HNDStation.m */; };
+		93C6618F1A79FF6A00C38058 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C6618E1A79FF6A00C38058 /* CoreLocation.framework */; };
 		D08B6E8CEC772382727646A5 /* libPods-HandiMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 395C6B622C090215A350EE31 /* libPods-HandiMap.a */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +105,9 @@
 		939E68151A79D72800D6042E /* HNDSubwayLinesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSubwayLinesList.m; sourceTree = "<group>"; };
 		939E68171A79E6A200D6042E /* HNDSubwayListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDSubwayListView.h; sourceTree = "<group>"; };
 		939E68181A79E6A200D6042E /* HNDSubwayListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSubwayListView.m; sourceTree = "<group>"; };
+		93C6618B1A79FCFF00C38058 /* HNDStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStation.h; sourceTree = "<group>"; };
+		93C6618C1A79FCFF00C38058 /* HNDStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStation.m; sourceTree = "<group>"; };
+		93C6618E1A79FF6A00C38058 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72835F421A74557C00CD23D2 /* CoreData.framework in Frameworks */,
+				93C6618F1A79FF6A00C38058 /* CoreLocation.framework in Frameworks */,
 				72835F3B1A74452200CD23D2 /* MapKit.framework in Frameworks */,
 				D08B6E8CEC772382727646A5 /* libPods-HandiMap.a in Frameworks */,
 			);
@@ -303,6 +309,8 @@
 				939E68111A79C72200D6042E /* HNDSubwayLine.m */,
 				939E68141A79D72800D6042E /* HNDSubwayLinesList.h */,
 				939E68151A79D72800D6042E /* HNDSubwayLinesList.m */,
+				93C6618B1A79FCFF00C38058 /* HNDStation.h */,
+				93C6618C1A79FCFF00C38058 /* HNDStation.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 		E1FBD831E15BAE39F5DE0AB5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93C6618E1A79FF6A00C38058 /* CoreLocation.framework */,
 				395C6B622C090215A350EE31 /* libPods-HandiMap.a */,
 			);
 			name = Frameworks;
@@ -469,6 +478,7 @@
 				72BD4EE61A7888310086AD11 /* HNDDataStore.m in Sources */,
 				72EEC13B1A74767500CF496A /* HNDJobNetworkManager.m in Sources */,
 				939E68191A79E6A200D6042E /* HNDSubwayListView.m in Sources */,
+				93C6618D1A79FCFF00C38058 /* HNDStation.m in Sources */,
 				72BD4EE91A788B210086AD11 /* HNDManagedOutage+Convenience.m in Sources */,
 				939E680A1A79BB5100D6042E /* HNDSubwayLineFilterViewController.m in Sources */,
 				939E68121A79C72200D6042E /* HNDSubwayLine.m in Sources */,
