@@ -34,15 +34,6 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   [[HNDDataStore sharedStore] loadOutages];
 }
 
-#pragma mark - Public
-
-- (instancetype)initInFlow:(HNDMapFlow *)flow {
-  if (self = [super initInFlow:flow]) {
-//    additional setup if necessary
-  }
-  return self;
-}
-
 #pragma mark - TargetActions
 
 - (void)showFilterView:(UIButton *)sender {
