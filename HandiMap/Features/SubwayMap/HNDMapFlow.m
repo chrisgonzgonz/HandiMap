@@ -1,8 +1,5 @@
 #import "HNDMapFlow.h"
 
-#import "UINavigationController+Block.h"
-#import "LCZoomTransition.h"
-
 #import "HNDColor.h"
 #import "HNDLabel.h"
 #import "HNDMapViewController.h"
@@ -12,8 +9,7 @@
 static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 @interface HNDMapFlow()
-@property(nonatomic, weak) UINavigationController *navController;
-@property(nonatomic) LCZoomTransition *transition;
+@property(nonatomic) UINavigationController *navController;
 @end
 
 @implementation HNDMapFlow
@@ -61,24 +57,11 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 }
 
 - (void)presentMapViewFrom:(HNDSubwayLineFilterViewController *)viewController {
-  // Does this need to be instantiated for each transition?
-//  self.transition = [[LCZoomTransition alloc] initWithNavigationController:self.navController];
-//  self.transition.sourceView = viewController.selectedCell;
-
-
   HNDSubwayLine *selectedLine = viewController.selectedLine;
-
   HNDMapViewController *destinationVC = [[HNDMapViewController alloc] initInFlow:self];
+  // set destination.VC's selected line
   destinationVC.title = selectedLine.lineText;
-
   [self.navController pushViewController:destinationVC animated:YES];
-
-//  [self.navController pushViewController:destinationVC animated:YES onCompletion:^{
-//    UIPinchGestureRecognizer *pinchRecognizer =
-//    [[UIPinchGestureRecognizer alloc] initWithTarget:self.transition
-//                                              action:@selector(handlePinch:)];
-//    [viewController.view addGestureRecognizer:pinchRecognizer];
-//  }];
 }
 
 @end
