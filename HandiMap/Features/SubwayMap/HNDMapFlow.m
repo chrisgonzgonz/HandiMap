@@ -10,6 +10,8 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 @interface HNDMapFlow()
 @property(nonatomic) UINavigationController *navController;
+// TODO: Window should retain flow, so viewControllers will have a weak reference to the flow.
+@property(nonatomic) HNDMapViewController *mapViewController; // cached...screw the retain cycle :)
 @end
 
 @implementation HNDMapFlow
@@ -26,6 +28,13 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
     };
   }
   return _navController;
+}
+
+- (HNDMapViewController *)mapViewController {
+  if (!_mapViewController) {
+    _mapViewController = [[HNDMapViewController alloc] initInFlow:self];
+  }
+  return _mapViewController;
 }
 
 #pragma mark - Public
@@ -54,11 +63,9 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 - (void)presentMapViewFrom:(HNDSubwayLineFilterViewController *)viewController {
   HNDSubwayLine *selectedLine = viewController.selectedLine;
-  HNDMapViewController *destinationVC = [[HNDMapViewController alloc] initInFlow:self];
+  self.mapViewController.title = selectedLine.lineText;
   // set destination.VC's selected line
-  destinationVC.title = selectedLine.lineText;
-  destinationVC.navigationItem.backBarButtonItem.title = @"";
-  [self.navController pushViewController:destinationVC animated:YES];
+  [self.navController pushViewController:self.mapViewController animated:YES];
 }
 
 @end

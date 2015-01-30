@@ -31,6 +31,7 @@
   UIColor *lColor           = UIColorFromHex(0xa7a9ac);
   UIColor *jiggaColor       = UIColorFromHex(0x996633);
   UIColor *sColor           = UIColorFromHex(0x808183);
+  UIColor *nilColor         = [HNDColor grayColor];
 
   // Routes
   NSSet *aceRoutes         = [NSSet setWithArray:@[@"A", @"C", @"E"]];
@@ -43,6 +44,7 @@
   NSSet *lRoutes           = [NSSet setWithArray:@[@"L"]];
   NSSet *jiggaRoutes       = [NSSet setWithArray:@[@"J", @"Z"]];
   NSSet *sRoutes           = [NSSet setWithArray:@[@"S"]];
+  NSSet *nilRoutes         = nil;
 
   return @[[[HNDSubwayLine alloc] initWithLineColor:aceColor         routes:aceRoutes],
            [[HNDSubwayLine alloc] initWithLineColor:bdfmColor        routes:bdfmRoutes],
@@ -54,7 +56,7 @@
            [[HNDSubwayLine alloc] initWithLineColor:lColor           routes:lRoutes],
            [[HNDSubwayLine alloc] initWithLineColor:jiggaColor       routes:jiggaRoutes],
            [[HNDSubwayLine alloc] initWithLineColor:sColor           routes:sRoutes],
-           [[HNDSubwayLine alloc] init]];
+           [[HNDSubwayLine alloc] initWithLineColor:nilColor         routes:nil]];
 }
 
 @end

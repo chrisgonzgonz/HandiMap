@@ -6,8 +6,6 @@
 #import "HNDSubwayLinesList.h"
 #import "HNDSubwayListView.h"
 
-static NSString *const kNoFilterText = @"All Lines";
-
 @interface HNDSubwayLineFilterViewController() <UITableViewDataSource,
                                                 UITableViewDelegate>
 @property(nonatomic) HNDSubwayLinesList *subwayList;
@@ -64,8 +62,8 @@ static NSString *const kNoFilterText = @"All Lines";
 }
 
 - (UITableViewCell *)configureCell:(HNDSubwayLineCell *)cell withLine:(HNDSubwayLine *)subwayLine {
-  cell.lineLabel.text = subwayLine.lineText ?: kNoFilterText;
-  cell.lineLabel.textColor = subwayLine.lineColor ?: [HNDColor grayColor];
+  cell.lineLabel.text = subwayLine.lineText;
+  cell.lineLabel.textColor = subwayLine.lineColor;
   return cell;
 }
 

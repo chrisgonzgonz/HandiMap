@@ -1,5 +1,6 @@
 #import "HNDSubwayLine.h"
 
+static NSString *const kNoFilterText   = @"All Lines";
 static NSString *const kRouteSeperator = @" ";
 
 @implementation HNDSubwayLine
@@ -15,10 +16,15 @@ static NSString *const kRouteSeperator = @" ";
 }
 
 - (NSString *)lineText {
-  NSSortDescriptor *sortDescriptor =
-      [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
-  return [[self.routes sortedArrayUsingDescriptors:@[sortDescriptor]]
-      componentsJoinedByString:kRouteSeperator];
+  if (self.routes) {
+    NSSortDescriptor *sortDescriptor =
+    [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
+    return [[self.routes sortedArrayUsingDescriptors:@[sortDescriptor]]
+            componentsJoinedByString:kRouteSeperator];
+  } else {
+    return kNoFilterText;
+  }
+
 }
 
 @end
