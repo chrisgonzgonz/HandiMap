@@ -1,8 +1,8 @@
 #import "HNDMapFlow.h"
 
-#import "HNDColor.h"
 #import "HNDLabel.h"
 #import "HNDMapViewController.h"
+#import "HNDStyleKit.h"
 #import "HNDSubwayLine.h"
 #import "HNDSubwayLineFilterViewController.h"
 
@@ -16,11 +16,14 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 - (UINavigationController *)navController {
   if (!_navController) {
-    _navController = [[UINavigationController alloc]
-        initWithRootViewController:[self rootVC]];
+    _navController = [[UINavigationController alloc] initWithRootViewController:[self rootVC]];
     _navController.navigationBar.translucent = NO;
     _navController.navigationBar.barTintColor = [HNDColor mainColor];
     _navController.navigationBar.tintColor = [HNDColor lightColor];
+    _navController.navigationBar.titleTextAttributes = @{
+      NSFontAttributeName: [HNDFont titleFont],
+      NSForegroundColorAttributeName: [HNDColor lightColor]
+    };
   }
   return _navController;
 }
@@ -28,7 +31,6 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 #pragma mark - Public
 
 - (UIViewController *)initialViewController {
-  [self setNavTitleText:kDefaultNavigationTitle];
   return self.navController;
 }
 
@@ -42,17 +44,11 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 #pragma mark - Private
 
-- (void)setNavTitleText:(NSString *)navText {
-  HNDLabel *navTitle = [[[[HNDLabel alloc] init] invertTextColor] typeTitle];
-  navTitle.text = navText;
-  [navTitle sizeToFit];
-
-  self.navController.topViewController.navigationItem.titleView = navTitle;
-}
-
 - (UIViewController *)rootVC {
   UIViewController *rootVC = [[HNDSubwayLineFilterViewController alloc] initInFlow:self];
-  rootVC.title = @"";
+  rootVC.title = kDefaultNavigationTitle;
+  rootVC.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
+      initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   return rootVC;
 }
 
@@ -61,6 +57,7 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
   HNDMapViewController *destinationVC = [[HNDMapViewController alloc] initInFlow:self];
   // set destination.VC's selected line
   destinationVC.title = selectedLine.lineText;
+  destinationVC.navigationItem.backBarButtonItem.title = @"";
   [self.navController pushViewController:destinationVC animated:YES];
 }
 
