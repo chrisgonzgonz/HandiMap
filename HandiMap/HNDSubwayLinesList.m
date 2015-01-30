@@ -56,7 +56,7 @@
            [[HNDSubwayLine alloc] initWithLineColor:lColor           routes:lRoutes],
            [[HNDSubwayLine alloc] initWithLineColor:jiggaColor       routes:jiggaRoutes],
            [[HNDSubwayLine alloc] initWithLineColor:sColor           routes:sRoutes],
-           [[HNDSubwayLine alloc] initWithLineColor:nilColor         routes:nil]];
+           [[HNDSubwayLine alloc] initWithLineColor:nilColor         routes:nilRoutes]];
 }
 
 @end

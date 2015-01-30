@@ -3,18 +3,25 @@
 #import <MapKit/MapKit.h>
 #import "INTULocationManager.h"
 
+// TODO(gonzo): Remove Dependency on CoreData stuff. Expose models to do the heavy lifting.
 #import "HNDCoreDataManager.h"
-#import "HNDJobNetworkManager.h"
+#import "HNDDataStore.h"
 #import "HNDManagedOutage.h"
 #import "HNDManagedStation.h"
+#import "HNDJobNetworkManager.h"
+
+#import "HNDStation.h"
 #import "HNDSubwayMapView.h"
-#import "HNDDataStore.h"
+
 
 static CGFloat const kHNDMapCoordSpan = 0.1f;
 
 @interface HNDMapViewController () <MKMapViewDelegate>
 // Casts root view.
 @property(nonatomic) HNDSubwayMapView *view;
+
+// TODO: Delete this and connect to real data.
+@property(nonatomic) HNDStation *mockStation;
 @end
 
 @implementation HNDMapViewController
@@ -29,9 +36,9 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   [super viewDidLoad];
   [self setupViews];
   [self getCurrentLocation];
-  
-//  [[HNDDataStore sharedStore] loadStations];
-//  [[HNDDataStore sharedStore] loadOutages];
+
+  // TODO: Delete this.
+  self.mockStation = [[HNDStation alloc] init];
 }
 
 #pragma mark - Protocols
@@ -72,40 +79,6 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
       NSLog(@"Could not get location. FML.");
     }
   }];
-}
-
-#pragma mark - To Delete
-
-// TODO: remove this!
-- (void)tempFakeData {
-  HNDCoreDataManager *cdManager = [HNDCoreDataManager sharedManager];
-  NSManagedObjectContext *workerContext = [cdManager newWorkerContext];
-
-  // TODO(gonzo): Each of these should get their own workerContext.
-  HNDManagedStation *station1 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDStation"
-                                                              inManagedObjectContext:workerContext];
-  station1.stationName = @"FapKing";
-  HNDManagedStation *station2 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDStation"
-                                                              inManagedObjectContext:workerContext];
-  station2.stationName = @"SchlickQueen";
-
-  HNDManagedOutage *outage1 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
-                                                            inManagedObjectContext:workerContext];
-  outage1.reason = @"Ball Cheez";
-  HNDManagedOutage *outage2 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
-                                                            inManagedObjectContext:workerContext];
-  outage2.reason = @"Ball Cheddar";
-  [station1 addOutages:[NSSet setWithArray:@[outage1, outage2]]];
-
-  HNDManagedOutage *outage3 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
-                                                            inManagedObjectContext:workerContext];
-  outage3.reason = @"Ball Chizz";
-  [station2 addOutagesObject:outage3];
-  [workerContext save:nil];
-
-  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"HNDStation"];
-  NSArray *fetchedObjects = [cdManager.mainContext executeFetchRequest:request error:nil];
-  NSLog(@"%@", fetchedObjects);
 }
 
 @end

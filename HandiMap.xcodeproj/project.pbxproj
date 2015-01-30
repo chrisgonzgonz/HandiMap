@@ -35,6 +35,7 @@
 		939E68191A79E6A200D6042E /* HNDSubwayListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E68181A79E6A200D6042E /* HNDSubwayListView.m */; };
 		93C6618D1A79FCFF00C38058 /* HNDStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C6618C1A79FCFF00C38058 /* HNDStation.m */; };
 		93C6618F1A79FF6A00C38058 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C6618E1A79FF6A00C38058 /* CoreLocation.framework */; };
+		93D758E91A7B3F2E00B48769 /* ZSPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D758E81A7B3F2E00B48769 /* ZSPinAnnotation.m */; };
 		D08B6E8CEC772382727646A5 /* libPods-HandiMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 395C6B622C090215A350EE31 /* libPods-HandiMap.a */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,8 @@
 		93C6618B1A79FCFF00C38058 /* HNDStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStation.h; sourceTree = "<group>"; };
 		93C6618C1A79FCFF00C38058 /* HNDStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStation.m; sourceTree = "<group>"; };
 		93C6618E1A79FF6A00C38058 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		93D758E71A7B3F2E00B48769 /* ZSPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSPinAnnotation.h; sourceTree = "<group>"; };
+		93D758E81A7B3F2E00B48769 /* ZSPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSPinAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,8 +191,9 @@
 				93958EE91A6C8F9F00057481 /* HandiMap */,
 				93958F031A6C8F9F00057481 /* HandiMapTests */,
 				93958EE81A6C8F9F00057481 /* Products */,
-				F6EB48920535088CBD3C9A76 /* Pods */,
 				E1FBD831E15BAE39F5DE0AB5 /* Frameworks */,
+				F6EB48920535088CBD3C9A76 /* Pods */,
+				93D758E61A7B3EA600B48769 /* External Libraries */,
 			);
 			sourceTree = "<group>";
 		};
@@ -313,6 +317,16 @@
 				93C6618C1A79FCFF00C38058 /* HNDStation.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		93D758E61A7B3EA600B48769 /* External Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				93D758E71A7B3F2E00B48769 /* ZSPinAnnotation.h */,
+				93D758E81A7B3F2E00B48769 /* ZSPinAnnotation.m */,
+			);
+			name = "External Libraries";
+			path = HandiMap;
 			sourceTree = "<group>";
 		};
 		E1FBD831E15BAE39F5DE0AB5 /* Frameworks */ = {
@@ -470,6 +484,7 @@
 				9319746A1A74397000BF7EAD /* HNDMapViewController.m in Sources */,
 				72F339FA1A74655F009D79AA /* HNDManagedOutage.m in Sources */,
 				93958F1E1A6F4D5800057481 /* HNDLabel.m in Sources */,
+				93D758E91A7B3F2E00B48769 /* ZSPinAnnotation.m in Sources */,
 				93958EF01A6C8F9F00057481 /* HNDAppDelegate.m in Sources */,
 				93958F141A6C94A200057481 /* HNDColor.m in Sources */,
 				72F339F41A745779009D79AA /* HandiMap.xcdatamodeld in Sources */,

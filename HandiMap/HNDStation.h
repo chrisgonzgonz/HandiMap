@@ -1,8 +1,6 @@
 #import "HNDManagedStation.h"
-
-@class CLLocation;
+#import <MapKit/MKAnnotation.h>
 
 /// Yeah, I know you are suppose to use categories, but I prefer subclasses :)
-@interface HNDStation : HNDManagedStation
-@property(nonatomic, readonly) CLLocation *location;
+@interface HNDStation : HNDManagedStation <MKAnnotation>
 @end
