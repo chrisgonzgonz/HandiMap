@@ -36,6 +36,7 @@
 		93C6618D1A79FCFF00C38058 /* HNDStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C6618C1A79FCFF00C38058 /* HNDStation.m */; };
 		93C6618F1A79FF6A00C38058 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C6618E1A79FF6A00C38058 /* CoreLocation.framework */; };
 		93D758E91A7B3F2E00B48769 /* ZSPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D758E81A7B3F2E00B48769 /* ZSPinAnnotation.m */; };
+		93D758EC1A7B5A7C00B48769 /* HNDStationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D758EB1A7B5A7C00B48769 /* HNDStationManager.m */; };
 		D08B6E8CEC772382727646A5 /* libPods-HandiMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 395C6B622C090215A350EE31 /* libPods-HandiMap.a */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,8 @@
 		93C6618E1A79FF6A00C38058 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		93D758E71A7B3F2E00B48769 /* ZSPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSPinAnnotation.h; sourceTree = "<group>"; };
 		93D758E81A7B3F2E00B48769 /* ZSPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSPinAnnotation.m; sourceTree = "<group>"; };
+		93D758EA1A7B5A7C00B48769 /* HNDStationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStationManager.h; sourceTree = "<group>"; };
+		93D758EB1A7B5A7C00B48769 /* HNDStationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				72BD4EEC1A788B400086AD11 /* HNDManagedStation+Convenience.m */,
 				72BD4EE41A7888310086AD11 /* HNDDataStore.h */,
 				72BD4EE51A7888310086AD11 /* HNDDataStore.m */,
+				93D758EA1A7B5A7C00B48769 /* HNDStationManager.h */,
+				93D758EB1A7B5A7C00B48769 /* HNDStationManager.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 				9319746A1A74397000BF7EAD /* HNDMapViewController.m in Sources */,
 				72F339FA1A74655F009D79AA /* HNDManagedOutage.m in Sources */,
 				93958F1E1A6F4D5800057481 /* HNDLabel.m in Sources */,
+				93D758EC1A7B5A7C00B48769 /* HNDStationManager.m in Sources */,
 				93D758E91A7B3F2E00B48769 /* ZSPinAnnotation.m in Sources */,
 				93958EF01A6C8F9F00057481 /* HNDAppDelegate.m in Sources */,
 				93958F141A6C94A200057481 /* HNDColor.m in Sources */,
