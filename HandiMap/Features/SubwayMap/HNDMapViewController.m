@@ -30,15 +30,8 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   [self setupViews];
   [self getCurrentLocation];
   
-  [[HNDDataStore sharedStore] loadStations];
-  [[HNDDataStore sharedStore] loadOutages];
-}
-
-#pragma mark - TargetActions
-
-- (void)showFilterView:(UIButton *)sender {
-  NSLog(@"I will show you the filter view");
 //  [[HNDDataStore sharedStore] loadStations];
+//  [[HNDDataStore sharedStore] loadOutages];
 }
 
 #pragma mark - Protocols
@@ -87,24 +80,25 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
 - (void)tempFakeData {
   HNDCoreDataManager *cdManager = [HNDCoreDataManager sharedManager];
   NSManagedObjectContext *workerContext = [cdManager newWorkerContext];
-  //  [[HNDJobNetworkManager sharedManager] getOutagesWithCompletionBlock:nil];
+
+  // TODO(gonzo): Each of these should get their own workerContext.
   HNDManagedStation *station1 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDStation"
-                                                       inManagedObjectContext:workerContext];
+                                                              inManagedObjectContext:workerContext];
   station1.stationName = @"FapKing";
   HNDManagedStation *station2 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDStation"
-                                                       inManagedObjectContext:workerContext];
+                                                              inManagedObjectContext:workerContext];
   station2.stationName = @"SchlickQueen";
 
   HNDManagedOutage *outage1 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
-                                                     inManagedObjectContext:workerContext];
+                                                            inManagedObjectContext:workerContext];
   outage1.reason = @"Ball Cheez";
   HNDManagedOutage *outage2 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
-                                                     inManagedObjectContext:workerContext];
+                                                            inManagedObjectContext:workerContext];
   outage2.reason = @"Ball Cheddar";
   [station1 addOutages:[NSSet setWithArray:@[outage1, outage2]]];
 
   HNDManagedOutage *outage3 = [NSEntityDescription insertNewObjectForEntityForName:@"HNDOutage"
-                                                     inManagedObjectContext:workerContext];
+                                                            inManagedObjectContext:workerContext];
   outage3.reason = @"Ball Chizz";
   [station2 addOutagesObject:outage3];
   [workerContext save:nil];

@@ -36,14 +36,15 @@ static NSString *const kNoFilterText = @"All Lines";
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return self.subwayList.lines.count + 1; // Adds 1 for no filter.
+  return self.subwayList.lines.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   HNDSubwayLineCell *cell =
       [self.view.subwayLinesTableView dequeueReusableCellWithIdentifier:kSubwayLineCellId];
-  return [self configureCell:cell atIndexPath:indexPath];
+  HNDSubwayLine *subwayLine = self.subwayList.lines[indexPath.row];
+  return [self configureCell:cell withLine:subwayLine];
 }
 
 #pragma mark UITableViewDelegate
@@ -62,15 +63,9 @@ static NSString *const kNoFilterText = @"All Lines";
   self.view.subwayLinesTableView.delegate = self;
 }
 
-- (UITableViewCell *)configureCell:(HNDSubwayLineCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.row < self.subwayList.lines.count) {
-    HNDSubwayLine *subwayLine = self.subwayList.lines[indexPath.row];
-    cell.lineLabel.text = subwayLine.lineText;
-    cell.lineLabel.textColor = subwayLine.lineColor;
-  } else {
-    cell.lineLabel.text = kNoFilterText;
-    cell.lineLabel.textColor = [HNDColor grayColor];
-  }
+- (UITableViewCell *)configureCell:(HNDSubwayLineCell *)cell withLine:(HNDSubwayLine *)subwayLine {
+  cell.lineLabel.text = subwayLine.lineText ?: kNoFilterText;
+  cell.lineLabel.textColor = subwayLine.lineColor ?: [HNDColor grayColor];
   return cell;
 }
 
