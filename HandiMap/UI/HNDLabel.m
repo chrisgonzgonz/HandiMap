@@ -31,7 +31,7 @@
 }
 
 - (instancetype)typeLargeText {
-  self.font = [HNDFont titleFont];
+  self.font = [HNDFont largeFont];
   return self;
 }
 
