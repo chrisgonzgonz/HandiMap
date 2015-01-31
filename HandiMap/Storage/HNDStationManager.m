@@ -56,8 +56,7 @@ typedef id(^MapBlock)(id);
 
 - (NSArray *)filteredStations {
   if (!_filteredStations) {
-    // _stations = self.allStationsController;
-    return @[[[HNDStation alloc] initWithManagedStation:nil]];
+    self.allStations = self.allStationsController.fetchedObjects;
   }
   return _filteredStations;
 }
