@@ -86,12 +86,14 @@
 
           HNDManagedStation *currentStation = [stations firstObject];
           if (currentStation) {
-            NSLog(@"No station for this outage");
             for (NSDictionary *outage in station[@"outages"]) {
               NSEntityDescription *outageEntityDescription = [NSEntityDescription entityForName:@"HNDManagedOutage" inManagedObjectContext:workerContext];
               HNDManagedOutage *newOutage = [[HNDManagedOutage alloc] initWithEntity:outageEntityDescription insertIntoManagedObjectContext:workerContext andDictionary:outage];
               newOutage.station = currentStation;
+
             }
+          } else {
+            NSLog(@"No station: %@ for this outage", currentStation.stationId);
           }
         }
         [[HNDCoreDataManager sharedManager] saveContext:workerContext];
