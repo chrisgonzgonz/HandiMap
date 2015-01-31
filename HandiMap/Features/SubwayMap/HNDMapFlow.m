@@ -10,8 +10,7 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 @interface HNDMapFlow()
 @property(nonatomic) UINavigationController *navController;
-// TODO: Window should retain flow, so viewControllers will have a weak reference to the flow.
-@property(nonatomic) HNDMapViewController *mapViewController; // cached...screw the retain cycle :)
+@property(nonatomic) HNDMapViewController *mapViewController; // caching
 @end
 
 @implementation HNDMapFlow
