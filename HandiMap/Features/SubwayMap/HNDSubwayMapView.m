@@ -7,7 +7,7 @@
 #import "HNDColor.h"
 #import "HNDButton.h"
 
-static CGFloat const kClusterCellSize = 30.0f;
+static CGFloat const kClusterCellSize = 10.0f;
 static CGFloat const kHNDMapCoordSpan = 0.07f;
 static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 
