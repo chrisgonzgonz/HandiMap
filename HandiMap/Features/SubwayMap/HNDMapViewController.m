@@ -1,8 +1,6 @@
 #import "HNDMapViewController.h"
 
-#import <MapKit/MapKit.h>
 #import "INTULocationManager.h"
-#import "ZSPinAnnotation.h"
 
 #import "HNDColor.h"
 #import "HNDStation.h"
@@ -12,11 +10,7 @@
 #import "HNDStationDetailViewController.h"
 #import "HNDStationDetailView.h"
 
-static CGFloat const kHNDMapCoordSpan = 0.1f;
-static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
-
-@interface HNDMapViewController () <HNDStationFilterDelegate,
-                                    MKMapViewDelegate>
+@interface HNDMapViewController () <HNDStationFilterDelegate>
 // Casts root view.
 @property(nonatomic) HNDSubwayMapView *view;
 
@@ -36,12 +30,11 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self setupViews];
   [self getCurrentLocation];
 
   self.stationManager = [[HNDStationManager alloc] init];
   self.stationManager.delegate = self;
-  [self.view.mapView addAnnotations:self.stationManager.filteredStations];
+  [self.view updateStations:self.stationManager.filteredStations];
   
   [self setupStationDetailVC];
 }
@@ -64,44 +57,13 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 #pragma mark HNDStationFilterDelegate
 
 - (void)filteredStationsDidChange:(NSArray *)filteredStations {
-  NSMutableArray *annotationsToRemove = [self.view.mapView.annotations mutableCopy];
-  [annotationsToRemove removeObject:self.view.mapView.userLocation];
-  [self.view.mapView removeAnnotations: annotationsToRemove];
-  [self.view.mapView addAnnotations:filteredStations];
-  
   self.stationDetailVC.selectedStation = filteredStations.firstObject;
   [self.stationDetailVC.view.tableView reloadData];
-}
 
-#pragma mark MKMapViewDelegate
-
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-  MKCoordinateRegion mapRegion;
-  mapRegion.center = userLocation.coordinate;
-  mapRegion.span.latitudeDelta = kHNDMapCoordSpan;
-  mapRegion.span.longitudeDelta = kHNDMapCoordSpan;
-  [mapView setRegion:mapRegion animated:YES];
-}
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-  if (![annotation isKindOfClass:[HNDStation class]]) return nil;
-
-  ZSPinAnnotation *pinView = (ZSPinAnnotation *)
-      ([self.view.mapView dequeueReusableAnnotationViewWithIdentifier:kPinReuseId]
-       ?: [[ZSPinAnnotation alloc] initWithAnnotation:annotation reuseIdentifier:kPinReuseId]);
-  pinView.annotation = annotation;
-  pinView.annotationType = ZSPinAnnotationTypeTag;
-  pinView.annotationColor = [HNDColor highlightColor];
-  pinView.canShowCallout = NO;
-  return pinView;
+  [self.view updateStations:filteredStations];
 }
 
 #pragma mark - Private
-
-- (void)setupViews {
-  self.view.mapView.showsUserLocation = YES;
-  self.view.mapView.delegate = self;
-}
 
 - (void)setupStationDetailVC {
   self.stationDetailVC = [[HNDStationDetailViewController alloc] init];
