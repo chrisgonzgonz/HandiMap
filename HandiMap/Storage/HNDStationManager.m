@@ -77,11 +77,12 @@ typedef id(^MapBlock)(id);
 #pragma mark - Private
 
 - (void)applySubwayLineFilter {
-  self.filteredStations =
+  self.filteredStations = self.subwayLineFilter ?
       [self.allStations filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:
           ^BOOL(HNDStation *station, NSDictionary *bindings) {
             return [station isMemberOfSubwayLine:self.subwayLineFilter];
-          }]];
+          }]]
+      : self.allStations;
 }
 
 @end

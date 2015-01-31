@@ -30,8 +30,8 @@ static NSString *kLineCharSeperator = @", ";
 #pragma mark MKAnnotation
 
 - (CLLocationCoordinate2D)coordinate {
-  return CLLocationCoordinate2DMake(self.stationLatitude.doubleValue,
-                                    self.stationLongitude.doubleValue);
+  return CLLocationCoordinate2DMake(self.managedStation.stationLatitude.doubleValue,
+                                    self.managedStation.stationLongitude.doubleValue);
 }
 
 - (NSString *)title {
@@ -43,16 +43,6 @@ static NSString *kLineCharSeperator = @", ";
       ^NSComparisonResult(NSString *subwayLineOne, NSString *subwayLineTwo) {
         return [subwayLineOne compare:subwayLineTwo];
       }] componentsJoinedByString:kLineCharSeperator];
-}
-
-#pragma mark - Mock Data...DELETE THIS!
-
-- (NSNumber *)stationLatitude {
-  return @(40.7484); // Empire State Building.
-}
-
-- (NSNumber *)stationLongitude {
-  return @(-73.9857); // Empire State Building.
 }
 
 @end
