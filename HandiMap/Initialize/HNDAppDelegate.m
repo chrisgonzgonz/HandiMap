@@ -1,5 +1,6 @@
 #import "HNDAppDelegate.h"
 
+#import "HNDDataStore.h"
 #import "HNDMapFlow.h"
 
 @interface HNDAppDelegate()
@@ -27,9 +28,25 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [self preloadData];
+
   [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
   self.window.rootViewController = [self.currentFlow initialViewController];
   return YES;
+}
+
+#pragma mark - Private
+
+- (void)preloadData {
+  [[HNDDataStore sharedStore] loadStationsWithSuccess:^{
+    [[HNDDataStore sharedStore] loadOutagesWithSuccess:^{
+
+    } failure:^{
+      NSLog(@"Failed to load outages fuck me");
+    }];
+  } failure:^{
+    NSLog(@"Failed to load stations fuck me");
+  }];
 }
 
 @end
