@@ -2,28 +2,65 @@
 
 #import <CoreData/CoreData.h>
 
-#import "HNDCoreDataManager.h"
 #import "HNDStation.h"
+#import "HNDStationDAO.h"
+#import "HNDSubwayLine.h"
 
-@interface HNDStationManager() <NSFetchedResultsControllerDelegate>
+@interface HNDStationManager()<NSFetchedResultsControllerDelegate>
+@property(nonatomic) NSFetchedResultsController *allStationsController;
+@property(nonatomic) NSArray *allStations;
 @end
 
 @implementation HNDStationManager
+@synthesize filteredStations = _filteredStations;
 
-- (NSArray *)stations {
-  // TODO: Actually populate this. This is just mock data for now.
-  return @[[[HNDStation alloc] initWithManagedStation:nil]];
+- (void)setFilteredStations:(NSArray *)filteredStations {
+  _filteredStations = filteredStations;
+  [self.delegate filteredStationsDidChange:_filteredStations];
+}
+
+- (void)setAllStations:(NSArray *)allStations {
+  _allStations = allStations;
+  [self applySubwayLineFilter];
+}
+
+- (instancetype)init {
+  if (self = [super init]) {
+    _allStationsController = [HNDStationDAO sharedDAO].allStations;
+    _allStationsController.delegate = self;
+  }
+  return self;
 }
 
 #pragma mark - Public
 
-- (void)filterStationByLine:(HNDSubwayLine *)subwayLine {
-
+- (NSArray *)filteredStations {
+  if (!_filteredStations) {
+    // _stations = self.allStationsController;
+    return @[[[HNDStation alloc] initWithManagedStation:nil]];
+  }
+  return _filteredStations;
 }
 
-- (void)sync {
-  // load from server.
-  // NSFetchedResultsController will take care of the rest
+- (void)setSubwayLineFilter:(HNDSubwayLine *)subwayLineFilter {
+  if ([subwayLineFilter isEqual:_subwayLineFilter]) return;
+  _subwayLineFilter = subwayLineFilter;
+  [self applySubwayLineFilter];
+}
+
+#pragma mark - Protocols
+#pragma mark NSFetchedResultsControllerDelegate
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+  self.allStations = controller.fetchedObjects;
+}
+
+#pragma mark - Private
+
+- (void)applySubwayLineFilter {
+  NSMutableArray *newFilteredStations = [[NSMutableArray alloc] init];
+  // TODO: Pass through self.allStations and pick off ones to keep.
+  self.filteredStations = newFilteredStations;
 }
 
 @end
