@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7210A6501A7C80DD00B6AFA2 /* HNDStationDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210A64F1A7C80DD00B6AFA2 /* HNDStationDetailView.m */; };
+		7210A6531A7C85E100B6AFA2 /* HNDStationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210A6521A7C85E100B6AFA2 /* HNDStationDetailViewController.m */; };
 		72835F361A74419100CD23D2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72835F351A74419100CD23D2 /* Default-568h@2x.png */; };
 		72835F391A74433800CD23D2 /* HNDSubwayMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72835F381A74433800CD23D2 /* HNDSubwayMapView.m */; };
 		72835F3B1A74452200CD23D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72835F3A1A74452200CD23D2 /* MapKit.framework */; };
@@ -54,6 +56,10 @@
 /* Begin PBXFileReference section */
 		2B6F4B42205565A6D7D52CC0 /* Pods-HandiMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HandiMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HandiMap/Pods-HandiMap.debug.xcconfig"; sourceTree = "<group>"; };
 		395C6B622C090215A350EE31 /* libPods-HandiMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HandiMap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7210A64E1A7C80DD00B6AFA2 /* HNDStationDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStationDetailView.h; sourceTree = "<group>"; };
+		7210A64F1A7C80DD00B6AFA2 /* HNDStationDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStationDetailView.m; sourceTree = "<group>"; };
+		7210A6511A7C85E100B6AFA2 /* HNDStationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStationDetailViewController.h; sourceTree = "<group>"; };
+		7210A6521A7C85E100B6AFA2 /* HNDStationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStationDetailViewController.m; sourceTree = "<group>"; };
 		72835F351A74419100CD23D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		72835F371A74433800CD23D2 /* HNDSubwayMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDSubwayMapView.h; sourceTree = "<group>"; };
 		72835F381A74433800CD23D2 /* HNDSubwayMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSubwayMapView.m; sourceTree = "<group>"; };
@@ -184,8 +190,12 @@
 			children = (
 				931974681A74397000BF7EAD /* HNDMapViewController.h */,
 				931974691A74397000BF7EAD /* HNDMapViewController.m */,
+				7210A6511A7C85E100B6AFA2 /* HNDStationDetailViewController.h */,
+				7210A6521A7C85E100B6AFA2 /* HNDStationDetailViewController.m */,
 				72835F371A74433800CD23D2 /* HNDSubwayMapView.h */,
 				72835F381A74433800CD23D2 /* HNDSubwayMapView.m */,
+				7210A64E1A7C80DD00B6AFA2 /* HNDStationDetailView.h */,
+				7210A64F1A7C80DD00B6AFA2 /* HNDStationDetailView.m */,
 			);
 			path = SubwayMap;
 			sourceTree = "<group>";
@@ -508,11 +518,13 @@
 				93958EF01A6C8F9F00057481 /* HNDAppDelegate.m in Sources */,
 				93958F141A6C94A200057481 /* HNDColor.m in Sources */,
 				72F339F41A745779009D79AA /* HandiMap.xcdatamodeld in Sources */,
+				7210A6531A7C85E100B6AFA2 /* HNDStationDetailViewController.m in Sources */,
 				93958F171A6F483F00057481 /* HNDFont.m in Sources */,
 				939E680D1A79BC6600D6042E /* HNDViewController.m in Sources */,
 				72BD4EE61A7888310086AD11 /* HNDDataStore.m in Sources */,
 				72EEC13B1A74767500CF496A /* HNDJobNetworkManager.m in Sources */,
 				939E68191A79E6A200D6042E /* HNDSubwayListView.m in Sources */,
+				7210A6501A7C80DD00B6AFA2 /* HNDStationDetailView.m in Sources */,
 				93C6618D1A79FCFF00C38058 /* HNDStation.m in Sources */,
 				72BD4EE91A788B210086AD11 /* HNDManagedOutage+Convenience.m in Sources */,
 				939E680A1A79BB5100D6042E /* HNDSubwayLineFilterViewController.m in Sources */,
@@ -631,6 +643,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HandiMap;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -643,6 +656,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HandiMap;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

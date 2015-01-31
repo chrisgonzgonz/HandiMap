@@ -14,7 +14,8 @@
 #import "HNDStationManager.h"
 #import "HNDSubwayMapView.h"
 #import "ZSPinAnnotation.h"
-
+#import "HNDStationDetailViewController.h"
+#import "HNDStationDetailView.h"
 
 static CGFloat const kHNDMapCoordSpan = 0.1f;
 
@@ -24,6 +25,8 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
 
 // TODO: Delete this and connect to real data.
 @property(nonatomic) HNDStationManager *stationManager;
+@property(nonatomic) HNDStationDetailViewController *stationDetailVC;
+@property(nonatomic) NSLayoutConstraint *stationDetailHeightConstraint;
 @end
 
 @implementation HNDMapViewController
@@ -41,7 +44,44 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
 
   self.stationManager = [[HNDStationManager alloc] init];
   [self.view.mapView addAnnotations:self.stationManager.filteredStations];
-  NSLog(@"%@", self.stationManager.filteredStations.firstObject);
+  
+  [self setupStationDetailVC];
+}
+
+- (void)setupStationDetailVC {
+  self.stationDetailVC = [[HNDStationDetailViewController alloc] init];
+  [self addChildViewController:self.stationDetailVC];
+  [self.view addSubview:self.stationDetailVC.view];
+  NSDictionary *views = @{@"detailView": self.stationDetailVC.view};
+   self.stationDetailHeightConstraint = [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44];
+  [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.stationDetailVC.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
+  [self.view addConstraint:self.stationDetailHeightConstraint];
+  [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|" options:0 metrics:nil views:views]];
+  [self.stationDetailVC.view.outtageButton addTarget:self action:@selector(stationDetailButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+  
+  [self.stationDetailVC didMoveToParentViewController:self];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+  [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+  [self expandDetailsContainer];
+}
+
+- (void)stationDetailButtonTapped:(UIButton *)sender {
+  self.stationDetailVC.view.outtageButton.selected = !self.stationDetailVC.view.outtageButton.selected;
+  [self expandDetailsContainer];
+}
+
+- (void)expandDetailsContainer{
+  CGFloat newSize = 44.0;
+  if (self.stationDetailVC.view.outtageButton.selected) {
+    newSize = self.view.frame.size.height * 0.75;
+  }
+  self.stationDetailHeightConstraint.constant = newSize;
+  [UIView animateWithDuration:0.5 animations:^{
+    [self.view layoutIfNeeded];
+  }];
+
 }
 
 #pragma mark - Protocols
