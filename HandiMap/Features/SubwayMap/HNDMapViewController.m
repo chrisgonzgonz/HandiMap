@@ -63,6 +63,9 @@
 #pragma mark HNDStationFilterDelegate
 
 - (void)filteredStationsDidChange:(NSArray *)filteredStations {
+  self.stationDetailVC.selectedStation = filteredStations.firstObject;
+  [self.stationDetailVC.view.tableView reloadData];
+
   [self.view updateStations:filteredStations];
 }
 
@@ -82,6 +85,7 @@
                                     forControlEvents:UIControlEventTouchUpInside];
 
   [self.stationDetailVC didMoveToParentViewController:self];
+  self.stationDetailVC.selectedStation = self.stationManager.filteredStations.firstObject;
 }
 
 - (void)getCurrentLocation {

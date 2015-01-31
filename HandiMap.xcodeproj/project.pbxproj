@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7210A6501A7C80DD00B6AFA2 /* HNDStationDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210A64F1A7C80DD00B6AFA2 /* HNDStationDetailView.m */; };
 		7210A6531A7C85E100B6AFA2 /* HNDStationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210A6521A7C85E100B6AFA2 /* HNDStationDetailViewController.m */; };
+		721849DF1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 721849DE1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m */; };
 		72835F361A74419100CD23D2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72835F351A74419100CD23D2 /* Default-568h@2x.png */; };
 		72835F391A74433800CD23D2 /* HNDSubwayMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72835F381A74433800CD23D2 /* HNDSubwayMapView.m */; };
 		72835F3B1A74452200CD23D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72835F3A1A74452200CD23D2 /* MapKit.framework */; };
@@ -60,6 +61,8 @@
 		7210A64F1A7C80DD00B6AFA2 /* HNDStationDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStationDetailView.m; sourceTree = "<group>"; };
 		7210A6511A7C85E100B6AFA2 /* HNDStationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStationDetailViewController.h; sourceTree = "<group>"; };
 		7210A6521A7C85E100B6AFA2 /* HNDStationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStationDetailViewController.m; sourceTree = "<group>"; };
+		721849DD1A7D50FD003DB01B /* HNDStationDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStationDetailTableViewCell.h; sourceTree = "<group>"; };
+		721849DE1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStationDetailTableViewCell.m; sourceTree = "<group>"; };
 		72835F351A74419100CD23D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		72835F371A74433800CD23D2 /* HNDSubwayMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDSubwayMapView.h; sourceTree = "<group>"; };
 		72835F381A74433800CD23D2 /* HNDSubwayMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSubwayMapView.m; sourceTree = "<group>"; };
@@ -147,6 +150,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		721849E01A7D5101003DB01B /* SubwayDetailTableView */ = {
+			isa = PBXGroup;
+			children = (
+				721849DD1A7D50FD003DB01B /* HNDStationDetailTableViewCell.h */,
+				721849DE1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m */,
+			);
+			name = SubwayDetailTableView;
+			sourceTree = "<group>";
+		};
 		72835F3C1A74454200CD23D2 /* AppleFrameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +330,7 @@
 				9344F2801A70A030007BED0C /* HNDMapFlow.m */,
 				939E680E1A79C63300D6042E /* SubwayLinesFilter */,
 				931974671A74394A00BF7EAD /* SubwayMap */,
+				721849E01A7D5101003DB01B /* SubwayDetailTableView */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -520,6 +533,7 @@
 				7210A6531A7C85E100B6AFA2 /* HNDStationDetailViewController.m in Sources */,
 				93958F171A6F483F00057481 /* HNDFont.m in Sources */,
 				939E680D1A79BC6600D6042E /* HNDViewController.m in Sources */,
+				721849DF1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m in Sources */,
 				72BD4EE61A7888310086AD11 /* HNDDataStore.m in Sources */,
 				72EEC13B1A74767500CF496A /* HNDJobNetworkManager.m in Sources */,
 				939E68191A79E6A200D6042E /* HNDSubwayListView.m in Sources */,

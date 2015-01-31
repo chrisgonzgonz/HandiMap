@@ -8,6 +8,8 @@
 
 #import "HNDViewController.h"
 @class HNDStationDetailView;
+@class HNDStation;
 @interface HNDStationDetailViewController : HNDViewController
-@property (nonatomic) HNDStationDetailView *view;
+@property (nonatomic, readonly) HNDStationDetailView *view;
+@property (nonatomic) HNDStation *selectedStation;
 @end
