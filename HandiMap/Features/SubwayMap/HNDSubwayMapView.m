@@ -94,7 +94,10 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
   rect.origin.x = point.x - rect.size.width * 0.5;
   rect.origin.y = point.y - rect.size.height * 0.5;
   [mapView setVisibleMapRect:rect animated:YES];
-  [self.delegate didSelectAnnotationWithStation:view.annotation];
+  
+  if (view.annotation != [MKUserLocation class]) {
+    [self.delegate didSelectAnnotationWithStation:view.annotation];
+  }
 }
 
 #pragma mark - Private
