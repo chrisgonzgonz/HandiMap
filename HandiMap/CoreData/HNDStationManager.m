@@ -58,9 +58,11 @@
 #pragma mark - Private
 
 - (void)applySubwayLineFilter {
-  NSMutableArray *newFilteredStations = [[NSMutableArray alloc] init];
-  // TODO: Pass through self.allStations and pick off ones to keep.
-  self.filteredStations = newFilteredStations;
+  self.filteredStations =
+      [self.allStations filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:
+          ^BOOL(HNDStation *station, NSDictionary *bindings) {
+            return YES;
+          }]];
 }
 
 @end

@@ -5,9 +5,9 @@
 @interface HNDManagedOutage : NSManagedObject
 
 @property (nonatomic, retain) NSString * stationId;
-@property (nonatomic, retain) NSString * serving;
+@property (nonatomic, retain) NSArray * serving;
 @property (nonatomic, retain) NSString * equipmentType;
-@property (nonatomic, retain) NSString * routesAffected;
+@property (nonatomic, retain) NSArray * routesAffected;
 @property (nonatomic, retain) NSString * reason;
 @property (nonatomic, retain) NSDate * outageStartDate;
 @property (nonatomic, retain) NSDate * estimatedReturnOfService;

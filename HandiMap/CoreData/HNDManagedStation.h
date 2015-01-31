@@ -8,10 +8,11 @@
 @property (nonatomic, retain) NSString * stationName;
 @property (nonatomic, retain) NSNumber * stationLongitude;
 @property (nonatomic, retain) NSNumber * stationLatitude;
-@property (nonatomic, retain) NSString * servedRoutes;
-@property (nonatomic, retain) NSString * accessibleRoutes;
+@property (nonatomic, retain) NSArray * servedRoutes;
+@property (nonatomic, retain) NSArray * accessibleRoutes;
 @property (nonatomic, retain) NSNumber * ada;
 @property (nonatomic, retain) NSSet *outages;
+
 @end
 
 @interface HNDManagedStation (CoreDataGeneratedAccessors)

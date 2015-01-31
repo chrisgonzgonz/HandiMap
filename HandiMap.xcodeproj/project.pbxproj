@@ -61,8 +61,8 @@
 		72835F3E1A74556000CD23D2 /* HNDCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDCoreDataManager.h; sourceTree = "<group>"; };
 		72835F3F1A74556000CD23D2 /* HNDCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDCoreDataManager.m; sourceTree = "<group>"; };
 		72835F411A74557C00CD23D2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		72BD4EE41A7888310086AD11 /* HNDDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDDataStore.h; sourceTree = "<group>"; };
-		72BD4EE51A7888310086AD11 /* HNDDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDDataStore.m; sourceTree = "<group>"; };
+		72BD4EE41A7888310086AD11 /* HNDDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDDataStore.h; path = CoreData/HNDDataStore.h; sourceTree = "<group>"; };
+		72BD4EE51A7888310086AD11 /* HNDDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNDDataStore.m; path = CoreData/HNDDataStore.m; sourceTree = "<group>"; };
 		72BD4EE71A788B210086AD11 /* HNDManagedOutage+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HNDManagedOutage+Convenience.h"; path = "../HNDManagedOutage+Convenience.h"; sourceTree = "<group>"; };
 		72BD4EE81A788B210086AD11 /* HNDManagedOutage+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HNDManagedOutage+Convenience.m"; path = "../HNDManagedOutage+Convenience.m"; sourceTree = "<group>"; };
 		72BD4EEB1A788B400086AD11 /* HNDManagedStation+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HNDManagedStation+Convenience.h"; path = "../HNDManagedStation+Convenience.h"; sourceTree = "<group>"; };
@@ -115,8 +115,8 @@
 		93C6618E1A79FF6A00C38058 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		93D758E71A7B3F2E00B48769 /* ZSPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSPinAnnotation.h; sourceTree = "<group>"; };
 		93D758E81A7B3F2E00B48769 /* ZSPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSPinAnnotation.m; sourceTree = "<group>"; };
-		93D758EA1A7B5A7C00B48769 /* HNDStationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStationManager.h; sourceTree = "<group>"; };
-		93D758EB1A7B5A7C00B48769 /* HNDStationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStationManager.m; sourceTree = "<group>"; };
+		93D758EA1A7B5A7C00B48769 /* HNDStationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNDStationManager.h; path = CoreData/HNDStationManager.h; sourceTree = "<group>"; };
+		93D758EB1A7B5A7C00B48769 /* HNDStationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNDStationManager.m; path = CoreData/HNDStationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,10 +164,6 @@
 				72F339F61A74655F009D79AA /* HNDManagedStation.m */,
 				72BD4EEB1A788B400086AD11 /* HNDManagedStation+Convenience.h */,
 				72BD4EEC1A788B400086AD11 /* HNDManagedStation+Convenience.m */,
-				72BD4EE41A7888310086AD11 /* HNDDataStore.h */,
-				72BD4EE51A7888310086AD11 /* HNDDataStore.m */,
-				93D758EA1A7B5A7C00B48769 /* HNDStationManager.h */,
-				93D758EB1A7B5A7C00B48769 /* HNDStationManager.m */,
 				934AA8101A7C71030091D9BC /* HNDStationDAO.h */,
 				934AA8111A7C71030091D9BC /* HNDStationDAO.m */,
 			);
@@ -192,6 +188,19 @@
 				72835F381A74433800CD23D2 /* HNDSubwayMapView.m */,
 			);
 			path = SubwayMap;
+			sourceTree = "<group>";
+		};
+		934AA8131A7C8F950091D9BC /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				72BD4EE41A7888310086AD11 /* HNDDataStore.h */,
+				72BD4EE51A7888310086AD11 /* HNDDataStore.m */,
+				93D758EA1A7B5A7C00B48769 /* HNDStationManager.h */,
+				93D758EB1A7B5A7C00B48769 /* HNDStationManager.m */,
+				72EEC1381A7473AE00CF496A /* Networking */,
+				72835F3D1A7454A300CD23D2 /* CoreData */,
+			);
+			name = Storage;
 			sourceTree = "<group>";
 		};
 		93958EDE1A6C8F9E00057481 = {
@@ -219,10 +228,9 @@
 		93958EE91A6C8F9F00057481 /* HandiMap */ = {
 			isa = PBXGroup;
 			children = (
+				934AA8131A7C8F950091D9BC /* Storage */,
 				939E680F1A79C68B00D6042E /* Model */,
 				93958F1F1A6F500500057481 /* Features */,
-				72835F3D1A7454A300CD23D2 /* CoreData */,
-				72EEC1381A7473AE00CF496A /* Networking */,
 				93958F101A6C90D000057481 /* Initialize */,
 				93958F111A6C944700057481 /* Style */,
 				93958F1B1A6F4D2E00057481 /* UI */,
