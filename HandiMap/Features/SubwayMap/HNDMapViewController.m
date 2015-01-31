@@ -11,7 +11,9 @@
 #import "HNDJobNetworkManager.h"
 
 #import "HNDStation.h"
+#import "HNDStationManager.h"
 #import "HNDSubwayMapView.h"
+#import "ZSPinAnnotation.h"
 
 
 static CGFloat const kHNDMapCoordSpan = 0.1f;
@@ -21,7 +23,7 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
 @property(nonatomic) HNDSubwayMapView *view;
 
 // TODO: Delete this and connect to real data.
-@property(nonatomic) HNDStation *mockStation;
+@property(nonatomic) HNDStationManager *stationManager;
 @end
 
 @implementation HNDMapViewController
@@ -37,8 +39,9 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   [self setupViews];
   [self getCurrentLocation];
 
-  // TODO: Delete this.
-  self.mockStation = [[HNDStation alloc] init];
+  self.stationManager = [[HNDStationManager alloc] init];
+  [self.view.mapView addAnnotations:self.stationManager.stations];
+  NSLog(@"%@", self.stationManager.stations.firstObject);
 }
 
 #pragma mark - Protocols
@@ -64,21 +67,36 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   // I think MKMapView automatically will update the current location and call back to
   // it's delegate. If this is confirmed, the INTULocationManager pod can be removed,
   // but we need to manually handle asking for CLLocationManager permissions.
-
+  
   // TODO: Get a stream and update values. If this is not needed, then INTULocationManager,
   // can be deleted.
   [[INTULocationManager sharedInstance]
-      requestLocationWithDesiredAccuracy:INTULocationAccuracyHouse
-                                 timeout:10
-                                   block:^(CLLocation *currentLocation,
-                                           INTULocationAccuracy achievedAccuracy,
-                                           INTULocationStatus status) {
-    if (status == INTULocationStatusSuccess) {
-      NSLog(@"Location: %@", currentLocation);
-    } else {
-      NSLog(@"Could not get location. FML.");
-    }
-  }];
+   requestLocationWithDesiredAccuracy:INTULocationAccuracyHouse
+   timeout:10
+   block:^(CLLocation *currentLocation,
+           INTULocationAccuracy achievedAccuracy,
+           INTULocationStatus status) {
+     if (status == INTULocationStatusSuccess) {
+       NSLog(@"Location: %@", currentLocation);
+     } else {
+       NSLog(@"Could not get location. FML.");
+     }
+   }];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+  if (![annotation isKindOfClass:[HNDStation class]]) return nil;
+  
+  HNDStation *currentStation = annotation;
+  static NSString *greenPinID = @"greenPin";
+  ZSPinAnnotation *pinView = (ZSPinAnnotation *)[self.view.mapView dequeueReusableAnnotationViewWithIdentifier:greenPinID];
+  if (!pinView) {
+    pinView = [[ZSPinAnnotation alloc] initWithAnnotation:currentStation reuseIdentifier:greenPinID];
+  }
+  pinView.annotationType = ZSPinAnnotationTypeTag;
+  pinView.annotationColor = [UIColor orangeColor];
+  pinView.canShowCallout = NO;
+  return pinView;
 }
 
 @end

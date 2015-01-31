@@ -1,6 +1,18 @@
 #import "HNDStation.h"
 
+#import "HNDManagedStation.h"
+@interface HNDStation ()
+@property (nonatomic) HNDManagedStation *managedStation;
+@end
 @implementation HNDStation
+
+- (instancetype)initWithManagedStation:(HNDManagedStation *)managedStation
+{
+  if (self = [super init]) {
+    _managedStation = managedStation;
+  }
+  return self;
+}
 
 #pragma mark - Protocols
 #pragma mark MKAnnotation
@@ -11,11 +23,11 @@
 }
 
 - (NSString *)title {
-  return self.stationName;
+  return self.managedStation.stationName;
 }
 
 - (NSString *)subtitle {
-  return self.servedRoutes;
+  return self.managedStation.servedRoutes;
 }
 
 #pragma mark - Mock Data...DELETE THIS!

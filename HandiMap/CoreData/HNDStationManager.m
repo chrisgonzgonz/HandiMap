@@ -12,7 +12,7 @@
 
 - (NSArray *)stations {
   // TODO: Actually populate this. This is just mock data for now.
-  return @[[[HNDStation alloc] init]];
+  return @[[[HNDStation alloc] initWithManagedStation:nil]];
 }
 
 #pragma mark - Public
