@@ -102,8 +102,8 @@
 
 // TODO: Move this into the view.
 - (void)expandDetailsContainer{
-  self.stationDetailHeightConstraint.constant = self.stationDetailVC.view.outtageButton.selected ?
-      self.view.frame.size.height * 0.75f
+  self.stationDetailHeightConstraint.constant = self.stationDetailVC.view.outtageButton.selected
+      ? self.view.frame.size.height * 0.75f
       : 44.0f;
   [UIView animateWithDuration:0.5 animations:^{
     [self.view layoutIfNeeded];
