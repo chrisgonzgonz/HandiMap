@@ -13,7 +13,6 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 
 @interface HNDSubwayMapView() <MKMapViewDelegate>
 @property(nonatomic, readonly) CCHMapClusterController *mapClusterController;
-@property(nonatomic, readonly) MKMapView *mapView;
 @end
 
 @implementation HNDSubwayMapView

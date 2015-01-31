@@ -34,6 +34,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setSelectedStation:(HNDStation *)selectedStation {
+  _selectedStation = selectedStation;
+  [self.view.tableView reloadData];
+}
+
 #pragma mark - TableView Datasource
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //  return 1;

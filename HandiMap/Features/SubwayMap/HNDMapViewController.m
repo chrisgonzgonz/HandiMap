@@ -9,8 +9,9 @@
 // TODO: Generalize this to UIViewController to break this dependency.
 #import "HNDStationDetailViewController.h"
 #import "HNDStationDetailView.h"
+#import <MapKit/MKMapView.h>
 
-@interface HNDMapViewController () <HNDStationFilterDelegate>
+@interface HNDMapViewController () <HNDStationFilterDelegate, MKMapViewDelegate>
 // Casts root view.
 @property(nonatomic) HNDSubwayMapView *view;
 
@@ -35,11 +36,26 @@
   self.stationManager = [[HNDStationManager alloc] init];
   self.stationManager.delegate = self;
   [self.view updateStations:self.stationManager.filteredStations];
+  self.view.mapView.delegate = self;
   
   [self setupStationDetailVC];
+  [self setDefaultZoom];
 }
 
-
+- (void)setDefaultZoom {
+//  REMOVE THIS
+  CLLocationCoordinate2D fakeLocation = CLLocationCoordinate2DMake(40.7358, -74.0036);
+  MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(fakeLocation, 500000, 500000);
+  MKCoordinateRegion adjustedRegion = [self.view.mapView regionThatFits:viewRegion];
+  [self.view.mapView setRegion:adjustedRegion animated:YES];
+}
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+  NSLog(@"Tapped annotation: %@", [view.annotation class]);
+  if ([view.annotation isKindOfClass:[HNDStation class]]) {
+    HNDStation *selectedStation = view.annotation;
+    self.stationDetailVC.selectedStation = selectedStation;
+  }
+}
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
   [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
@@ -57,9 +73,6 @@
 #pragma mark HNDStationFilterDelegate
 
 - (void)filteredStationsDidChange:(NSArray *)filteredStations {
-  self.stationDetailVC.selectedStation = filteredStations.firstObject;
-  [self.stationDetailVC.view.tableView reloadData];
-
   [self.view updateStations:filteredStations];
 }
 
@@ -79,7 +92,6 @@
                                     forControlEvents:UIControlEventTouchUpInside];
 
   [self.stationDetailVC didMoveToParentViewController:self];
-  self.stationDetailVC.selectedStation = self.stationManager.filteredStations.firstObject;
 }
 
 - (void)getCurrentLocation {
