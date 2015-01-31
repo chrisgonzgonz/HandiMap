@@ -2,24 +2,21 @@
 
 #import <MapKit/MapKit.h>
 #import "INTULocationManager.h"
+#import "ZSPinAnnotation.h"
 
-// TODO(gonzo): Remove Dependency on CoreData stuff. Expose models to do the heavy lifting.
-#import "HNDCoreDataManager.h"
-#import "HNDDataStore.h"
-#import "HNDManagedOutage.h"
-#import "HNDManagedStation.h"
-#import "HNDJobNetworkManager.h"
-
+#import "HNDColor.h"
 #import "HNDStation.h"
 #import "HNDStationManager.h"
 #import "HNDSubwayMapView.h"
-#import "ZSPinAnnotation.h"
+// TODO: Generalize this to UIViewController to break this dependency.
 #import "HNDStationDetailViewController.h"
 #import "HNDStationDetailView.h"
 
 static CGFloat const kHNDMapCoordSpan = 0.1f;
+static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 
-@interface HNDMapViewController () <MKMapViewDelegate, HNDStationFilterDelegate>
+@interface HNDMapViewController () <HNDStationFilterDelegate,
+                                    MKMapViewDelegate>
 // Casts root view.
 @property(nonatomic) HNDSubwayMapView *view;
 
@@ -49,43 +46,30 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   [self setupStationDetailVC];
 }
 
-- (void)setupStationDetailVC {
-  self.stationDetailVC = [[HNDStationDetailViewController alloc] init];
-  [self addChildViewController:self.stationDetailVC];
-  [self.view addSubview:self.stationDetailVC.view];
-  NSDictionary *views = @{@"detailView": self.stationDetailVC.view};
-   self.stationDetailHeightConstraint = [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44];
-  [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.stationDetailVC.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
-  [self.view addConstraint:self.stationDetailHeightConstraint];
-  [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|" options:0 metrics:nil views:views]];
-  [self.stationDetailVC.view.outtageButton addTarget:self action:@selector(stationDetailButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-  
-  [self.stationDetailVC didMoveToParentViewController:self];
-}
+
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
   [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
   [self expandDetailsContainer];
 }
 
-- (void)stationDetailButtonTapped:(UIButton *)sender {
+#pragma mark - TargetActions
+
+- (void)showStationDetails:(UIButton *)sender {
   self.stationDetailVC.view.outtageButton.selected = !self.stationDetailVC.view.outtageButton.selected;
   [self expandDetailsContainer];
 }
 
-- (void)expandDetailsContainer{
-  CGFloat newSize = 44.0;
-  if (self.stationDetailVC.view.outtageButton.selected) {
-    newSize = self.view.frame.size.height * 0.75;
-  }
-  self.stationDetailHeightConstraint.constant = newSize;
-  [UIView animateWithDuration:0.5 animations:^{
-    [self.view layoutIfNeeded];
-  }];
+#pragma mark - Protocols
+#pragma mark HNDStationFilterDelegate
 
+- (void)filteredStationsDidChange:(NSArray *)filteredStations {
+  NSMutableArray *annotationsToRemove = [self.view.mapView.annotations mutableCopy];
+  [annotationsToRemove removeObject:self.view.mapView.userLocation];
+  [self.view.mapView removeAnnotations: annotationsToRemove];
+  [self.view.mapView addAnnotations:filteredStations];
 }
 
-#pragma mark - Protocols
 #pragma mark MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
@@ -96,11 +80,40 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   [mapView setRegion:mapRegion animated:YES];
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+  if (![annotation isKindOfClass:[HNDStation class]]) return nil;
+
+  ZSPinAnnotation *pinView = (ZSPinAnnotation *)
+      ([self.view.mapView dequeueReusableAnnotationViewWithIdentifier:kPinReuseId]
+       ?: [[ZSPinAnnotation alloc] initWithAnnotation:annotation reuseIdentifier:kPinReuseId]);
+  pinView.annotation = annotation;
+  pinView.annotationType = ZSPinAnnotationTypeTag;
+  pinView.annotationColor = [HNDColor highlightColor];
+  pinView.canShowCallout = NO;
+  return pinView;
+}
+
 #pragma mark - Private
 
 - (void)setupViews {
   self.view.mapView.showsUserLocation = YES;
   self.view.mapView.delegate = self;
+}
+
+- (void)setupStationDetailVC {
+  self.stationDetailVC = [[HNDStationDetailViewController alloc] init];
+  [self addChildViewController:self.stationDetailVC];
+  [self.view addSubview:self.stationDetailVC.view];
+  NSDictionary *views = @{@"detailView": self.stationDetailVC.view};
+  self.stationDetailHeightConstraint = [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44];
+  [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.stationDetailVC.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
+  [self.view addConstraint:self.stationDetailHeightConstraint];
+  [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|" options:0 metrics:nil views:views]];
+  [self.stationDetailVC.view.outtageButton addTarget:self
+                                              action:@selector(showStationDetails:)
+                                    forControlEvents:UIControlEventTouchUpInside];
+
+  [self.stationDetailVC didMoveToParentViewController:self];
 }
 
 - (void)getCurrentLocation {
@@ -112,11 +125,11 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   // TODO: Get a stream and update values. If this is not needed, then INTULocationManager,
   // can be deleted.
   [[INTULocationManager sharedInstance]
-   requestLocationWithDesiredAccuracy:INTULocationAccuracyHouse
-   timeout:10
-   block:^(CLLocation *currentLocation,
-           INTULocationAccuracy achievedAccuracy,
-           INTULocationStatus status) {
+      requestLocationWithDesiredAccuracy:INTULocationAccuracyHouse
+                                 timeout:10
+                                   block:^(CLLocation *currentLocation,
+                                           INTULocationAccuracy achievedAccuracy,
+                                           INTULocationStatus status) {
      if (status == INTULocationStatusSuccess) {
        NSLog(@"Location: %@", currentLocation);
      } else {
@@ -125,30 +138,14 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
    }];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-  if (![annotation isKindOfClass:[HNDStation class]]) return nil;
-  
-  HNDStation *currentStation = annotation;
-  static NSString *greenPinID = @"greenPin";
-  ZSPinAnnotation *pinView = (ZSPinAnnotation *)[self.view.mapView dequeueReusableAnnotationViewWithIdentifier:greenPinID];
-  if (!pinView) {
-    pinView = [[ZSPinAnnotation alloc] initWithAnnotation:currentStation reuseIdentifier:greenPinID];
-  }
-  pinView.annotationType = ZSPinAnnotationTypeTag;
-  pinView.annotationColor = [UIColor orangeColor];
-  pinView.canShowCallout = NO;
-  return pinView;
-}
-
-- (void)filteredStationsDidChange:(NSArray *)filteredStations {
-  //copy your annotations to an array
-  NSMutableArray *annotationsToRemove = [[NSMutableArray alloc] initWithArray: self.view.mapView.annotations];
-  //Remove the object userlocation
-  [annotationsToRemove removeObject: self.view.mapView.userLocation];
-  //Remove all annotations in the array from the mapView
-  [self.view.mapView removeAnnotations: annotationsToRemove];
-  [self.view.mapView addAnnotations:filteredStations];
-  
+// TODO: Move this into the view.
+- (void)expandDetailsContainer{
+  self.stationDetailHeightConstraint.constant = self.stationDetailVC.view.outtageButton.selected ?
+      self.view.frame.size.height * 0.75f
+      : 44.0f;
+  [UIView animateWithDuration:0.5 animations:^{
+    [self.view layoutIfNeeded];
+  }];
 }
 
 @end
