@@ -8,7 +8,7 @@
 #import "HNDButton.h"
 
 static CGFloat const kClusterCellSize = 30.0f;
-static CGFloat const kHNDMapCoordSpan = 0.1f;
+static CGFloat const kHNDMapCoordSpan = 0.07f;
 static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 
 @interface HNDSubwayMapView() <MKMapViewDelegate>
@@ -39,9 +39,8 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 #pragma mark - Public
 
 - (void)updateStations:(NSArray *)stations {
-  NSMutableArray *annotationsToRemove = [self.mapView.annotations mutableCopy];
-  [annotationsToRemove removeObject:self.mapView.userLocation];
-  [self.mapClusterController removeAnnotations:annotationsToRemove withCompletionHandler:nil];
+  [self.mapClusterController removeAnnotations:[self.mapClusterController.annotations allObjects]
+                         withCompletionHandler:nil];
   [self.mapClusterController addAnnotations:stations withCompletionHandler:nil];
 }
 

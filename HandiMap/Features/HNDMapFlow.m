@@ -63,7 +63,7 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 - (void)presentMapViewFrom:(HNDSubwayLineFilterViewController *)viewController {
   HNDSubwayLine *selectedLine = viewController.selectedLine;
   self.mapViewController.title = selectedLine.lineText;
-  // set destination.VC's selected line
+  self.mapViewController.subwayLine = selectedLine;
   [self.navController pushViewController:self.mapViewController animated:YES];
 }
 

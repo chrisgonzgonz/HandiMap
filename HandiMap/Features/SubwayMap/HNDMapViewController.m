@@ -22,6 +22,11 @@
 
 @implementation HNDMapViewController
 
+- (void)setSubwayLine:(HNDSubwayLine *)subwayLine {
+  _subwayLine = subwayLine;
+  self.stationManager.subwayLineFilter = subwayLine;
+}
+
 #pragma mark - Overrides
 
 - (void)loadView {
@@ -34,6 +39,7 @@
 
   self.stationManager = [[HNDStationManager alloc] init];
   self.stationManager.delegate = self;
+  self.stationManager.subwayLineFilter = self.subwayLine;
   [self.view updateStations:self.stationManager.filteredStations];
   
   [self setupStationDetailVC];
