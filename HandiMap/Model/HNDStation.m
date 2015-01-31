@@ -6,7 +6,7 @@
 static NSString *kLineCharSeperator = @", ";
 
 @interface HNDStation ()
-@property (nonatomic) HNDManagedStation *managedStation;
+@property (nonatomic, readwrite) HNDManagedStation *managedStation;
 @end
 
 @implementation HNDStation

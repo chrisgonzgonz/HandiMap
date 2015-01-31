@@ -5,10 +5,9 @@
 @class HNDSubwayLine;
 
 @interface HNDStation : NSObject <MKAnnotation>
-
+@property (nonatomic, readonly) HNDManagedStation *managedStation;
 - (instancetype)initWithManagedStation:(HNDManagedStation *)managedStation
     NS_DESIGNATED_INITIALIZER;
-
 - (BOOL)isMemberOfSubwayLine:(HNDSubwayLine *)subwayLine;
 
 @end
