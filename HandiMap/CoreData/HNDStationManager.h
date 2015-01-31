@@ -11,10 +11,7 @@
 /// \return an array of HNDStations
 @property(nonatomic, readonly) NSArray *stations;
 
-/// Scopes down the \property stations to those with routes on \param subwayLine.
-- (void)filterStationByLine:(HNDSubwayLine *)subwayLine;
-
-/// Syncs the to get the latest information from the server.
-- (void)sync;
+/// Setting this will cause the stations array to be filtered by \param subwayLineFilter.
+@property(nonatomic)HNDSubwayLine *subwayLineFilter;
 
 @end
