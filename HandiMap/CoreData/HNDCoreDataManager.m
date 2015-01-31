@@ -2,7 +2,7 @@
 
 #import <CoreData/CoreData.h>
 
-static NSString * const kDataModelURL = @"HandiMap";
+static NSString *const kDataModelURL = @"HandiMap";
 
 @interface HNDCoreDataManager ()
 
