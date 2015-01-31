@@ -34,6 +34,7 @@ NSString *const kStationEntityName = @"HNDManagedStation";
                                                        managedObjectContext:mainContext
                                                          sectionNameKeyPath:nil
                                                                   cacheName:nil];
+    [_allStations performFetch:nil];
   }
   return _allStations;
 }
