@@ -18,24 +18,30 @@
   return _sharedDataStore;
 }
 
-- (void)loadStations {
+- (void)loadStationsWithSuccess:(void (^)())success failure:(void (^)())failure {
   NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
   [[HNDJobNetworkManager sharedManager] getStationsWithCompletionBlock:^(id response) {
     [workerContext performBlock:^{
-      for (NSDictionary *dictionary in response) {
+      for (NSDictionary *station in response) {
         NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDManagedStation"
                                               inManagedObjectContext:workerContext];
-        HNDManagedStation *currentStation = [[HNDManagedStation alloc] initWithEntity:ed
-                                         insertIntoManagedObjectContext:workerContext
-                                                          andDictionary:dictionary];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-value"
+        [[HNDManagedStation alloc] initWithEntity:ed
+                   insertIntoManagedObjectContext:workerContext
+                                    andDictionary:station];
+#pragma clang diagnostic pop
       }
       [[HNDCoreDataManager sharedManager] saveContext:workerContext];
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        success();
+      }];
     }];
   }];
 }
 
 //TODO(gonzo): clear current outages before adding new ones
-- (void)loadOutages {
+- (void)loadOutagesWithSuccess:(void (^)())success failure:(void (^)())failure {
   NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
   [[HNDJobNetworkManager sharedManager] getOutagesWithCompletionBlock:^(id response) {
     [workerContext performBlock:^{
@@ -49,18 +55,41 @@
         if (fetchError) {
           NSLog(@"Fetch error: %@", fetchError.localizedDescription);
         }
-        HNDManagedStation *currentStation = [stations firstObject];
-        if (!currentStation) {
-          NSLog(@"No station for this outage");
-        }
         
-        for (NSDictionary *outage in station[@"outages"]) {
-          NSEntityDescription *outageEntityDescription = [NSEntityDescription entityForName:@"HNDManagedOutage" inManagedObjectContext:workerContext];
-          HNDManagedOutage *newOutage = [[HNDManagedOutage alloc] initWithEntity:outageEntityDescription insertIntoManagedObjectContext:workerContext andDictionary:outage];
-          newOutage.station = currentStation;
+        HNDManagedStation *currentStation = [stations firstObject];
+        if (currentStation) {
+          NSLog(@"No station for this outage");
+          for (NSDictionary *outage in station[@"outages"]) {
+            NSEntityDescription *outageEntityDescription = [NSEntityDescription entityForName:@"HNDManagedOutage" inManagedObjectContext:workerContext];
+            HNDManagedOutage *newOutage = [[HNDManagedOutage alloc] initWithEntity:outageEntityDescription insertIntoManagedObjectContext:workerContext andDictionary:outage];
+            newOutage.station = currentStation;
+          }
         }
       }
       [[HNDCoreDataManager sharedManager] saveContext:workerContext];
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        success();
+      }];
+    }];
+  }];
+}
+
+- (void)clearOutagesWithSuccess:(void(^)())success failure:(void(^)())failure {
+  NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
+  [workerContext performBlock:^{
+    NSFetchRequest *outageFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"HNDManagedOutage"];
+    NSError *fetchError = nil;
+    NSArray *outages = [workerContext executeFetchRequest:outageFetchRequest error:&fetchError];
+    if (fetchError) {
+      NSLog(@"Fetch error: %@", fetchError.localizedDescription);
+    }
+    
+    for (HNDManagedOutage *outage in outages) {
+      [workerContext deleteObject:outage];
+    }
+    [[HNDCoreDataManager sharedManager] saveContext:workerContext];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      success();
     }];
   }];
 }

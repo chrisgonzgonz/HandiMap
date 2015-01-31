@@ -3,7 +3,7 @@
 @interface HNDDataStore : NSObject
 
 + (instancetype)sharedStore;
-- (void)loadStations;
-- (void)loadOutages;
+- (void)loadStationsWithSuccess:(void(^)())success failure:(void(^)())failure;
+- (void)loadOutagesWithSuccess:(void(^)())success failure:(void(^)())failure;
 
 @end
