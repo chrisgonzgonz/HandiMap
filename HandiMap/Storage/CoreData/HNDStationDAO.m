@@ -28,7 +28,7 @@ NSString *const kStationEntityName = @"HNDManagedStation";
 #pragma mark - Public
 
 - (NSFetchedResultsController *)allStations {
-  if (_allStations) {
+  if (!_allStations) {
     NSManagedObjectContext *mainContext = [HNDCoreDataManager sharedManager].mainContext;
     _allStations = [[NSFetchedResultsController alloc] initWithFetchRequest:self.allStationsRequest
                                                        managedObjectContext:mainContext
