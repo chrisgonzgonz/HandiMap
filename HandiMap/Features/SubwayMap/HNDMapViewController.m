@@ -19,7 +19,7 @@
 
 static CGFloat const kHNDMapCoordSpan = 0.1f;
 
-@interface HNDMapViewController () <MKMapViewDelegate>
+@interface HNDMapViewController () <MKMapViewDelegate, HNDStationFilterDelegate>
 // Casts root view.
 @property(nonatomic) HNDSubwayMapView *view;
 
@@ -43,6 +43,7 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   [self getCurrentLocation];
 
   self.stationManager = [[HNDStationManager alloc] init];
+  self.stationManager.delegate = self;
   [self.view.mapView addAnnotations:self.stationManager.filteredStations];
   
   [self setupStationDetailVC];
@@ -137,6 +138,17 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   pinView.annotationColor = [UIColor orangeColor];
   pinView.canShowCallout = NO;
   return pinView;
+}
+
+- (void)filteredStationsDidChange:(NSArray *)filteredStations {
+  //copy your annotations to an array
+  NSMutableArray *annotationsToRemove = [[NSMutableArray alloc] initWithArray: self.view.mapView.annotations];
+  //Remove the object userlocation
+  [annotationsToRemove removeObject: self.view.mapView.userLocation];
+  //Remove all annotations in the array from the mapView
+  [self.view.mapView removeAnnotations: annotationsToRemove];
+  [self.view.mapView addAnnotations:filteredStations];
+  
 }
 
 @end
