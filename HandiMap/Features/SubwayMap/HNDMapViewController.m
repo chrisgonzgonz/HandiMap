@@ -68,6 +68,9 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
   [annotationsToRemove removeObject:self.view.mapView.userLocation];
   [self.view.mapView removeAnnotations: annotationsToRemove];
   [self.view.mapView addAnnotations:filteredStations];
+  
+  self.stationDetailVC.selectedStation = filteredStations.firstObject;
+  [self.stationDetailVC.view.tableView reloadData];
 }
 
 #pragma mark MKMapViewDelegate
@@ -114,6 +117,7 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
                                     forControlEvents:UIControlEventTouchUpInside];
 
   [self.stationDetailVC didMoveToParentViewController:self];
+  self.stationDetailVC.selectedStation = self.stationManager.filteredStations.firstObject;
 }
 
 - (void)getCurrentLocation {

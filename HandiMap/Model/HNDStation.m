@@ -26,6 +26,22 @@ static NSString *kLineCharSeperator = @", ";
   return routeIntersection.count;
 }
 
+- (NSString *)name {
+  return [self title];
+}
+
+- (NSString *)subwayLines {
+  return [[self.managedStation.servedRoutes valueForKey:@"description"] componentsJoinedByString:@", "];
+}
+
+- (NSString *)accessibleLines {
+  return [[self.managedStation.accessibleRoutes valueForKey:@"description"] componentsJoinedByString:@", "];
+}
+
+- (NSString *)ada {
+  return [self.managedStation.ada boolValue] ? @"YES" : @"NO";
+}
+
 #pragma mark - Protocols
 #pragma mark MKAnnotation
 
