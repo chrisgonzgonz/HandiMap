@@ -40,8 +40,8 @@ static CGFloat const kHNDMapCoordSpan = 0.1f;
   [self getCurrentLocation];
 
   self.stationManager = [[HNDStationManager alloc] init];
-  [self.view.mapView addAnnotations:self.stationManager.stations];
-  NSLog(@"%@", self.stationManager.stations.firstObject);
+  [self.view.mapView addAnnotations:self.stationManager.filteredStations];
+  NSLog(@"%@", self.stationManager.filteredStations.firstObject);
 }
 
 #pragma mark - Protocols

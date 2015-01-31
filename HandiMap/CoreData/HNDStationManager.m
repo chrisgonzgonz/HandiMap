@@ -6,21 +6,21 @@
 #import "HNDStationDAO.h"
 #import "HNDSubwayLine.h"
 
-@interface HNDStationManager() <NSFetchedResultsControllerDelegate>
+@interface HNDStationManager()<NSFetchedResultsControllerDelegate>
 @property(nonatomic) NSFetchedResultsController *allStationsController;
-@property(nonatomic) NSArray *unfilteredStations;
+@property(nonatomic) NSArray *allStations;
 @end
 
 @implementation HNDStationManager
-@synthesize stations = _stations;
+@synthesize filteredStations = _filteredStations;
 
-- (void)setStations:(NSArray *)stations {
-  _stations = stations;
-  // TODO: Notify Delegate.
+- (void)setFilteredStations:(NSArray *)filteredStations {
+  _filteredStations = filteredStations;
+  [self.delegate filteredStationsDidChange:_filteredStations];
 }
 
-- (void)setUnfilteredStations:(NSArray *)unfilteredStations {
-  _unfilteredStations = unfilteredStations;
+- (void)setAllStations:(NSArray *)allStations {
+  _allStations = allStations;
   [self applySubwayLineFilter];
 }
 
@@ -34,12 +34,12 @@
 
 #pragma mark - Public
 
-- (NSArray *)stations {
-  if (!_stations) {
+- (NSArray *)filteredStations {
+  if (!_filteredStations) {
     // _stations = self.allStationsController;
     return @[[[HNDStation alloc] initWithManagedStation:nil]];
   }
-  return _stations;
+  return _filteredStations;
 }
 
 - (void)setSubwayLineFilter:(HNDSubwayLine *)subwayLineFilter {
@@ -52,15 +52,15 @@
 #pragma mark NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-  self.unfilteredStations = controller.fetchedObjects;
+  self.allStations = controller.fetchedObjects;
 }
 
 #pragma mark - Private
 
 - (void)applySubwayLineFilter {
-  NSMutableArray *filteredStations = [[NSMutableArray alloc] init];
-  // TODO: Pass through self.unfilteredStations and pick off ones to keep
-  self.stations = filteredStations;
+  NSMutableArray *newFilteredStations = [[NSMutableArray alloc] init];
+  // TODO: Pass through self.allStations and pick off ones to keep.
+  self.filteredStations = newFilteredStations;
 }
 
 @end
