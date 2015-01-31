@@ -30,6 +30,10 @@
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subwayLinesLabel]|" options:0 metrics:nil views:views]];
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[accessibleLinesLabel]|" options:0 metrics:nil views:views]];
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[adaLabel]|" options:0 metrics:nil views:views]];
+  
+  self.subwayLinesLabel.backgroundColor = [UIColor greenColor];
+  self.accessibleLinesLabel.backgroundColor = [UIColor redColor];
+  self.adaLabel.backgroundColor = [UIColor purpleColor];
 }
 
 - (HNDLabel *)subwayLinesLabel {
