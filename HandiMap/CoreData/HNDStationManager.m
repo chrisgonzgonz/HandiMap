@@ -2,9 +2,24 @@
 
 #import <CoreData/CoreData.h>
 
+#import "HNDManagedStation.h"
 #import "HNDStation.h"
 #import "HNDStationDAO.h"
 #import "HNDSubwayLine.h"
+
+// TODO: Move this category on onf NSArray later :)
+typedef id(^MapBlock)(id);
+@interface NSArray (FP)
+- (NSArray *)map:(MapBlock)block;
+@end
+
+@implementation NSArray (FP)
+- (NSArray *)map:(MapBlock)block {
+  NSMutableArray *resultArray = [[NSMutableArray alloc] init];
+  for (id object in self) { [resultArray addObject:block(object)]; }
+  return resultArray;
+}
+@end
 
 @interface HNDStationManager()<NSFetchedResultsControllerDelegate>
 @property(nonatomic) NSFetchedResultsController *allStationsController;
@@ -20,7 +35,10 @@
 }
 
 - (void)setAllStations:(NSArray *)allStations {
-  _allStations = allStations;
+  // TODO: Use a category to get rid of the need for a mapping.
+  _allStations = [allStations map:^HNDStation *(HNDManagedStation *managedStation) {
+    return [[HNDStation alloc] initWithManagedStation:managedStation];
+  }];
   [self applySubwayLineFilter];
 }
 
@@ -28,6 +46,8 @@
   if (self = [super init]) {
     _allStationsController = [HNDStationDAO sharedDAO].allStations;
     _allStationsController.delegate = self;
+    // Goes through custom setter in order to do the mapping.
+    self.allStations = _allStationsController.fetchedObjects;
   }
   return self;
 }
@@ -61,7 +81,7 @@
   self.filteredStations =
       [self.allStations filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:
           ^BOOL(HNDStation *station, NSDictionary *bindings) {
-            return YES;
+            return [station isMemberOfSubwayLine:self.subwayLineFilter];
           }]];
 }
 
