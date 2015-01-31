@@ -11,7 +11,7 @@
 #import "HNDStationDetailView.h"
 #import <MapKit/MKMapView.h>
 
-@interface HNDMapViewController () <HNDStationFilterDelegate, MKMapViewDelegate>
+@interface HNDMapViewController () <HNDStationFilterDelegate, HNDSubwayMapViewDelegate>
 // Casts root view.
 @property(nonatomic) HNDSubwayMapView *view;
 
@@ -22,6 +22,11 @@
 @end
 
 @implementation HNDMapViewController
+
+- (void)setSubwayLine:(HNDSubwayLine *)subwayLine {
+  _subwayLine = subwayLine;
+  self.stationManager.subwayLineFilter = subwayLine;
+}
 
 #pragma mark - Overrides
 
@@ -35,26 +40,24 @@
 
   self.stationManager = [[HNDStationManager alloc] init];
   self.stationManager.delegate = self;
+  self.stationManager.subwayLineFilter = self.subwayLine;
   [self.view updateStations:self.stationManager.filteredStations];
-  self.view.mapView.delegate = self;
   
   [self setupStationDetailVC];
-  [self setDefaultZoom];
+  
+  self.view.delegate = self;
 }
 
-- (void)setDefaultZoom {
-//  REMOVE THIS
-  CLLocationCoordinate2D fakeLocation = CLLocationCoordinate2DMake(40.7358, -74.0036);
-  MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(fakeLocation, 500000, 500000);
-  MKCoordinateRegion adjustedRegion = [self.view.mapView regionThatFits:viewRegion];
-  [self.view.mapView setRegion:adjustedRegion animated:YES];
-}
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-  NSLog(@"Tapped annotation: %@", [view.annotation class]);
-  if ([view.annotation isKindOfClass:[HNDStation class]]) {
-    HNDStation *selectedStation = view.annotation;
-    self.stationDetailVC.selectedStation = selectedStation;
-  }
+//- (void)setDefaultZoom {
+////  REMOVE THIS
+//  CLLocationCoordinate2D fakeLocation = CLLocationCoordinate2DMake(40.7358, -74.0036);
+//  MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(fakeLocation, 500000, 500000);
+//  MKCoordinateRegion adjustedRegion = [self.view.mapView regionThatFits:viewRegion];
+//  [self.view.mapView setRegion:adjustedRegion animated:YES];
+//}
+
+- (void)didSelectAnnotationWithStation:(HNDStation *)station {
+  self.stationDetailVC.selectedStation = station;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {

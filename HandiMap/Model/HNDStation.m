@@ -23,7 +23,7 @@ static NSString *kLineCharSeperator = @", ";
 - (BOOL)isMemberOfSubwayLine:(HNDSubwayLine *)subwayLine {
   NSMutableSet *routeIntersection = [NSMutableSet setWithArray:self.managedStation.servedRoutes];
   [routeIntersection intersectSet:subwayLine.routes];
-  return routeIntersection.count;
+  return !subwayLine || routeIntersection.count;
 }
 
 - (NSString *)name {
