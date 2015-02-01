@@ -218,7 +218,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
                                                    relatedBy:NSLayoutRelationEqual
                                                       toItem:self
                                                    attribute:NSLayoutAttributeHeight
-                                                  multiplier:0.75f
+                                                  multiplier:0.65f
                                                     constant:0]];
   [self hideStationDetails];
 }
