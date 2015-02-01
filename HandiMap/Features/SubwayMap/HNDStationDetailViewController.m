@@ -36,7 +36,7 @@
 
 - (void)setSelectedStation:(HNDStation *)selectedStation {
   _selectedStation = selectedStation;
-  [self.view.outtageButton setTitle:selectedStation.name forState:UIControlStateNormal];
+  [self.view.outageButton setTitle:selectedStation.name forState:UIControlStateNormal];
   [self.view.tableView reloadData];
 }
 

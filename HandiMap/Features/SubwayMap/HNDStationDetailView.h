@@ -11,5 +11,5 @@
 #import "HNDButton.h"
 @interface HNDStationDetailView : UIView
 @property (weak, nonatomic, readonly) UITableView *tableView;
-@property (weak, nonatomic, readonly) HNDButton *outtageButton;
+@property (weak, nonatomic, readonly) HNDButton *outageButton;
 @end
