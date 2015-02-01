@@ -16,6 +16,7 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
 @property(nonatomic, readwrite) MKMapView *mapView;
 @property(nonatomic) NSLayoutConstraint *detailViewPositionContraint;
 @property(nonatomic) MKAnnotationView *selectedAnnotationView;
+@property(nonatomic) CGFloat detailViewPositionY;
 @end
 
 @implementation HNDSubwayMapView
@@ -36,13 +37,16 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
   return self;
 }
 
-
 #pragma mark - Public
 
 - (void)setStationDetailView:(UIView *)stationDetailView {
 //  _stationDetailView = stationDetailView;
   _stationDetailView = [[UIView alloc] init];
   _stationDetailView.backgroundColor = [UIColor purpleColor];
+
+  _stationDetailView.userInteractionEnabled = YES;
+  _stationDetailView.gestureRecognizers =
+      @[[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDetailView:)]];
   [self addSubview:_stationDetailView];
   [self autoLayoutDetailSubview];
   [self layoutIfNeeded];
@@ -53,6 +57,15 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
   [toRemove removeObject:self.mapView.userLocation];
   [self.mapView removeAnnotations:toRemove];
   [self.mapView addAnnotations:stations];
+}
+
+#pragma mark - TargetActions
+
+- (void)panDetailView:(UIPanGestureRecognizer *)recognizer {
+  CGPoint translation = [recognizer translationInView:self];
+  recognizer.view.center = CGPointMake(recognizer.view.center.x,
+                                       recognizer.view.center.y + translation.y);
+  [recognizer setTranslation:CGPointZero inView:self];
 }
 
 #pragma mark - Protocols
