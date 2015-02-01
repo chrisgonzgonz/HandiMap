@@ -15,6 +15,7 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
 @interface HNDSubwayMapView() <MKMapViewDelegate>
 @property(nonatomic, readwrite) MKMapView *mapView;
 @property(nonatomic) NSLayoutConstraint *detailViewPositionContraint;
+@property(nonatomic) MKAnnotationView *selectedAnnotationView;
 @end
 
 @implementation HNDSubwayMapView
@@ -83,6 +84,11 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+  if ([self.selectedAnnotationView isEqual:view]) {
+    return;
+  } else {
+    self.selectedAnnotationView = view;
+  }
   MKMapPoint point = MKMapPointForCoordinate(view.annotation.coordinate);
   MKMapRect rect = [mapView visibleMapRect];
   rect.origin.x = point.x - rect.size.width * 0.5;
@@ -95,7 +101,6 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-  NSLog(@"Deselect");
   if (view.annotation != [MKUserLocation class]) {
     [self hideStationDetails];
     [self.delegate didSelectStation:view.annotation];
