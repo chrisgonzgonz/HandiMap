@@ -137,7 +137,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   rect.origin.x = point.x - rect.size.width * 0.5;
   rect.origin.y = point.y - rect.size.height * 0.5;
   [mapView setVisibleMapRect:rect animated:YES];
-  if (view.annotation != [MKUserLocation class]) {
+  if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
     self.selectedAnnotationView = view;
     [self showStationDetailsPreview];
     [self.delegate didSelectStation:self.selectedAnnotationView.annotation];
