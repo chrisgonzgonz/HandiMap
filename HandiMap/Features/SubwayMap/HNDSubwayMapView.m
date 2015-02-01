@@ -32,6 +32,8 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
+    self.backgroundColor = [HNDColor lightColor];
+
     _mapView = [[MKMapView alloc] init];
     _mapView.showsUserLocation = YES;
     _mapView.delegate = self;
@@ -77,7 +79,7 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
       ?: [[ZSPinAnnotation alloc] initWithAnnotation:stationAnnotaion reuseIdentifier:kPinReuseId]);
   pinView.annotation = stationAnnotaion;
   pinView.annotationType = ZSPinAnnotationTypeTag;
-  pinView.annotationColor = stationAnnotaion.annotationColor;
+  pinView.annotationColor = stationAnnotaion.annotationColor; // will break with clusters.
   pinView.canShowCallout = NO;
   return pinView;
 }

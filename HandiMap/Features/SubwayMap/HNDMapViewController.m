@@ -9,13 +9,14 @@
 // TODO: Generalize this to UIViewController to break this dependency.
 #import "HNDStationDetailViewController.h"
 #import "HNDStationDetailView.h"
-#import <MapKit/MKMapView.h>
 
-@interface HNDMapViewController () <HNDStationFilterDelegate, HNDSubwayMapViewDelegate>
+static CGFloat const kAnimationDuration = 0.25f;
+
+@interface HNDMapViewController () <HNDStationFilterDelegate,
+                                    HNDSubwayMapViewDelegate>
 // Casts root view.
 @property(nonatomic) HNDSubwayMapView *view;
 
-// TODO: Delete this and connect to real data.
 @property(nonatomic) HNDStationManager *stationManager;
 @property(nonatomic) HNDStationDetailViewController *stationDetailVC;
 @property(nonatomic) NSLayoutConstraint *stationDetailHeightConstraint;
@@ -44,20 +45,7 @@
   [self.view updateStations:self.stationManager.filteredStations];
   
   [self setupStationDetailVC];
-  
   self.view.delegate = self;
-}
-
-//- (void)setDefaultZoom {
-////  REMOVE THIS
-//  CLLocationCoordinate2D fakeLocation = CLLocationCoordinate2DMake(40.7358, -74.0036);
-//  MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(fakeLocation, 500000, 500000);
-//  MKCoordinateRegion adjustedRegion = [self.view.mapView regionThatFits:viewRegion];
-//  [self.view.mapView setRegion:adjustedRegion animated:YES];
-//}
-
-- (void)didSelectAnnotationWithStation:(HNDStation *)station {
-  self.stationDetailVC.selectedStation = station;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
@@ -79,22 +67,48 @@
   [self.view updateStations:filteredStations];
 }
 
+#pragma mark HNDSubwayMapViewDelegate
+
+- (void)didSelectAnnotationWithStation:(HNDStation *)station {
+  self.stationDetailVC.selectedStation = station;
+}
+
 #pragma mark - Private
 
 - (void)setupStationDetailVC {
   self.stationDetailVC = [[HNDStationDetailViewController alloc] init];
+  [self.stationDetailVC willMoveToParentViewController:self];
   [self addChildViewController:self.stationDetailVC];
   [self.view addSubview:self.stationDetailVC.view];
+  [self.stationDetailVC didMoveToParentViewController:self];
+
   NSDictionary *views = @{@"detailView": self.stationDetailVC.view};
-  self.stationDetailHeightConstraint = [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44];
-  [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.stationDetailVC.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
+  self.stationDetailHeightConstraint =
+      [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view
+                                   attribute:NSLayoutAttributeHeight
+                                   relatedBy:NSLayoutRelationEqual
+                                      toItem:nil
+                                   attribute:NSLayoutAttributeNotAnAttribute
+                                  multiplier:1.0
+                                    constant:44];
+  [self.view addConstraint:
+      [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view
+                                   attribute:NSLayoutAttributeBottom
+                                   relatedBy:NSLayoutRelationEqual
+                                      toItem:self.view
+                                   attribute:NSLayoutAttributeBottom
+                                  multiplier:1.0
+                                    constant:0]];
   [self.view addConstraint:self.stationDetailHeightConstraint];
-  [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|" options:0 metrics:nil views:views]];
+  [self.view addConstraints:
+      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|"
+                                              options:0
+                                              metrics:nil
+                                                views:views]];
   [self.stationDetailVC.view.outtageButton addTarget:self
                                               action:@selector(showStationDetails:)
                                     forControlEvents:UIControlEventTouchUpInside];
 
-  [self.stationDetailVC didMoveToParentViewController:self];
 }
 
 - (void)getCurrentLocation {
@@ -124,9 +138,13 @@
   self.stationDetailHeightConstraint.constant = self.stationDetailVC.view.outtageButton.selected
       ? self.view.frame.size.height * 0.75f
       : 44.0f;
-  [UIView animateWithDuration:0.5 animations:^{
+  [UIView animateWithDuration:kAnimationDuration
+                        delay:0
+                      options:UIViewAnimationOptionCurveEaseIn
+                   animations:^{
     [self.view layoutIfNeeded];
-  }];
+  }
+                   completion:nil];
 }
 
 @end
