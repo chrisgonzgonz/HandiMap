@@ -24,6 +24,7 @@
 		72F339F41A745779009D79AA /* HandiMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72F339F21A745779009D79AA /* HandiMap.xcdatamodeld */; };
 		72F339F71A74655F009D79AA /* HNDManagedStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F339F61A74655F009D79AA /* HNDManagedStation.m */; };
 		9319746A1A74397000BF7EAD /* HNDMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 931974691A74397000BF7EAD /* HNDMapViewController.m */; };
+		932EB31F1A7EE5080022E865 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 932EB31E1A7EE5080022E865 /* MKMapView+ZoomLevel.m */; };
 		9344F27E1A709BF8007BED0C /* HNDButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F27D1A709BF8007BED0C /* HNDButton.m */; };
 		9344F2811A70A030007BED0C /* HNDMapFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F2801A70A030007BED0C /* HNDMapFlow.m */; };
 		934AA8121A7C71030091D9BC /* HNDStationDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 934AA8111A7C71030091D9BC /* HNDStationDAO.m */; };
@@ -89,6 +90,8 @@
 		84B06852E15E91944A35F829 /* Pods-HandiMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HandiMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-HandiMap/Pods-HandiMap.release.xcconfig"; sourceTree = "<group>"; };
 		931974681A74397000BF7EAD /* HNDMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDMapViewController.h; sourceTree = "<group>"; };
 		931974691A74397000BF7EAD /* HNDMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDMapViewController.m; sourceTree = "<group>"; };
+		932EB31D1A7EE5080022E865 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
+		932EB31E1A7EE5080022E865 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		9344F2791A709B81007BED0C /* HNDViewsKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDViewsKit.h; sourceTree = "<group>"; };
 		9344F27C1A709BF8007BED0C /* HNDButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDButton.h; sourceTree = "<group>"; };
 		9344F27D1A709BF8007BED0C /* HNDButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDButton.m; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 			children = (
 				93D758E71A7B3F2E00B48769 /* ZSPinAnnotation.h */,
 				93D758E81A7B3F2E00B48769 /* ZSPinAnnotation.m */,
+				932EB31D1A7EE5080022E865 /* MKMapView+ZoomLevel.h */,
+				932EB31E1A7EE5080022E865 /* MKMapView+ZoomLevel.m */,
 			);
 			path = "External Libraries";
 			sourceTree = "<group>";
@@ -559,6 +564,7 @@
 				93C6618D1A79FCFF00C38058 /* HNDStation.m in Sources */,
 				72BD4EE91A788B210086AD11 /* HNDManagedOutage+Convenience.m in Sources */,
 				939E680A1A79BB5100D6042E /* HNDSubwayLineFilterViewController.m in Sources */,
+				932EB31F1A7EE5080022E865 /* MKMapView+ZoomLevel.m in Sources */,
 				721849E31A7DC02E003DB01B /* HNDOutageDetailTableViewCell.m in Sources */,
 				939E68121A79C72200D6042E /* HNDSubwayLine.m in Sources */,
 				721849E61A7DDDC8003DB01B /* HNDManagedOutage.m in Sources */,

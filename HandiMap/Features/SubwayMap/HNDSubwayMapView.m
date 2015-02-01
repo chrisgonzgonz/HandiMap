@@ -1,6 +1,7 @@
 #import "HNDSubwayMapView.h"
 
 #import <MapKit/MapKit.h>
+#import "MKMapView+ZoomLevel.h"
 #import "ZSPinAnnotation.h"
 
 #import "HNDColor.h"
@@ -9,8 +10,9 @@
 
 static CGFloat const kAnimationDuration = 0.25f;
 static CGFloat const kDetailViewSpan    = 0.60f;
-static CGFloat const kMapCoordSpan      = 0.07f;
+static CGFloat const kMapCoordSpan      = 0.05f;
 static CGFloat const kPreviewHeight     = 44.0f; // TODO: Make this dynamic.
+static CGFloat const kZoomLevel         = 12; // Higher is more zoomed in.
 static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
 
 typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
@@ -37,8 +39,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
     self.backgroundColor = [HNDColor lightColor];
 
     _mapView = [[MKMapView alloc] init];
-    _mapView.showsUserLocation = YES;
-    _mapView.delegate = self;
+    [self setUpMap:_mapView];
 
     [self addSubview:_mapView];
     [self autolayoutViews];
@@ -108,7 +109,6 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
   if ([annotation isKindOfClass:[MKUserLocation class]]) return nil;
-
   // TODO: Make HNDStationAnnotation protocol.
   HNDStation *stationAnnotaion = (HNDStation *)annotation;
 
@@ -146,8 +146,26 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   }
 }
 
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+  if( mapView.zoomLevel < kZoomLevel ) {
+    [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:kZoomLevel animated:YES];
+  }
+}
+
 #pragma mark - Private
 #pragma mark MapView Helpers
+
+- (void)setUpMap:(MKMapView *)map {
+  _mapView.showsUserLocation = YES;
+  _mapView.delegate = self;
+
+  // Default zoom.
+  MKCoordinateRegion mapRegion;
+  mapRegion.center = CLLocationCoordinate2DMake(40.759211, -73.984638); // Empire State Building
+  mapRegion.span.latitudeDelta = kMapCoordSpan;
+  mapRegion.span.longitudeDelta = kMapCoordSpan;
+  [map setRegion:mapRegion animated:NO];
+}
 
 - (void)centerAnnotation:(id<MKAnnotation>)annotation inMap:(MKMapView *)mapView {
   MKMapPoint point = MKMapPointForCoordinate(annotation.coordinate);
