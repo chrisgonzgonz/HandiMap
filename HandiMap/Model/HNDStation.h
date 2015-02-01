@@ -11,7 +11,7 @@
 - (NSString *)name;
 - (NSString *)subwayLines;
 - (NSString *)accessibleLines;
-- (NSString *)ada;
+- (NSString *)adaText;
 - (UIColor *)annotationColor; // TODO: add this to a protocol that extends MKAnnotation.
 - (instancetype)initWithManagedStation:(HNDManagedStation *)managedStation
     NS_DESIGNATED_INITIALIZER;

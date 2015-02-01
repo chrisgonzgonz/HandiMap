@@ -88,7 +88,7 @@
   _station = station;
   self.subwayLinesLabel.text = station.subwayLines;
   self.accessibleLinesLabel.text = station.accessibleLines;
-  self.adaLabel.text = station.ada;
+  self.adaLabel.text = station.adaText;
 }
 
 //- (void)setSelected:(BOOL)selected animated:(BOOL)animated {

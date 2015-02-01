@@ -6,13 +6,20 @@
 
 static NSString *kLineCharSeperator = @", ";
 
+typedef NS_ENUM(NSUInteger, HNDStationStatus) {
+  HNDStationStatusAda,
+  HNDStationStatusOutage, // Partial vs full outages???
+  HNDStationStatusNotAda
+};
+
 @interface HNDStation ()
-@property (nonatomic, readwrite) HNDManagedStation *managedStation;
+@property(nonatomic, readwrite) HNDManagedStation *managedStation;
+@property(nonatomic, readonly) HNDStationStatus stationStatus;
 @end
 
 @implementation HNDStation
 
-#pragma mark - Private
+#pragma mark - Public
 
 - (instancetype)initWithManagedStation:(HNDManagedStation *)managedStation {
   if (self = [super init]) {
@@ -40,17 +47,19 @@ static NSString *kLineCharSeperator = @", ";
   return self.managedStation.accessibleRoutes.count ? [self.managedStation.accessibleRoutes componentsJoinedByString:@", "] : @"None";
 }
 
-- (NSString *)ada {
+- (NSString *)adaText {
   return [self.managedStation.ada boolValue] ? @"Yes" : @"No";
 }
 
 - (UIColor *)annotationColor {
-  if (self.managedStation.outages.count) {
-    return [HNDColor errorColor];
-  } else if (!self.managedStation.ada.boolValue) {
-    return [HNDColor warningColor];
+  switch (self.stationStatus) {
+    case HNDStationStatusOutage:
+      return [HNDColor errorColor];
+    case HNDStationStatusNotAda:
+      return [HNDColor warningColor];
+    default:
+      return [HNDColor highlightColor];
   }
-  return [HNDColor highlightColor]; // success color?
 }
 
 #pragma mark - Protocols
@@ -70,6 +79,17 @@ static NSString *kLineCharSeperator = @", ";
       ^NSComparisonResult(NSString *subwayLineOne, NSString *subwayLineTwo) {
         return [subwayLineOne compare:subwayLineTwo];
       }] componentsJoinedByString:kLineCharSeperator];
+}
+
+#pragma mark - Private
+
+- (HNDStationStatus)stationStatus {
+  if (self.managedStation.outages.count) {
+    return HNDStationStatusOutage;
+  } else if (!self.managedStation.ada.boolValue) {
+    return HNDStationStatusNotAda;
+  }
+  return HNDStationStatusAda;
 }
 
 @end
