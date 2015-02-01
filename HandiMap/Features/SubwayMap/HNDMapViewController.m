@@ -45,11 +45,6 @@
   self.view.delegate = self;
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                         duration:(NSTimeInterval)duration {
-  [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-}
-
 #pragma mark - Protocols
 #pragma mark HNDStationFilterDelegate
 
@@ -81,13 +76,6 @@
 }
 
 - (void)getCurrentLocation {
-  // INTULocationManager gets CLLocationManager permission in addition to the current location.
-  // I think MKMapView automatically will update the current location and call back to
-  // it's delegate. If this is confirmed, the INTULocationManager pod can be removed,
-  // but we need to manually handle asking for CLLocationManager permissions.
-  
-  // TODO: Get a stream and update values. If this is not needed, then INTULocationManager,
-  // can be deleted.
   [[INTULocationManager sharedInstance]
       requestLocationWithDesiredAccuracy:INTULocationAccuracyHouse
                                  timeout:10
@@ -95,7 +83,7 @@
                                            INTULocationAccuracy achievedAccuracy,
                                            INTULocationStatus status) {
      if (status == INTULocationStatusSuccess) {
-       NSLog(@"Location: %@", currentLocation);
+       [self.view centerAnnotion:currentLocation];
      } else {
        NSLog(@"Could not get location. FML.");
      }

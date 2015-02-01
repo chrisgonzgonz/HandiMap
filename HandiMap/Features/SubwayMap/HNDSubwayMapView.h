@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 
+@class CLLocation;
 @class MKMapView;
 @class HNDStation;
 
@@ -15,5 +16,6 @@
 
 /// \param stations is expected to conform to the \protocol MKAnnotation
 - (void)updateStations:(NSArray *)stations;
+- (void)centerAnnotion:(CLLocation *)location;
 
 @end

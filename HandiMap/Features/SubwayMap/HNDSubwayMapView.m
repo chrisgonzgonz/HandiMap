@@ -68,6 +68,10 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   [self.mapView addAnnotations:stations];
 }
 
+- (void)centerAnnotion:(CLLocation *)location {
+  [self centerAnnotation:location.coordinate inMap:self.mapView];
+}
+
 #pragma mark - TargetActions
 
 - (void)panDetailView:(UIPanGestureRecognizer *)recognizer {
@@ -122,13 +126,9 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   return pinView;
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-  [self centerAnnotation:userLocation inMap:mapView];
-}
-
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
   if ([self.selectedAnnotationView isEqual:view]) return;
-  [self centerAnnotation:view.annotation inMap:mapView];
+  [self centerAnnotation:view.annotation.coordinate inMap:mapView];
   if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
     self.selectedAnnotationView = view;
     [self showStationDetailsPreview];
@@ -167,8 +167,8 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   [map setRegion:mapRegion animated:NO];
 }
 
-- (void)centerAnnotation:(id<MKAnnotation>)annotation inMap:(MKMapView *)mapView {
-  MKMapPoint point = MKMapPointForCoordinate(annotation.coordinate);
+- (void)centerAnnotation:(CLLocationCoordinate2D)coordinate inMap:(MKMapView *)mapView {
+  MKMapPoint point = MKMapPointForCoordinate(coordinate);
   MKMapRect rect = [mapView visibleMapRect];
   rect.origin.x = point.x - rect.size.width * 0.5;
   rect.origin.y = point.y - rect.size.height * 0.5;
