@@ -46,10 +46,6 @@
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[accessibleLinesTitle][accessibleLinesLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[adaTitle][adaLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
   [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:adaTitle attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self.adaLabel attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0]];
-  
-  self.subwayLinesLabel.backgroundColor = [UIColor greenColor];
-  self.accessibleLinesLabel.backgroundColor = [UIColor redColor];
-  self.adaLabel.backgroundColor = [UIColor purpleColor];
 }
 
 - (HNDLabel *)subwayLinesLabel {

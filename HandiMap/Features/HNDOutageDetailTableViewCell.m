@@ -80,11 +80,6 @@
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[adaTitle][adaLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[updatedAtTitle][updatedAtLabel]|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[updatedAtTitle][updatedAtLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-//  self.adaLabel.backgroundColor = [UIColor redColor];
-//  adaTitle.backgroundColor = [UIColor orangeColor];
-//  self.updatedAtLabel.backgroundColor = [UIColor greenColor];
-//  updatedAtTitle.backgroundColor = [UIColor blueColor];
-  
 }
 
 - (HNDLabel *)servingLabel {
@@ -201,7 +196,6 @@
   [formatter setDateFormat:@"MM/dd/yyyy',' hh:mma"];
   return formatter;
 }
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
