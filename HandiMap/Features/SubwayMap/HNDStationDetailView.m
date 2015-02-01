@@ -1,11 +1,11 @@
 #import "HNDStationDetailView.h"
 
-#import "HNDButton.h"
 #import "HNDColor.h"
+#import "HNDLabel.h"
 
 @interface HNDStationDetailView ()
 @property(nonatomic, readwrite, weak) UITableView *tableView;
-@property(nonatomic, readwrite, weak) HNDButton *outageButton;
+@property(nonatomic, readwrite, weak) HNDLabel *titleView;
 @end
 
 @implementation HNDStationDetailView
@@ -17,16 +17,39 @@
   return self;
 }
 
+- (HNDLabel *)titleView {
+  if (!_titleView) {
+    HNDLabel *titleView = [[[[HNDLabel alloc] init] typeSubtitle] invertTextColor];
+    _titleView = titleView;
+    _titleView.textAlignment = NSTextAlignmentCenter;
+    _titleView.translatesAutoresizingMaskIntoConstraints = NO;
+    _titleView.backgroundColor = [HNDColor mainColor];
+    [self addSubview:_titleView];
+  }
+  return _titleView;
+}
+
+- (UITableView *)tableView {
+  if (!_tableView) {
+    UITableView *tableView = [[UITableView alloc] init];
+    _tableView = tableView;
+    _tableView.backgroundColor = [HNDColor lightColor];
+    _tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_tableView];
+  }
+  return _tableView;
+}
+
 - (void)autolayoutSubviews {
-  self.translatesAutoresizingMaskIntoConstraints = NO;
-  NSDictionary *views = @{@"outageButton": self.outageButton, @"tableView": self.tableView};
+  NSDictionary *views = @{@"titleView" : self.titleView,
+                          @"tableView" : self.tableView};
   [self addConstraints:
-      [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[outageButton(==44)][tableView]|"
+      [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[titleView(>=44)][tableView]|"
                                               options:0
                                               metrics:nil
                                                 views:views]];
   [self addConstraints:
-      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[outageButton]|"
+      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[titleView]|"
                                               options:0
                                               metrics:nil
                                               views:views]];
@@ -37,25 +60,4 @@
                                               views:views]];
 }
 
-- (HNDButton *)outageButton {
-  if (!_outageButton) {
-    HNDButton *outageButton = [[HNDButton alloc] init];
-    outageButton.translatesAutoresizingMaskIntoConstraints = NO;
-    _outageButton = outageButton;
-    _outageButton.backgroundColor = [HNDColor mainColor];
-    [_outageButton setTitleColor:[HNDColor lightColor] forState:UIControlStateNormal];
-    [self addSubview:_outageButton];
-  }
-  return _outageButton;
-}
-
-- (UITableView *)tableView {
-  if (!_tableView) {
-    UITableView *tableView = [[UITableView alloc] init];
-    tableView.translatesAutoresizingMaskIntoConstraints = NO;
-    _tableView = tableView;
-    [self addSubview:_tableView];
-  }
-  return _tableView;
-}
 @end

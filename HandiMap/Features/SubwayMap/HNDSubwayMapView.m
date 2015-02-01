@@ -7,7 +7,7 @@
 #import "HNDButton.h"
 #import "HNDStation.h"
 
-static CGFloat const kAnimationDuration = 0.25f; // This is copy and pasted...define globaly.
+static CGFloat const kAnimationDuration = 0.20f;
 static CGFloat const kMapCoordSpan      = 0.07f;
 static CGFloat const kPreviewHeight     = 44.0f; // TODO: Make this dynamic.
 static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";

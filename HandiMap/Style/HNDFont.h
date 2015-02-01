@@ -4,6 +4,7 @@
 
 + (UIFont *)defaultFont;
 + (UIFont *)titleFont;
++ (UIFont *)subtitleFont;
 + (UIFont *)largeFont;
 
 @end

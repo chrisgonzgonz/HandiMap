@@ -30,6 +30,11 @@
   return self;
 }
 
+- (instancetype)typeSubtitle {
+  self.font = [HNDFont subtitleFont];
+  return self;
+}
+
 - (instancetype)typeLargeText {
   self.font = [HNDFont largeFont];
   return self;

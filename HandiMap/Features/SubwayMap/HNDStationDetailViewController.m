@@ -1,6 +1,6 @@
 #import "HNDStationDetailViewController.h"
 
-#import "HNDButton.h" // TODO: Not needed.
+#import "HNDLabel.h"
 #import "HNDOutageDetailTableViewCell.h"
 #import "HNDStation.h"
 #import "HNDStationDetailView.h"
@@ -33,11 +33,12 @@
 
 - (void)setSelectedStation:(HNDStation *)selectedStation {
   _selectedStation = selectedStation;
-  [self.view.outageButton setTitle:selectedStation.name forState:UIControlStateNormal];
-  [self.view.tableView reloadData];
+  [self refreshViews];
 }
 
-#pragma mark - TableView Datasource
+#pragma mark - Protocols
+#pragma mark - UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return 2;
 }
@@ -100,6 +101,13 @@
         [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height + 1.0f;
   }
+}
+
+#pragma mark - Private
+
+- (void)refreshViews {
+  self.view.titleView.text = self.selectedStation.name;
+  [self.view.tableView reloadData];
 }
 
 //

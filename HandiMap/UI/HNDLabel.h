@@ -4,8 +4,9 @@
 
 - (instancetype)invertTextColor;
 
-// TODO: This should be a subclass (eg: HNDTitleLabel).
 - (instancetype)typeTitle;
+
+- (instancetype)typeSubtitle;
 
 - (instancetype)typeLargeText;
 
