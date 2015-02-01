@@ -7,7 +7,7 @@
 #import "HNDButton.h"
 #import "HNDStation.h"
 
-static CGFloat const kAnimationDuration = 0.2f; // This is copy and pasted...define globaly.
+static CGFloat const kAnimationDuration = 0.25f; // This is copy and pasted...define globaly.
 static CGFloat const kMapCoordSpan      = 0.07f;
 static CGFloat const kPreviewHeight     = 44.0f; // TODO: Make this dynamic.
 static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
@@ -53,8 +53,10 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   _stationDetailView.backgroundColor = [UIColor purpleColor];
 
   _stationDetailView.userInteractionEnabled = YES;
-  _stationDetailView.gestureRecognizers =
-      @[[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDetailView:)]];
+  _stationDetailView.gestureRecognizers = @[
+    [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDetailView:)],
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetailView:)]
+  ];
   [self addSubview:_stationDetailView];
   [self autoLayoutDetailSubview];
   [self layoutIfNeeded];
@@ -82,13 +84,25 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 
   // Snap it.
   if (recognizer.state == UIGestureRecognizerStateEnded) {
-    if (self.lastTranslation > 0) {
-      [self hideStationDetails];
-    } else if (self.detailViewState == HNDDetailViewStatePreview) {
-      [self showStationDetails];
+    if (self.detailViewState == HNDDetailViewStatePreview) {
+      if (self.lastTranslation > 0) {
+        [self hideStationDetails];
+      } else {
+        [self showStationDetails];
+      }
+    } else { // assuming show state.
+      if (nextPosY > minPosY) {
+        [self hideStationDetails];
+      }
     }
   }
   self.lastTranslation = translation.y;
+}
+
+- (void)tapDetailView:(UITapGestureRecognizer *)recognizer {
+  if (self.detailViewState == HNDDetailViewStatePreview) {
+    [self showStationDetails];
+  }
 }
 
 #pragma mark - Protocols
