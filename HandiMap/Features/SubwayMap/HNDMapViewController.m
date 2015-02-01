@@ -10,15 +10,13 @@
 #import "HNDStationDetailViewController.h"
 #import "HNDStationDetailView.h"
 
-static CGFloat const kAnimationDuration = 0.2f;
-
 @interface HNDMapViewController () <HNDStationFilterDelegate,
                                     HNDSubwayMapViewDelegate>
+@property(nonatomic) HNDSubwayMapView *view; // Casts root view.
 @property(nonatomic) NSLayoutConstraint *stationDetailHeightConstraint;
 @property(nonatomic) HNDStation *selectedStation;
 @property(nonatomic) HNDStationDetailViewController *stationDetailVC;
 @property(nonatomic) HNDStationManager *stationManager;
-@property(nonatomic) HNDSubwayMapView *view; // Casts root view.
 @end
 
 @implementation HNDMapViewController
@@ -44,25 +42,12 @@ static CGFloat const kAnimationDuration = 0.2f;
   [super viewDidLoad];
   [self getCurrentLocation];
   [self loadStations];
-
-  // Moving this to view.
-  [self setupStationDetailVC];
-
   self.view.delegate = self;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                          duration:(NSTimeInterval)duration {
   [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-  [self expandDetailsContainer];
-}
-
-#pragma mark - TargetActions
-
-- (void)showStationDetails:(UIButton *)sender {
-  self.stationDetailVC.view.outageButton.selected = 
-      !self.stationDetailVC.view.outageButton.selected;
-  [self expandDetailsContainer];
 }
 
 #pragma mark - Protocols
@@ -95,36 +80,6 @@ static CGFloat const kAnimationDuration = 0.2f;
   [self.view updateStations:self.stationManager.filteredStations];
 }
 
-- (void)setupStationDetailVC {
-//  NSDictionary *views = @{@"detailView": self.stationDetailVC.view};
-//  self.stationDetailHeightConstraint =
-//      [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view
-//                                   attribute:NSLayoutAttributeHeight
-//                                   relatedBy:NSLayoutRelationEqual
-//                                      toItem:nil
-//                                   attribute:NSLayoutAttributeNotAnAttribute
-//                                  multiplier:1.0
-//                                    constant:44];
-//  [self.view addConstraint:
-//      [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view
-//                                   attribute:NSLayoutAttributeBottom
-//                                   relatedBy:NSLayoutRelationEqual
-//                                      toItem:self.view
-//                                   attribute:NSLayoutAttributeBottom
-//                                  multiplier:1.0
-//                                    constant:0]];
-//  [self.view addConstraint:self.stationDetailHeightConstraint];
-//  [self.view addConstraints:
-//      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|"
-//                                              options:0
-//                                              metrics:nil
-//                                                views:views]];
-//  [self.stationDetailVC.view.outageButton addTarget:self
-//                                              action:@selector(showStationDetails:)
-//                                    forControlEvents:UIControlEventTouchUpInside];
-
-}
-
 - (void)getCurrentLocation {
   // INTULocationManager gets CLLocationManager permission in addition to the current location.
   // I think MKMapView automatically will update the current location and call back to
@@ -145,18 +100,6 @@ static CGFloat const kAnimationDuration = 0.2f;
        NSLog(@"Could not get location. FML.");
      }
    }];
-}
-
-// TODO: Move this into the view.
-- (void)expandDetailsContainer{
-  self.stationDetailHeightConstraint.constant = self.stationDetailVC.view.outageButton.selected
-      ? self.view.frame.size.height * 0.75f
-      : 44.0f;
-  [UIView animateWithDuration:kAnimationDuration
-                        delay:0
-                      options:UIViewAnimationOptionCurveEaseIn
-                   animations:^{ [self.view layoutIfNeeded]; }
-                   completion:nil];
 }
 
 @end

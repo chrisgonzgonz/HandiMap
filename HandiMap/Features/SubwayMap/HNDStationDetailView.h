@@ -1,15 +1,9 @@
-//
-//  HNDStationDetailView.h
-//  HandiMap
-//
-//  Created by Chris Gonzales on 1/30/15.
-//  Copyright (c) 2015 FSDC. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
-#import "HNDButton.h"
+// TODO: Don't use a button.
+@class HNDButton;
+
 @interface HNDStationDetailView : UIView
-@property (weak, nonatomic, readonly) UITableView *tableView;
-@property (weak, nonatomic, readonly) HNDButton *outageButton;
+@property(nonatomic, readonly, weak) UITableView *tableView;
+@property(nonatomic, readonly, weak) HNDButton *outageButton;
 @end
