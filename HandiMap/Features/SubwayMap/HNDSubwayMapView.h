@@ -6,7 +6,7 @@
 @protocol HNDSubwayMapViewDelegate <NSObject>
 @optional
 - (void)didSelectStation:(HNDStation *)station;
-- (void)didDeselectStation:(HNDStation *)station;
+- (void)didDeselectStation:(HNDStation *)station; // Not stable, do not use yet.
 @end
 
 @interface HNDSubwayMapView : UIView
