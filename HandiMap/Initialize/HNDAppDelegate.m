@@ -5,6 +5,7 @@
 #import "HNDDataStore.h"
 #import "HNDMapFlow.h"
 
+// TODO: This should not be checked in...
 static NSString *const kHockeyId = @"f7b9bbd12bb0d75390f8dd8894f8f70a";
 
 @interface HNDAppDelegate()
