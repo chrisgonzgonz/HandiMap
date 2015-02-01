@@ -4,7 +4,7 @@
 /// \link https://color.adobe.com/Quiet-Cry-color-theme-124171/
 
 /// Uses the following theme for error/success
-/// \link https://color.adobe.com/Beetle-Bus-goes-Jamba-Juice-color-theme-1435983/
+/// \link https://color.adobe.com/Citrus-Grove-color-theme-580742/
 
 static const CGFloat kEightBitColorRange = 255.0f;
 
@@ -32,15 +32,15 @@ static const CGFloat kEightBitColorRange = 255.0f;
 
 /// Colors used to convey meaning.
 + (UIColor *)errorColor {
-  return UIColorFromHex(0xc93c00);
+  return UIColorFromHex(0xDB5800);
 }
 
 + (UIColor *)successColor {
-  return UIColorFromHex(0xbfbb11);
+  return UIColorFromHex(0x8DB500);
 }
 
 + (UIColor *)warningColor {
-  return UIColorFromHex(0xffc200);
+  return UIColorFromHex(0xF0C600);
 }
 
 #pragma mark - Private

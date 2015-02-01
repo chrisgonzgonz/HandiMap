@@ -69,12 +69,15 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
   if ([annotation isKindOfClass:[MKUserLocation class]]) return nil;
 
+  // TODO: Make HNDStationAnnotation protocol.
+  HNDStation *stationAnnotaion = (HNDStation *)annotation;
+
   ZSPinAnnotation *pinView = (ZSPinAnnotation *)
       ([mapView dequeueReusableAnnotationViewWithIdentifier:kPinReuseId]
-      ?: [[ZSPinAnnotation alloc] initWithAnnotation:annotation reuseIdentifier:kPinReuseId]);
-  pinView.annotation = annotation;
+      ?: [[ZSPinAnnotation alloc] initWithAnnotation:stationAnnotaion reuseIdentifier:kPinReuseId]);
+  pinView.annotation = stationAnnotaion;
   pinView.annotationType = ZSPinAnnotationTypeTag;
-  pinView.annotationColor = [HNDColor highlightColor];
+  pinView.annotationColor = stationAnnotaion.annotationColor;
   pinView.canShowCallout = NO;
   return pinView;
 }
