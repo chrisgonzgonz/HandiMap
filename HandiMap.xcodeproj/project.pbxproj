@@ -10,6 +10,8 @@
 		7210A6501A7C80DD00B6AFA2 /* HNDStationDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210A64F1A7C80DD00B6AFA2 /* HNDStationDetailView.m */; };
 		7210A6531A7C85E100B6AFA2 /* HNDStationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210A6521A7C85E100B6AFA2 /* HNDStationDetailViewController.m */; };
 		721849DF1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 721849DE1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m */; };
+		721849E31A7DC02E003DB01B /* HNDOutageDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 721849E21A7DC02E003DB01B /* HNDOutageDetailTableViewCell.m */; };
+		721849E61A7DDDC8003DB01B /* HNDManagedOutage.m in Sources */ = {isa = PBXBuildFile; fileRef = 721849E51A7DDDC8003DB01B /* HNDManagedOutage.m */; };
 		72835F361A74419100CD23D2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72835F351A74419100CD23D2 /* Default-568h@2x.png */; };
 		72835F391A74433800CD23D2 /* HNDSubwayMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72835F381A74433800CD23D2 /* HNDSubwayMapView.m */; };
 		72835F3B1A74452200CD23D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72835F3A1A74452200CD23D2 /* MapKit.framework */; };
@@ -21,7 +23,6 @@
 		72EEC13B1A74767500CF496A /* HNDJobNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EEC13A1A74767500CF496A /* HNDJobNetworkManager.m */; };
 		72F339F41A745779009D79AA /* HandiMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72F339F21A745779009D79AA /* HandiMap.xcdatamodeld */; };
 		72F339F71A74655F009D79AA /* HNDManagedStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F339F61A74655F009D79AA /* HNDManagedStation.m */; };
-		72F339FA1A74655F009D79AA /* HNDManagedOutage.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F339F91A74655F009D79AA /* HNDManagedOutage.m */; };
 		9319746A1A74397000BF7EAD /* HNDMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 931974691A74397000BF7EAD /* HNDMapViewController.m */; };
 		9344F27E1A709BF8007BED0C /* HNDButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F27D1A709BF8007BED0C /* HNDButton.m */; };
 		9344F2811A70A030007BED0C /* HNDMapFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F2801A70A030007BED0C /* HNDMapFlow.m */; };
@@ -63,6 +64,10 @@
 		7210A6521A7C85E100B6AFA2 /* HNDStationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStationDetailViewController.m; sourceTree = "<group>"; };
 		721849DD1A7D50FD003DB01B /* HNDStationDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDStationDetailTableViewCell.h; sourceTree = "<group>"; };
 		721849DE1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDStationDetailTableViewCell.m; sourceTree = "<group>"; };
+		721849E11A7DC02E003DB01B /* HNDOutageDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDOutageDetailTableViewCell.h; sourceTree = "<group>"; };
+		721849E21A7DC02E003DB01B /* HNDOutageDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDOutageDetailTableViewCell.m; sourceTree = "<group>"; };
+		721849E41A7DDDC8003DB01B /* HNDManagedOutage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDManagedOutage.h; sourceTree = "<group>"; };
+		721849E51A7DDDC8003DB01B /* HNDManagedOutage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDManagedOutage.m; sourceTree = "<group>"; };
 		72835F351A74419100CD23D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		72835F371A74433800CD23D2 /* HNDSubwayMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDSubwayMapView.h; sourceTree = "<group>"; };
 		72835F381A74433800CD23D2 /* HNDSubwayMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSubwayMapView.m; sourceTree = "<group>"; };
@@ -81,8 +86,6 @@
 		72F339F31A745779009D79AA /* HandiMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HandiMap.xcdatamodel; sourceTree = "<group>"; };
 		72F339F51A74655F009D79AA /* HNDManagedStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDManagedStation.h; sourceTree = "<group>"; };
 		72F339F61A74655F009D79AA /* HNDManagedStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDManagedStation.m; sourceTree = "<group>"; };
-		72F339F81A74655F009D79AA /* HNDManagedOutage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDManagedOutage.h; sourceTree = "<group>"; };
-		72F339F91A74655F009D79AA /* HNDManagedOutage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDManagedOutage.m; sourceTree = "<group>"; };
 		84B06852E15E91944A35F829 /* Pods-HandiMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HandiMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-HandiMap/Pods-HandiMap.release.xcconfig"; sourceTree = "<group>"; };
 		931974681A74397000BF7EAD /* HNDMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDMapViewController.h; sourceTree = "<group>"; };
 		931974691A74397000BF7EAD /* HNDMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDMapViewController.m; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 			children = (
 				721849DD1A7D50FD003DB01B /* HNDStationDetailTableViewCell.h */,
 				721849DE1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m */,
+				721849E11A7DC02E003DB01B /* HNDOutageDetailTableViewCell.h */,
+				721849E21A7DC02E003DB01B /* HNDOutageDetailTableViewCell.m */,
 			);
 			name = SubwayDetailTableView;
 			sourceTree = "<group>";
@@ -172,10 +177,10 @@
 			isa = PBXGroup;
 			children = (
 				72F339F21A745779009D79AA /* HandiMap.xcdatamodeld */,
+				721849E41A7DDDC8003DB01B /* HNDManagedOutage.h */,
+				721849E51A7DDDC8003DB01B /* HNDManagedOutage.m */,
 				72835F3E1A74556000CD23D2 /* HNDCoreDataManager.h */,
 				72835F3F1A74556000CD23D2 /* HNDCoreDataManager.m */,
-				72F339F81A74655F009D79AA /* HNDManagedOutage.h */,
-				72F339F91A74655F009D79AA /* HNDManagedOutage.m */,
 				72BD4EE71A788B210086AD11 /* HNDManagedOutage+Convenience.h */,
 				72BD4EE81A788B210086AD11 /* HNDManagedOutage+Convenience.m */,
 				72F339F51A74655F009D79AA /* HNDManagedStation.h */,
@@ -522,7 +527,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9319746A1A74397000BF7EAD /* HNDMapViewController.m in Sources */,
-				72F339FA1A74655F009D79AA /* HNDManagedOutage.m in Sources */,
 				934AA8121A7C71030091D9BC /* HNDStationDAO.m in Sources */,
 				93958F1E1A6F4D5800057481 /* HNDLabel.m in Sources */,
 				93D758EC1A7B5A7C00B48769 /* HNDStationManager.m in Sources */,
@@ -541,7 +545,9 @@
 				93C6618D1A79FCFF00C38058 /* HNDStation.m in Sources */,
 				72BD4EE91A788B210086AD11 /* HNDManagedOutage+Convenience.m in Sources */,
 				939E680A1A79BB5100D6042E /* HNDSubwayLineFilterViewController.m in Sources */,
+				721849E31A7DC02E003DB01B /* HNDOutageDetailTableViewCell.m in Sources */,
 				939E68121A79C72200D6042E /* HNDSubwayLine.m in Sources */,
+				721849E61A7DDDC8003DB01B /* HNDManagedOutage.m in Sources */,
 				72BD4EED1A788B400086AD11 /* HNDManagedStation+Convenience.m in Sources */,
 				9344F2811A70A030007BED0C /* HNDMapFlow.m in Sources */,
 				72F339F71A74655F009D79AA /* HNDManagedStation.m in Sources */,

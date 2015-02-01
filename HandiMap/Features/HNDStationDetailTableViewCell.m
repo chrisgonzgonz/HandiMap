@@ -34,8 +34,6 @@
   subwayLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
   accessibleLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
   adaTitle.translatesAutoresizingMaskIntoConstraints = NO;
-//  [adaTitle setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-//  adaTitle.preferredMaxLayoutWidth = 150;
   
   [self.contentView addSubview:subwayLinesTitle];
   [self.contentView addSubview:accessibleLinesTitle];
@@ -91,6 +89,7 @@
 }
 
 - (void)setStation:(HNDStation *)station {
+  _station = station;
   self.subwayLinesLabel.text = station.subwayLines;
   self.accessibleLinesLabel.text = station.accessibleLines;
   self.adaLabel.text = station.ada;

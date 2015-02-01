@@ -11,8 +11,10 @@
 #import "HNDStationDetailView.h"
 #import "HNDStationDetailTableViewCell.h"
 #import "HNDStation.h"
+#import "HNDOutageDetailTableViewCell.h"
 @interface HNDStationDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, readwrite) HNDStationDetailView *view;
+@property (nonatomic) NSArray *currentOutages;
 @end
 
 @implementation HNDStationDetailViewController
@@ -36,17 +38,30 @@
 
 - (void)setSelectedStation:(HNDStation *)selectedStation {
   _selectedStation = selectedStation;
+  self.currentOutages = [selectedStation.managedStation.outages allObjects];
   [self.view.outageButton setTitle:selectedStation.name forState:UIControlStateNormal];
   [self.view.tableView reloadData];
 }
 
 #pragma mark - TableView Datasource
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//  return 1;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+  switch (section) {
+    case 0:
+      return @"Station Information";
+      break;
+      
+    default:
+      return @"Outages";
+      break;
+  }
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 1;
+  return section ? self.selectedStation.managedStation.outages.count : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -54,19 +69,25 @@
   if (indexPath.section == 0) {
     static NSString *stationCellID = @"stationCell";
     HNDStationDetailTableViewCell *stationCell = [tableView dequeueReusableCellWithIdentifier:stationCellID];
-    if (!cell) {
+    if (!stationCell) {
       stationCell = [[HNDStationDetailTableViewCell alloc] init];
     }
     stationCell.station = self.selectedStation;
     cell = stationCell;
-  } else {
-    return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"basic"];
+  } else{
+    static NSString *outageCellID = @"outageCell";
+    HNDOutageDetailTableViewCell *outageCell = [tableView dequeueReusableCellWithIdentifier:outageCellID];
+    if (!outageCell) {
+      outageCell = [[HNDOutageDetailTableViewCell alloc] init];
+    }
+    outageCell.outage = self.currentOutages[indexPath.row];
+    cell = outageCell;
   }
   return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.row == 0) {
+  if (indexPath.section == 0) {
     HNDStationDetailTableViewCell *sizingCell = [self.view.tableView dequeueReusableCellWithIdentifier:@"stationCell"];
     if (!sizingCell) {
       sizingCell = [[HNDStationDetailTableViewCell alloc] init];
@@ -76,8 +97,17 @@
     [sizingCell layoutIfNeeded];
     CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height + 1.0f;
+  } else {
+    HNDOutageDetailTableViewCell *sizingCell = [self.view.tableView dequeueReusableCellWithIdentifier:@"outageCell"];
+    if (!sizingCell) {
+      sizingCell = [[HNDOutageDetailTableViewCell alloc] init];
+    }
+    sizingCell.outage = self.currentOutages[indexPath.row];
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 1.0f;
   }
-  return 90;
 }
 
 //
