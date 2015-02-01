@@ -131,26 +131,24 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-  if ([self.selectedAnnotationView isEqual:view]) {
-    return;
-  } else {
-    self.selectedAnnotationView = view;
-  }
+  if ([self.selectedAnnotationView isEqual:view]) return;
   MKMapPoint point = MKMapPointForCoordinate(view.annotation.coordinate);
   MKMapRect rect = [mapView visibleMapRect];
   rect.origin.x = point.x - rect.size.width * 0.5;
   rect.origin.y = point.y - rect.size.height * 0.5;
   [mapView setVisibleMapRect:rect animated:YES];
-  if (view.annotation != [MKUserLocation class]) {
+  if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
+    self.selectedAnnotationView = view;
     [self showStationDetailsPreview];
-    [self.delegate didSelectStation:view.annotation];
+    [self.delegate didSelectStation:self.selectedAnnotationView.annotation];
   }
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
   if (view.annotation != [MKUserLocation class]) {
+    self.selectedAnnotationView = nil;
     [self hideStationDetails];
-    [self.delegate didSelectStation:view.annotation];
+    [self.delegate didDeselectStation:view.annotation];
   }
 }
 
