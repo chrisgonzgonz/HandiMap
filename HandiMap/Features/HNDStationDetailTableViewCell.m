@@ -25,11 +25,29 @@
 }
 
 - (void)autolayoutSubviews {
-  NSDictionary *views = @{@"subwayLinesLabel": self.subwayLinesLabel, @"accessibleLinesLabel": self.accessibleLinesLabel, @"adaLabel": self.adaLabel};
+  HNDLabel *subwayLinesTitle = [[HNDLabel alloc] init];
+  subwayLinesTitle.text = @"Subway Lines:";
+  HNDLabel *accessibleLinesTitle = [[HNDLabel alloc] init];
+  accessibleLinesTitle.text = @"Accessible Lines:";
+  HNDLabel *adaTitle = [[HNDLabel alloc] init];
+  adaTitle.text = @"ADA:";
+  subwayLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
+  accessibleLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
+  adaTitle.translatesAutoresizingMaskIntoConstraints = NO;
+//  [adaTitle setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+//  adaTitle.preferredMaxLayoutWidth = 150;
+  
+  [self.contentView addSubview:subwayLinesTitle];
+  [self.contentView addSubview:accessibleLinesTitle];
+  [self.contentView addSubview:adaTitle];
+  
+  NSDictionary *views = @{@"subwayLinesLabel": self.subwayLinesLabel, @"accessibleLinesLabel": self.accessibleLinesLabel, @"adaLabel": self.adaLabel, @"subwayLinesTitle": subwayLinesTitle, @"accessibleLinesTitle": accessibleLinesTitle, @"adaTitle": adaTitle};
+  
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[subwayLinesLabel][accessibleLinesLabel][adaLabel]|" options:0 metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subwayLinesLabel]|" options:0 metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[accessibleLinesLabel]|" options:0 metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[adaLabel]|" options:0 metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subwayLinesTitle][subwayLinesLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[accessibleLinesTitle][accessibleLinesLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[adaTitle][adaLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:adaTitle attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self.adaLabel attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0]];
   
   self.subwayLinesLabel.backgroundColor = [UIColor greenColor];
   self.accessibleLinesLabel.backgroundColor = [UIColor redColor];

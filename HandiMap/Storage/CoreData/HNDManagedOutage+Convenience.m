@@ -1,5 +1,4 @@
 #import "HNDManagedOutage+Convenience.h"
-
 @implementation HNDManagedOutage (Convenience)
 
 - (instancetype)initWithEntity:(NSEntityDescription *)entity
