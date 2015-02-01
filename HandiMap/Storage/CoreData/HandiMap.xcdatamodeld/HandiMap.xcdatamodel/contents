@@ -3,8 +3,8 @@
     <entity name="HNDManagedOutage" representedClassName="HNDManagedOutage" syncable="YES">
         <attribute name="ada" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="equipmentType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="estimatedReturnOfService" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="outageStartDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="estimatedReturnOfService" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="outageStartDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="reason" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="routesAffected" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="serving" optional="YES" attributeType="Transformable" syncable="YES"/>
