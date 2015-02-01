@@ -71,14 +71,19 @@
   [views addEntriesFromDictionary:titleViews];
   
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[servingLabel][equipmentTypeLabel][routesAffectedLabel][reasonLabel][outageStartDateLabel][estimatedReturnOfServiceLabel][adaLabel][updatedAtLabel]|" options:0 metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[servingTitle][servingLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[equipmentTypeTitle][equipmentTypeLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[routesAffectedTitle][routesAffectedLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[reasonTitle][reasonLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[outageStartTitle][outageStartDateLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[estimatedReturnTitle][estimatedReturnOfServiceLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[servingTitle][servingLabel]|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[equipmentTypeTitle][equipmentTypeLabel]|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[routesAffectedTitle][routesAffectedLabel]|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[reasonTitle][reasonLabel]|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[outageStartTitle][outageStartDateLabel]|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[estimatedReturnTitle][estimatedReturnOfServiceLabel]|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[adaTitle][adaLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[updatedAtTitle][updatedAtLabel]|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[updatedAtTitle][updatedAtLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+//  self.adaLabel.backgroundColor = [UIColor redColor];
+//  adaTitle.backgroundColor = [UIColor orangeColor];
+//  self.updatedAtLabel.backgroundColor = [UIColor greenColor];
+//  updatedAtTitle.backgroundColor = [UIColor blueColor];
   
 }
 
@@ -193,7 +198,7 @@
 
 - (NSDateFormatter *)dateFormatter {
   NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-  [formatter setDateFormat:@"MM/dd/yyyy 'at' hh:mm a"];
+  [formatter setDateFormat:@"MM/dd/yyyy',' hh:mma"];
   return formatter;
 }
 
