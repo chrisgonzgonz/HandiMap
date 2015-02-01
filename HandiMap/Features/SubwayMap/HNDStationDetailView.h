@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "HNDButton.h"
 @interface HNDStationDetailView : UIView
 @property (weak, nonatomic, readonly) UITableView *tableView;
-@property (weak, nonatomic, readonly) UIButton *outtageButton;
+@property (weak, nonatomic, readonly) HNDButton *outtageButton;
 @end
