@@ -47,7 +47,7 @@ static NSString *kLineCharSeperator = @", ";
 - (UIColor *)annotationColor {
   if (self.managedStation.outages.count) {
     return [HNDColor errorColor];
-  } else if (!self.managedStation.ada) {
+  } else if (!self.managedStation.ada.boolValue) {
     return [HNDColor warningColor];
   }
   return [HNDColor highlightColor]; // success color?
