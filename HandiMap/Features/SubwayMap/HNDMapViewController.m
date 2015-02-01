@@ -14,12 +14,10 @@ static CGFloat const kAnimationDuration = 0.25f;
 
 @interface HNDMapViewController () <HNDStationFilterDelegate,
                                     HNDSubwayMapViewDelegate>
-// Casts root view.
-@property(nonatomic) HNDSubwayMapView *view;
-
-@property(nonatomic) HNDStationManager *stationManager;
-@property(nonatomic) HNDStationDetailViewController *stationDetailVC;
 @property(nonatomic) NSLayoutConstraint *stationDetailHeightConstraint;
+@property(nonatomic) HNDStationDetailViewController *stationDetailVC;
+@property(nonatomic) HNDStationManager *stationManager;
+@property(nonatomic) HNDSubwayMapView *view; // Casts root view.
 @end
 
 @implementation HNDMapViewController
@@ -33,22 +31,22 @@ static CGFloat const kAnimationDuration = 0.25f;
 
 - (void)loadView {
   self.view = [[HNDSubwayMapView alloc] init];
+  [self loadSubviewController];
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self getCurrentLocation];
+  [self loadStations];
 
-  self.stationManager = [[HNDStationManager alloc] init];
-  self.stationManager.delegate = self;
-  self.stationManager.subwayLineFilter = self.subwayLine;
-  [self.view updateStations:self.stationManager.filteredStations];
-  
+  // Moving this to view.
   [self setupStationDetailVC];
+
   self.view.delegate = self;
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                         duration:(NSTimeInterval)duration {
   [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
   [self expandDetailsContainer];
 }
@@ -56,7 +54,8 @@ static CGFloat const kAnimationDuration = 0.25f;
 #pragma mark - TargetActions
 
 - (void)showStationDetails:(UIButton *)sender {
-  self.stationDetailVC.view.outageButton.selected = !self.stationDetailVC.view.outageButton.selected;
+  self.stationDetailVC.view.outageButton.selected = 
+      !self.stationDetailVC.view.outageButton.selected;
   [self expandDetailsContainer];
 }
 
@@ -75,13 +74,22 @@ static CGFloat const kAnimationDuration = 0.25f;
 
 #pragma mark - Private
 
-- (void)setupStationDetailVC {
+- (void)loadSubviewController {
   self.stationDetailVC = [[HNDStationDetailViewController alloc] init];
   [self.stationDetailVC willMoveToParentViewController:self];
   [self addChildViewController:self.stationDetailVC];
   [self.view addSubview:self.stationDetailVC.view];
   [self.stationDetailVC didMoveToParentViewController:self];
+}
 
+- (void)loadStations {
+  self.stationManager = [[HNDStationManager alloc] init];
+  self.stationManager.delegate = self;
+  self.stationManager.subwayLineFilter = self.subwayLine;
+  [self.view updateStations:self.stationManager.filteredStations];
+}
+
+- (void)setupStationDetailVC {
   NSDictionary *views = @{@"detailView": self.stationDetailVC.view};
   self.stationDetailHeightConstraint =
       [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view
