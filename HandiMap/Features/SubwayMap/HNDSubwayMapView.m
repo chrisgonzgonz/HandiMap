@@ -145,10 +145,12 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-  if (view.annotation != [MKUserLocation class]) {
+  if (![view.annotation isKindOfClass: [MKUserLocation class]]) {
     self.selectedAnnotationView = nil;
     [self hideStationDetails];
-    [self.delegate didDeselectStation:view.annotation];
+    if ([self.delegate respondsToSelector:@selector(didDeselectStation:)]) {
+      [self.delegate didDeselectStation:view.annotation];
+    }
   }
 }
 
