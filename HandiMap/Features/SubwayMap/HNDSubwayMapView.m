@@ -165,11 +165,10 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
   [self addConstraint:[NSLayoutConstraint constraintWithItem:self.stationDetailView
                                                    attribute:NSLayoutAttributeHeight
                                                    relatedBy:NSLayoutRelationEqual
-                                                      toItem:self.mapView
+                                                      toItem:self
                                                    attribute:NSLayoutAttributeHeight
                                                   multiplier:0.75f
-                                                    constant:0]
-  ];
+                                                    constant:0]];
   self.detailViewPositionContraint = [self hideDetailViewContraint];
 }
 
@@ -179,7 +178,7 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
   return [NSLayoutConstraint constraintWithItem:self.stationDetailView
                                       attribute:NSLayoutAttributeTop
                                       relatedBy:NSLayoutRelationEqual
-                                         toItem:self.mapView
+                                         toItem:self
                                       attribute:NSLayoutAttributeBottom
                                      multiplier:1.0
                                        constant:-kPreviewHeight];
@@ -189,7 +188,7 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
   return [NSLayoutConstraint constraintWithItem:self.stationDetailView
                                       attribute:NSLayoutAttributeTop
                                       relatedBy:NSLayoutRelationEqual
-                                         toItem:self.mapView
+                                         toItem:self
                                       attribute:NSLayoutAttributeBottom
                                      multiplier:1.0
                                        constant:0];
@@ -199,7 +198,7 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
   return [NSLayoutConstraint constraintWithItem:self.stationDetailView
                                       attribute:NSLayoutAttributeBottom
                                       relatedBy:NSLayoutRelationEqual
-                                         toItem:self.mapView
+                                         toItem:self
                                       attribute:NSLayoutAttributeBottom
                                      multiplier:1.0
                                        constant:0];
