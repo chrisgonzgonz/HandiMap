@@ -5,7 +5,7 @@
 
 @protocol HNDSubwayMapViewDelegate <NSObject>
 @optional
-- (void)didSelectAnnotationWithStation:(HNDStation *)station;
+- (void)didSelectStation:(HNDStation *)station;
 @end
 
 @interface HNDSubwayMapView : UIView

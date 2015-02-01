@@ -68,7 +68,7 @@ static CGFloat const kAnimationDuration = 0.25f;
 
 #pragma mark HNDSubwayMapViewDelegate
 
-- (void)didSelectAnnotationWithStation:(HNDStation *)station {
+- (void)didSelectStation:(HNDStation *)station {
   self.stationDetailVC.selectedStation = station;
 }
 

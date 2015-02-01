@@ -7,21 +7,10 @@
 #import "HNDButton.h"
 #import "HNDStation.h"
 
-#define CLUSTERING 0
-
-#if CLUSTERING
-#import "CCHMapClusterController.h"
-static CGFloat const kClusterCellSize = 10.0f;
-#endif
-
 static CGFloat const kHNDMapCoordSpan = 0.07f;
 static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 
 @interface HNDSubwayMapView() <MKMapViewDelegate>
-
-#if CLUSTERING
-@property(nonatomic, readonly) CCHMapClusterController *mapClusterController;
-#endif
 
 @property(nonatomic, readwrite) MKMapView *mapView;
 @end
@@ -38,11 +27,6 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
     _mapView.showsUserLocation = YES;
     _mapView.delegate = self;
 
-#if CLUSTERING
-    _mapClusterController = [[CCHMapClusterController alloc] initWithMapView:_mapView];
-    _mapClusterController.cellSize = kClusterCellSize;
-#endif
-
     [self addSubview:_mapView];
     [self autolayoutViews];
   }
@@ -53,16 +37,10 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
 #pragma mark - Public
 
 - (void)updateStations:(NSArray *)stations {
-#if CLUSTERING
-  [self.mapClusterController removeAnnotations:[self.mapClusterController.annotations allObjects]
-                         withCompletionHandler:nil];
-  [self.mapClusterController addAnnotations:stations withCompletionHandler:nil];
-#else
   NSMutableArray *toRemove = [self.mapView.annotations mutableCopy];
   [toRemove removeObject:self.mapView.userLocation];
   [self.mapView removeAnnotations:toRemove];
   [self.mapView addAnnotations:stations];
-#endif // CLUSTERING
 }
 
 #pragma mark - Protocols
@@ -100,7 +78,7 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
   rect.origin.y = point.y - rect.size.height * 0.5;
   [mapView setVisibleMapRect:rect animated:YES];
   if (view.annotation != [MKUserLocation class]) {
-    [self.delegate didSelectAnnotationWithStation:view.annotation];
+    [self.delegate didSelectStation:view.annotation];
   }
 }
 
