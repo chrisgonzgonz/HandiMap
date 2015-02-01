@@ -42,7 +42,7 @@
   HNDLabel *outageStartTitle = [[HNDLabel alloc] init];
   outageStartTitle.text = @"Outage Start:";
   HNDLabel *estimatedReturnTitle = [[HNDLabel alloc] init];
-  estimatedReturnTitle.text = @"Estimated Return to Service:";
+  estimatedReturnTitle.text = @"Estimated Return:";
   HNDLabel *adaTitle = [[HNDLabel alloc] init];
   adaTitle.text = @"ADA:";
   HNDLabel *updatedAtTitle = [[HNDLabel alloc] init];
@@ -55,6 +55,9 @@
   estimatedReturnTitle.translatesAutoresizingMaskIntoConstraints = NO;
   adaTitle.translatesAutoresizingMaskIntoConstraints = NO;
   updatedAtTitle.translatesAutoresizingMaskIntoConstraints = NO;
+  [servingTitle setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+//  [estimatedReturnTitle setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+//  [adaTitle setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
   
   [self.contentView addSubview:servingTitle];
   [self.contentView addSubview:equipmentTypeTitle];
@@ -192,7 +195,7 @@
 
 - (NSDateFormatter *)dateFormatter {
   NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-  [formatter setDateFormat:@"MM/dd/yyyy at hh:mm"];
+  [formatter setDateFormat:@"MM/dd/yyyy 'at' hh:mm a"];
   return formatter;
 }
 
