@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 @property(nonatomic) NSLayoutConstraint *detailViewPositionContraint;
 @property(nonatomic) MKAnnotationView *selectedAnnotationView;
 @property(nonatomic) CGFloat detailViewPositionY;
+@property(nonatomic) CGFloat lastTranslation; // translation is always 0 when pan ends.
 @property(nonatomic) HNDDetailViewState detailViewState;
 @end
 
@@ -81,8 +82,13 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 
   // Snap it.
   if (recognizer.state == UIGestureRecognizerStateEnded) {
-    NSLog(@"I ended");
+    if (self.lastTranslation > 0) {
+      [self hideStationDetails];
+    } else if (self.detailViewState == HNDDetailViewStatePreview) {
+      [self showStationDetails];
+    }
   }
+  self.lastTranslation = translation.y;
 }
 
 #pragma mark - Protocols
