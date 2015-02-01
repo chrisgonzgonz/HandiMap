@@ -2,6 +2,7 @@
 
 #import "HNDDataStore.h"
 #import "HNDMapFlow.h"
+#import <HockeySDK.h>
 
 @interface HNDAppDelegate()
 @property(nonatomic) HNDMapFlow *currentFlow;
@@ -32,6 +33,13 @@
 
   [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
   self.window.rootViewController = [self.currentFlow initialViewController];
+  
+  [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"f7b9bbd12bb0d75390f8dd8894f8f70a"];
+  [[BITHockeyManager sharedHockeyManager] startManager];
+  [[BITHockeyManager sharedHockeyManager].authenticator
+   
+   authenticateInstallation];
+
   return YES;
 }
 
