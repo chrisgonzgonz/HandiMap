@@ -75,7 +75,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.row == 0) {
+  if (indexPath.section == 0) {
     HNDStationDetailTableViewCell *sizingCell = [self.view.tableView dequeueReusableCellWithIdentifier:@"stationCell"];
     if (!sizingCell) {
       sizingCell = [[HNDStationDetailTableViewCell alloc] init];
@@ -85,8 +85,17 @@
     [sizingCell layoutIfNeeded];
     CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height + 1.0f;
+  } else {
+    HNDOutageDetailTableViewCell *sizingCell = [self.view.tableView dequeueReusableCellWithIdentifier:@"outageCell"];
+    if (!sizingCell) {
+      sizingCell = [[HNDOutageDetailTableViewCell alloc] init];
+    }
+    sizingCell.outage = self.currentOutages[indexPath.row];
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 1.0f;
   }
-  return 90;
 }
 
 //

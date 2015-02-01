@@ -72,12 +72,12 @@
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[servingLabel][equipmentTypeLabel][routesAffectedLabel][reasonLabel][outageStartDateLabel][estimatedReturnOfServiceLabel][adaLabel][updatedAtLabel]|" options:0 metrics:nil views:views]];
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[servingTitle][servingLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[equipmentTypeTitle][equipmentTypeLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[routesAffectedLabel][routesAffectedTitle]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[reasonLabel][reasonTitle]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[outageStartDateLabel][outageStartTitle]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[estimatedReturnOfServiceLabel][estimatedReturnTitle]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[adaLabel][adaTitle]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[updatedAtLabel][updatedAtTitle]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[routesAffectedTitle][routesAffectedLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[reasonTitle][reasonLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[outageStartTitle][outageStartDateLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[estimatedReturnTitle][estimatedReturnOfServiceLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[adaTitle][adaLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[updatedAtTitle][updatedAtLabel]|" options:NSLayoutFormatAlignAllTop metrics:nil views:views]];
   
 }
 
