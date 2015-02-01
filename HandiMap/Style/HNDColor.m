@@ -1,7 +1,10 @@
 #import "HNDColor.h"
 
-/// This class uses the following theme from Kuler:
+/// Uses the following theme from Kuler:
 /// \link https://color.adobe.com/Quiet-Cry-color-theme-124171/
+
+/// Uses the following theme for error/success
+/// \link https://color.adobe.com/Citrus-Grove-color-theme-580742/
 
 static const CGFloat kEightBitColorRange = 255.0f;
 
@@ -25,6 +28,19 @@ static const CGFloat kEightBitColorRange = 255.0f;
 
 + (UIColor *)highlightColor {
   return [self rgbWithRed:146 green:205 blue:207];
+}
+
+/// Colors used to convey meaning.
++ (UIColor *)errorColor {
+  return UIColorFromHex(0xDB5800);
+}
+
++ (UIColor *)successColor {
+  return UIColorFromHex(0x8DB500);
+}
+
++ (UIColor *)warningColor {
+  return UIColorFromHex(0xF0C600);
 }
 
 #pragma mark - Private

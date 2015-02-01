@@ -25,4 +25,9 @@
 + (UIColor *)mainColor;
 + (UIColor *)highlightColor;
 
+/// Colors used to convey meaning.
++ (UIColor *)errorColor;
++ (UIColor *)successColor;
++ (UIColor *)warningColor;
+
 @end

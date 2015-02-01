@@ -15,12 +15,10 @@
   self.equipmentType = dictionary[@"equipment_type"];
   self.routesAffected = dictionary[@"routes_affected"];
   self.reason = dictionary[@"reason"];
-  
-  double outageDate = [dictionary[@"outage_start_date"] doubleValue];
-  self.outageStartDate = [NSDate dateWithTimeIntervalSince1970:outageDate];
-  double estimatedReturnOfService = [dictionary[@"estimated_return_of_service"] doubleValue];
-  self.estimatedReturnOfService = [NSDate dateWithTimeIntervalSince1970:estimatedReturnOfService];
-  
+  self.outageStartDate = [NSDate dateWithTimeIntervalSince1970:
+      [dictionary[@"outage_start_date"] integerValue]];
+  self.estimatedReturnOfService = [NSDate dateWithTimeIntervalSince1970:
+      [dictionary[@"estimated_return_of_service"] integerValue]];
   self.ada = [NSNumber numberWithBool:[dictionary[@"ada"] boolValue]];
   self.updatedAt = [NSDate date];
 }

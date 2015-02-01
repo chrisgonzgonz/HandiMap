@@ -1,5 +1,6 @@
 #import "HNDStation.h"
 
+#import "HNDColor.h"
 #import "HNDSubwayLine.h"
 #import "HNDManagedStation.h"
 
@@ -32,15 +33,25 @@ static NSString *kLineCharSeperator = @", ";
 }
 
 - (NSString *)subwayLines {
-  return [[self.managedStation.servedRoutes valueForKey:@"description"] componentsJoinedByString:@", "];
+  return [self.managedStation.servedRoutes componentsJoinedByString:@", "];
 }
 
 - (NSString *)accessibleLines {
-  return [[self.managedStation.accessibleRoutes valueForKey:@"description"] componentsJoinedByString:@", "];
+
+  return [self.managedStation.accessibleRoutes componentsJoinedByString:@", "];
 }
 
 - (NSString *)ada {
-  return [self.managedStation.ada boolValue] ? @"YES" : @"NO";
+  return [self.managedStation.ada boolValue] ? @"Yes" : @"No";
+}
+
+- (UIColor *)annotationColor {
+  if (self.managedStation.outages.count) {
+    return [HNDColor errorColor];
+  } else if (!self.managedStation.ada) {
+    return [HNDColor warningColor];
+  }
+  return [HNDColor highlightColor]; // success color?
 }
 
 #pragma mark - Protocols
