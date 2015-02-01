@@ -63,8 +63,13 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
 
 - (void)panDetailView:(UIPanGestureRecognizer *)recognizer {
   CGPoint translation = [recognizer translationInView:self];
-  recognizer.view.center = CGPointMake(recognizer.view.center.x,
-                                       recognizer.view.center.y + translation.y);
+
+  // Don't pan past the bottom.
+  CGFloat nextPosY = recognizer.view.center.y + translation.y;
+  CGFloat minPosY = self.bounds.size.height - (0.5f *recognizer.view.bounds.size.height);
+  nextPosY = nextPosY > minPosY ? nextPosY : minPosY;
+
+  recognizer.view.center = CGPointMake(recognizer.view.center.x, nextPosY);
   [recognizer setTranslation:CGPointZero inView:self];
 }
 
