@@ -122,22 +122,13 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   return pinView;
 }
 
-// TODO: Handle this better...should not always center user. Only the first time.
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-  MKCoordinateRegion mapRegion;
-  mapRegion.center = userLocation.coordinate;
-  mapRegion.span.latitudeDelta = kMapCoordSpan;
-  mapRegion.span.longitudeDelta = kMapCoordSpan;
-  [mapView setRegion:mapRegion animated:YES];
+  [self centerAnnotation:userLocation inMap:mapView];
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
   if ([self.selectedAnnotationView isEqual:view]) return;
-  MKMapPoint point = MKMapPointForCoordinate(view.annotation.coordinate);
-  MKMapRect rect = [mapView visibleMapRect];
-  rect.origin.x = point.x - rect.size.width * 0.5;
-  rect.origin.y = point.y - rect.size.height * 0.5;
-  [mapView setVisibleMapRect:rect animated:YES];
+  [self centerAnnotation:view.annotation inMap:mapView];
   if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
     self.selectedAnnotationView = view;
     [self showStationDetailsPreview];
@@ -146,7 +137,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-  if (![view.annotation isKindOfClass: [MKUserLocation class]]) {
+  if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
     self.selectedAnnotationView = nil;
     [self hideStationDetails];
     if ([self.delegate respondsToSelector:@selector(didDeselectStation:)]) {
@@ -156,6 +147,16 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 }
 
 #pragma mark - Private
+#pragma mark MapView Helpers
+
+- (void)centerAnnotation:(id<MKAnnotation>)annotation inMap:(MKMapView *)mapView {
+  MKMapPoint point = MKMapPointForCoordinate(annotation.coordinate);
+  MKMapRect rect = [mapView visibleMapRect];
+  rect.origin.x = point.x - rect.size.width * 0.5;
+  rect.origin.y = point.y - rect.size.height * 0.5;
+  [mapView setVisibleMapRect:rect animated:YES];
+}
+
 #pragma mark Show and Hide Detail View
 
 - (void)setDetailViewPositionContraint:(NSLayoutConstraint *)detailViewPositionContraint {
@@ -182,7 +183,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseIn];
 }
 
-#pragma mark - autoLayout
+#pragma mark AutoLayout
 
 - (void)autolayoutViews {
   _mapView.translatesAutoresizingMaskIntoConstraints = NO;
