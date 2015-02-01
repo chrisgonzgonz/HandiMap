@@ -82,6 +82,7 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
   return pinView;
 }
 
+// TODO: Handle this better...should not always center user. Only the first time.
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
   MKCoordinateRegion mapRegion;
   mapRegion.center = userLocation.coordinate;
@@ -90,14 +91,12 @@ static NSString *kPinReuseId = @"ZSPinAnnotation Reuse ID";
   [mapView setRegion:mapRegion animated:YES];
 }
 
-// TODO: Figure out why this isn't being called.
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
   MKMapPoint point = MKMapPointForCoordinate(view.annotation.coordinate);
   MKMapRect rect = [mapView visibleMapRect];
   rect.origin.x = point.x - rect.size.width * 0.5;
   rect.origin.y = point.y - rect.size.height * 0.5;
   [mapView setVisibleMapRect:rect animated:YES];
-  
   if (view.annotation != [MKUserLocation class]) {
     [self.delegate didSelectAnnotationWithStation:view.annotation];
   }
