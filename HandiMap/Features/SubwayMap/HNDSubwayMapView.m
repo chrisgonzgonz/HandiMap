@@ -155,17 +155,19 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 - (void)showStationDetailsPreview {
   self.detailViewState = HNDDetailViewStatePreview;
   self.detailViewPositionContraint = [self previewDetailViewContraint];
-  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseIn];
+  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseOut];
 }
 
 - (void)showStationDetails {
   self.detailViewState = HNDDetailViewStateShow;
+  self.detailViewPositionContraint = [self showDetailViewContraint];
+  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseInOut];
 }
 
 - (void)hideStationDetails {
   self.detailViewState = HNDDetailViewStateHidden;
   self.detailViewPositionContraint = [self hideDetailViewContraint];
-  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseOut];
+  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseIn];
 }
 
 #pragma mark - autoLayout
