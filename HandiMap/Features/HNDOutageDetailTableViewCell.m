@@ -182,7 +182,7 @@
 - (void)setOutage:(HNDManagedOutage *)outage {
   _outage = outage;
   self.servingLabel.text = outage.serving;
-  self.equipmentTypeLabel.text = outage.equipmentType;
+  self.equipmentTypeLabel.text = [outage.equipmentType isEqualToString:@"EL"] ? @"Elevator" : @"Escalator";
   self.routesAffectedLabel.text = [[outage.routesAffected valueForKey:@"description"] componentsJoinedByString:@", "];
   self.reasonLabel.text = outage.reason;
   self.outageStartDateLabel.text = [[self dateFormatter] stringFromDate: outage.outageStartDate];
