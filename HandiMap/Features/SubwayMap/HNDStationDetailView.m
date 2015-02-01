@@ -6,6 +6,7 @@
 @interface HNDStationDetailView ()
 @property(nonatomic, readwrite, weak) UITableView *tableView;
 @property(nonatomic, readwrite, weak) HNDLabel *titleView;
+@property(nonatomic, weak) UIView *containerView;
 @end
 
 @implementation HNDStationDetailView
@@ -15,6 +16,25 @@
     [self autolayoutSubviews];
   }
   return self;
+}
+
+- (UIView *)containerView {
+  if (!_containerView) {
+    UIView *containerView = [[UIView alloc] init];
+    _containerView = containerView;
+    _containerView.translatesAutoresizingMaskIntoConstraints = NO;
+    _containerView.backgroundColor = [HNDColor mainColor];
+    [_containerView addSubview:self.titleView];
+    UIImageView *hamburgerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hamburger"]];
+    hamburgerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [_containerView addSubview:hamburgerView];
+    NSDictionary *views = NSDictionaryOfVariableBindings(containerView, _titleView, hamburgerView);
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_titleView]|" options:0 metrics:nil views:views]];
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[hamburgerView]|" options:0 metrics:nil views:views]];
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_titleView][hamburgerView(==32)]|" options:0 metrics:nil views:views]];
+    [self addSubview:containerView];
+  }
+  return _containerView;
 }
 
 - (HNDLabel *)titleView {
@@ -41,15 +61,15 @@
 }
 
 - (void)autolayoutSubviews {
-  NSDictionary *views = @{@"titleView" : self.titleView,
+  NSDictionary *views = @{@"containerView" : self.containerView,
                           @"tableView" : self.tableView};
   [self addConstraints:
-      [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[titleView(>=44)][tableView]|"
+      [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[containerView(>=44)][tableView]|"
                                               options:0
                                               metrics:nil
                                                 views:views]];
   [self addConstraints:
-      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[titleView]|"
+      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[containerView]|"
                                               options:0
                                               metrics:nil
                                               views:views]];
