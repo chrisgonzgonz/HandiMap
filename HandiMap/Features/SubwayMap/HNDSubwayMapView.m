@@ -7,7 +7,8 @@
 #import "HNDButton.h"
 #import "HNDStation.h"
 
-static CGFloat const kAnimationDuration = 0.20f;
+static CGFloat const kAnimationDuration = 0.25f;
+static CGFloat const kDetailViewSpan    = 0.60f;
 static CGFloat const kMapCoordSpan      = 0.07f;
 static CGFloat const kPreviewHeight     = 44.0f; // TODO: Make this dynamic.
 static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
@@ -218,7 +219,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
                                                    relatedBy:NSLayoutRelationEqual
                                                       toItem:self
                                                    attribute:NSLayoutAttributeHeight
-                                                  multiplier:0.65f
+                                                  multiplier:kDetailViewSpan
                                                     constant:0]];
   [self hideStationDetails];
 }
