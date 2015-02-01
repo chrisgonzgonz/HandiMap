@@ -12,11 +12,18 @@ static CGFloat const kMapCoordSpan      = 0.07f;
 static CGFloat const kPreviewHeight     = 44.0f; // TODO: Make this dynamic.
 static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
 
+typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
+  HNDDetailViewStateHidden,
+  HNDDetailViewStatePreview,
+  HNDDetailViewStateShow
+};
+
 @interface HNDSubwayMapView() <MKMapViewDelegate>
 @property(nonatomic, readwrite) MKMapView *mapView;
 @property(nonatomic) NSLayoutConstraint *detailViewPositionContraint;
 @property(nonatomic) MKAnnotationView *selectedAnnotationView;
 @property(nonatomic) CGFloat detailViewPositionY;
+@property(nonatomic) HNDDetailViewState detailViewState;
 @end
 
 @implementation HNDSubwayMapView
@@ -71,6 +78,11 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
 
   recognizer.view.center = CGPointMake(recognizer.view.center.x, nextPosY);
   [recognizer setTranslation:CGPointZero inView:self];
+
+  // Snap it.
+  if (recognizer.state == UIGestureRecognizerStateEnded) {
+    NSLog(@"I ended");
+  }
 }
 
 #pragma mark - Protocols
@@ -135,15 +147,17 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
 }
 
 - (void)showStationDetailsPreview {
+  self.detailViewState = HNDDetailViewStatePreview;
   self.detailViewPositionContraint = [self previewDetailViewContraint];
   [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseIn];
 }
 
 - (void)showStationDetails {
-
+  self.detailViewState = HNDDetailViewStateShow;
 }
 
 - (void)hideStationDetails {
+  self.detailViewState = HNDDetailViewStateHidden;
   self.detailViewPositionContraint = [self hideDetailViewContraint];
   [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseOut];
 }
@@ -187,7 +201,7 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
                                                    attribute:NSLayoutAttributeHeight
                                                   multiplier:0.75f
                                                     constant:0]];
-  self.detailViewPositionContraint = [self hideDetailViewContraint];
+  [self hideStationDetails];
 }
 
 #pragma mark - Poistion Contraints
@@ -202,6 +216,16 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
                                        constant:-kPreviewHeight];
 }
 
+- (NSLayoutConstraint *)showDetailViewContraint {
+  return [NSLayoutConstraint constraintWithItem:self.stationDetailView
+                                      attribute:NSLayoutAttributeBottom
+                                      relatedBy:NSLayoutRelationEqual
+                                         toItem:self
+                                      attribute:NSLayoutAttributeBottom
+                                     multiplier:1.0
+                                       constant:0];
+}
+
 - (NSLayoutConstraint *)hideDetailViewContraint {
   return [NSLayoutConstraint constraintWithItem:self.stationDetailView
                                       attribute:NSLayoutAttributeTop
@@ -212,15 +236,6 @@ static NSString *kPinReuseId            = @"ZSPinAnnotation Reuse ID";
                                        constant:0];
 }
 
-- (NSLayoutConstraint *)showDetailViewContraint {
-  return [NSLayoutConstraint constraintWithItem:self.stationDetailView
-                                      attribute:NSLayoutAttributeBottom
-                                      relatedBy:NSLayoutRelationEqual
-                                         toItem:self
-                                      attribute:NSLayoutAttributeBottom
-                                     multiplier:1.0
-                                       constant:0];
-}
 
 - (void)animateLayoutWithStyle:(UIViewAnimationOptions)animationOption {
   [UIView animateWithDuration:kAnimationDuration
