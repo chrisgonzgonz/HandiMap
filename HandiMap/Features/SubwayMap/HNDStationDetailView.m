@@ -12,7 +12,7 @@
 #import "HNDColor.h"
 @interface HNDStationDetailView ()
 @property (weak, nonatomic, readwrite) UITableView *tableView;
-@property (weak, nonatomic, readwrite) HNDButton *outtageButton;
+@property (weak, nonatomic, readwrite) HNDButton *outageButton;
 @end
 @implementation HNDStationDetailView
 
@@ -25,22 +25,22 @@
 
 - (void)autolayoutSubviews {
   self.translatesAutoresizingMaskIntoConstraints = NO;
-  NSDictionary *views = @{@"outtageButton": self.outtageButton, @"tableView": self.tableView};
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[outtageButton(==44)][tableView]|" options:0 metrics:nil views:views]];
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[outtageButton]|" options:0 metrics:nil views:views]];
+  NSDictionary *views = @{@"outageButton": self.outageButton, @"tableView": self.tableView};
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[outageButton(==44)][tableView]|" options:0 metrics:nil views:views]];
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[outageButton]|" options:0 metrics:nil views:views]];
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|" options:0 metrics:nil views:views]];
 }
 
-- (HNDButton *)outtageButton {
-  if (!_outtageButton) {
-    HNDButton *outtageButton = [[HNDButton alloc] init];
-    outtageButton.translatesAutoresizingMaskIntoConstraints = NO;
-    _outtageButton = outtageButton;
-    _outtageButton.backgroundColor = [HNDColor mainColor];
-    [_outtageButton setTitleColor:[HNDColor lightColor] forState:UIControlStateNormal];
-    [self addSubview:_outtageButton];
+- (HNDButton *)outageButton {
+  if (!_outageButton) {
+    HNDButton *outageButton = [[HNDButton alloc] init];
+    outageButton.translatesAutoresizingMaskIntoConstraints = NO;
+    _outageButton = outageButton;
+    _outageButton.backgroundColor = [HNDColor mainColor];
+    [_outageButton setTitleColor:[HNDColor lightColor] forState:UIControlStateNormal];
+    [self addSubview:_outageButton];
   }
-  return _outtageButton;
+  return _outageButton;
 }
 
 - (UITableView *)tableView {

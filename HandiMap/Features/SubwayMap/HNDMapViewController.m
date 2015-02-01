@@ -56,7 +56,7 @@ static CGFloat const kAnimationDuration = 0.25f;
 #pragma mark - TargetActions
 
 - (void)showStationDetails:(UIButton *)sender {
-  self.stationDetailVC.view.outtageButton.selected = !self.stationDetailVC.view.outtageButton.selected;
+  self.stationDetailVC.view.outageButton.selected = !self.stationDetailVC.view.outageButton.selected;
   [self expandDetailsContainer];
 }
 
@@ -105,7 +105,7 @@ static CGFloat const kAnimationDuration = 0.25f;
                                               options:0
                                               metrics:nil
                                                 views:views]];
-  [self.stationDetailVC.view.outtageButton addTarget:self
+  [self.stationDetailVC.view.outageButton addTarget:self
                                               action:@selector(showStationDetails:)
                                     forControlEvents:UIControlEventTouchUpInside];
 
@@ -135,7 +135,7 @@ static CGFloat const kAnimationDuration = 0.25f;
 
 // TODO: Move this into the view.
 - (void)expandDetailsContainer{
-  self.stationDetailHeightConstraint.constant = self.stationDetailVC.view.outtageButton.selected
+  self.stationDetailHeightConstraint.constant = self.stationDetailVC.view.outageButton.selected
       ? self.view.frame.size.height * 0.75f
       : 44.0f;
   [UIView animateWithDuration:kAnimationDuration
