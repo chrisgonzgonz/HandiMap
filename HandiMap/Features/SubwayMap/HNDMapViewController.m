@@ -7,8 +7,8 @@
 #import "HNDStationManager.h"
 #import "HNDSubwayMapView.h"
 // TODO: Generalize this to UIViewController to break this dependency.
+// This should be injected and conforms to HNDStationDetail protocol.
 #import "HNDStationDetailViewController.h"
-#import "HNDStationDetailView.h"
 
 @interface HNDMapViewController () <HNDStationFilterDelegate,
                                     HNDSubwayMapViewDelegate>

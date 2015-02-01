@@ -48,10 +48,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 #pragma mark - Public
 
 - (void)setStationDetailView:(UIView *)stationDetailView {
-//  _stationDetailView = stationDetailView;
-  _stationDetailView = [[UIView alloc] init];
-  _stationDetailView.backgroundColor = [UIColor purpleColor];
-
+  _stationDetailView = stationDetailView;
   _stationDetailView.userInteractionEnabled = YES;
   _stationDetailView.gestureRecognizers = @[
     [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDetailView:)],
