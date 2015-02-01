@@ -8,9 +8,11 @@
 
 #import "HNDStationDetailView.h"
 
+#import "HNDButton.h"
+#import "HNDColor.h"
 @interface HNDStationDetailView ()
 @property (weak, nonatomic, readwrite) UITableView *tableView;
-@property (weak, nonatomic, readwrite) UIButton *outtageButton;
+@property (weak, nonatomic, readwrite) HNDButton *outtageButton;
 @end
 @implementation HNDStationDetailView
 
@@ -29,12 +31,13 @@
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|" options:0 metrics:nil views:views]];
 }
 
-- (UIButton *)outtageButton {
+- (HNDButton *)outtageButton {
   if (!_outtageButton) {
-    UIButton *outtageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    HNDButton *outtageButton = [[HNDButton alloc] init];
     outtageButton.translatesAutoresizingMaskIntoConstraints = NO;
     _outtageButton = outtageButton;
-    _outtageButton.backgroundColor = [UIColor redColor];
+    _outtageButton.backgroundColor = [HNDColor mainColor];
+    [_outtageButton setTitleColor:[HNDColor lightColor] forState:UIControlStateNormal];
     [self addSubview:_outtageButton];
   }
   return _outtageButton;

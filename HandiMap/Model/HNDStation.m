@@ -37,8 +37,7 @@ static NSString *kLineCharSeperator = @", ";
 }
 
 - (NSString *)accessibleLines {
-
-  return [self.managedStation.accessibleRoutes componentsJoinedByString:@", "];
+  return self.managedStation.accessibleRoutes.count ? [self.managedStation.accessibleRoutes componentsJoinedByString:@", "] : @"None";
 }
 
 - (NSString *)ada {
