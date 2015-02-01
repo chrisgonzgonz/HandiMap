@@ -56,8 +56,6 @@
   adaTitle.translatesAutoresizingMaskIntoConstraints = NO;
   updatedAtTitle.translatesAutoresizingMaskIntoConstraints = NO;
   [servingTitle setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-//  [estimatedReturnTitle setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-//  [adaTitle setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
   
   [self.contentView addSubview:servingTitle];
   [self.contentView addSubview:equipmentTypeTitle];
