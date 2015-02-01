@@ -10,11 +10,12 @@
 #import "HNDStationDetailViewController.h"
 #import "HNDStationDetailView.h"
 
-static CGFloat const kAnimationDuration = 0.25f;
+static CGFloat const kAnimationDuration = 0.2f;
 
 @interface HNDMapViewController () <HNDStationFilterDelegate,
                                     HNDSubwayMapViewDelegate>
 @property(nonatomic) NSLayoutConstraint *stationDetailHeightConstraint;
+@property(nonatomic) HNDStation *selectedStation;
 @property(nonatomic) HNDStationDetailViewController *stationDetailVC;
 @property(nonatomic) HNDStationManager *stationManager;
 @property(nonatomic) HNDSubwayMapView *view; // Casts root view.
@@ -27,11 +28,16 @@ static CGFloat const kAnimationDuration = 0.25f;
   self.stationManager.subwayLineFilter = subwayLine;
 }
 
+- (void)setSelectedStation:(HNDStation *)selectedStation {
+  _selectedStation = selectedStation;
+}
+
 #pragma mark - Overrides
 
 - (void)loadView {
   self.view = [[HNDSubwayMapView alloc] init];
   [self loadSubviewController];
+
 }
 
 - (void)viewDidLoad {
@@ -78,7 +84,7 @@ static CGFloat const kAnimationDuration = 0.25f;
   self.stationDetailVC = [[HNDStationDetailViewController alloc] init];
   [self.stationDetailVC willMoveToParentViewController:self];
   [self addChildViewController:self.stationDetailVC];
-  [self.view addSubview:self.stationDetailVC.view];
+  self.view.stationDetailView = self.stationDetailVC.view;
   [self.stationDetailVC didMoveToParentViewController:self];
 }
 
@@ -90,32 +96,32 @@ static CGFloat const kAnimationDuration = 0.25f;
 }
 
 - (void)setupStationDetailVC {
-  NSDictionary *views = @{@"detailView": self.stationDetailVC.view};
-  self.stationDetailHeightConstraint =
-      [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view
-                                   attribute:NSLayoutAttributeHeight
-                                   relatedBy:NSLayoutRelationEqual
-                                      toItem:nil
-                                   attribute:NSLayoutAttributeNotAnAttribute
-                                  multiplier:1.0
-                                    constant:44];
-  [self.view addConstraint:
-      [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view
-                                   attribute:NSLayoutAttributeBottom
-                                   relatedBy:NSLayoutRelationEqual
-                                      toItem:self.view
-                                   attribute:NSLayoutAttributeBottom
-                                  multiplier:1.0
-                                    constant:0]];
-  [self.view addConstraint:self.stationDetailHeightConstraint];
-  [self.view addConstraints:
-      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|"
-                                              options:0
-                                              metrics:nil
-                                                views:views]];
-  [self.stationDetailVC.view.outageButton addTarget:self
-                                              action:@selector(showStationDetails:)
-                                    forControlEvents:UIControlEventTouchUpInside];
+//  NSDictionary *views = @{@"detailView": self.stationDetailVC.view};
+//  self.stationDetailHeightConstraint =
+//      [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view
+//                                   attribute:NSLayoutAttributeHeight
+//                                   relatedBy:NSLayoutRelationEqual
+//                                      toItem:nil
+//                                   attribute:NSLayoutAttributeNotAnAttribute
+//                                  multiplier:1.0
+//                                    constant:44];
+//  [self.view addConstraint:
+//      [NSLayoutConstraint constraintWithItem:self.stationDetailVC.view
+//                                   attribute:NSLayoutAttributeBottom
+//                                   relatedBy:NSLayoutRelationEqual
+//                                      toItem:self.view
+//                                   attribute:NSLayoutAttributeBottom
+//                                  multiplier:1.0
+//                                    constant:0]];
+//  [self.view addConstraint:self.stationDetailHeightConstraint];
+//  [self.view addConstraints:
+//      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|"
+//                                              options:0
+//                                              metrics:nil
+//                                                views:views]];
+//  [self.stationDetailVC.view.outageButton addTarget:self
+//                                              action:@selector(showStationDetails:)
+//                                    forControlEvents:UIControlEventTouchUpInside];
 
 }
 
@@ -149,9 +155,7 @@ static CGFloat const kAnimationDuration = 0.25f;
   [UIView animateWithDuration:kAnimationDuration
                         delay:0
                       options:UIViewAnimationOptionCurveEaseIn
-                   animations:^{
-    [self.view layoutIfNeeded];
-  }
+                   animations:^{ [self.view layoutIfNeeded]; }
                    completion:nil];
 }
 
