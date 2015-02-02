@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_alpha.gif" translatesAutoresizingMaskIntoConstraints="NO" id="1vD-Q7-lGW">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo-alpha.png" translatesAutoresizingMaskIntoConstraints="NO" id="1vD-Q7-lGW">
                     <rect key="frame" x="0.0" y="243" width="480" height="237"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HandiMap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlg-ZN-Gkm">
@@ -38,6 +38,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo_alpha.gif" width="800" height="800"/>
+        <image name="logo-alpha.png" width="800" height="800"/>
     </resources>
 </document>
