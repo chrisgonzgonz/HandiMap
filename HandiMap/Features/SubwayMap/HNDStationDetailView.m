@@ -24,15 +24,36 @@
     _containerView = containerView;
     _containerView.translatesAutoresizingMaskIntoConstraints = NO;
     _containerView.backgroundColor = [HNDColor mainColor];
+
+    UIImage *infoImage =
+        [[UIImage imageNamed:@"info-32"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    UIImageView *infoView = [[UIImageView alloc] initWithImage:infoImage];
+    infoView.tintColor = [HNDColor lightColor];
+    infoView.contentMode = UIViewContentModeScaleAspectFit;
+    infoView.translatesAutoresizingMaskIntoConstraints = NO;
+
     [_containerView addSubview:self.titleView];
-    UIImageView *hamburgerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hamburger"]];
-    hamburgerView.translatesAutoresizingMaskIntoConstraints = NO;
-    [_containerView addSubview:hamburgerView];
-    NSDictionary *views = NSDictionaryOfVariableBindings(containerView, _titleView, hamburgerView);
-    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_titleView]|" options:0 metrics:nil views:views]];
-    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[hamburgerView]|" options:0 metrics:nil views:views]];
-    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_titleView][hamburgerView(==32)]|" options:0 metrics:nil views:views]];
+    [_containerView addSubview:infoView];
     [self addSubview:containerView];
+
+    NSDictionary *views = NSDictionaryOfVariableBindings(containerView,
+                                                         _titleView,
+                                                         infoView);
+    [containerView addConstraints:
+        [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_titleView]|"
+                                                options:0
+                                                metrics:nil
+                                                  views:views]];
+    [containerView addConstraints:
+        [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[infoView]|"
+                                                options:0
+                                                metrics:nil
+                                                  views:views]];
+    [containerView addConstraints:
+        [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_titleView]-[infoView(<=20)]-|"
+                                                options:0
+                                                metrics:nil
+                                                  views:views]];
   }
   return _containerView;
 }

@@ -12,7 +12,6 @@
 		721849DF1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 721849DE1A7D50FD003DB01B /* HNDStationDetailTableViewCell.m */; };
 		721849E31A7DC02E003DB01B /* HNDOutageDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 721849E21A7DC02E003DB01B /* HNDOutageDetailTableViewCell.m */; };
 		721849E61A7DDDC8003DB01B /* HNDManagedOutage.m in Sources */ = {isa = PBXBuildFile; fileRef = 721849E51A7DDDC8003DB01B /* HNDManagedOutage.m */; };
-		72184A151A7EE307003DB01B /* hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72184A141A7EE307003DB01B /* hamburger@2x.png */; };
 		72835F391A74433800CD23D2 /* HNDSubwayMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72835F381A74433800CD23D2 /* HNDSubwayMapView.m */; };
 		72835F3B1A74452200CD23D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72835F3A1A74452200CD23D2 /* MapKit.framework */; };
 		72835F401A74556000CD23D2 /* HNDCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72835F3F1A74556000CD23D2 /* HNDCoreDataManager.m */; };
@@ -24,6 +23,7 @@
 		72F339F41A745779009D79AA /* HandiMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72F339F21A745779009D79AA /* HandiMap.xcdatamodeld */; };
 		72F339F71A74655F009D79AA /* HNDManagedStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F339F61A74655F009D79AA /* HNDManagedStation.m */; };
 		931571141A7F0D8000F298FE /* logo_alpha.gif in Resources */ = {isa = PBXBuildFile; fileRef = 931571131A7F0D8000F298FE /* logo_alpha.gif */; };
+		931571161A7F19F000F298FE /* info-32@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 931571151A7F19F000F298FE /* info-32@2x.png */; };
 		9319746A1A74397000BF7EAD /* HNDMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 931974691A74397000BF7EAD /* HNDMapViewController.m */; };
 		932EB31F1A7EE5080022E865 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 932EB31E1A7EE5080022E865 /* MKMapView+ZoomLevel.m */; };
 		932EB3241A7F074D0022E865 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932EB3231A7F074D0022E865 /* Launch Screen.xib */; };
@@ -71,7 +71,6 @@
 		721849E21A7DC02E003DB01B /* HNDOutageDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDOutageDetailTableViewCell.m; sourceTree = "<group>"; };
 		721849E41A7DDDC8003DB01B /* HNDManagedOutage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDManagedOutage.h; sourceTree = "<group>"; };
 		721849E51A7DDDC8003DB01B /* HNDManagedOutage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDManagedOutage.m; sourceTree = "<group>"; };
-		72184A141A7EE307003DB01B /* hamburger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger@2x.png"; sourceTree = "<group>"; };
 		72835F371A74433800CD23D2 /* HNDSubwayMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDSubwayMapView.h; sourceTree = "<group>"; };
 		72835F381A74433800CD23D2 /* HNDSubwayMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDSubwayMapView.m; sourceTree = "<group>"; };
 		72835F3A1A74452200CD23D2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -91,6 +90,7 @@
 		72F339F61A74655F009D79AA /* HNDManagedStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDManagedStation.m; sourceTree = "<group>"; };
 		84B06852E15E91944A35F829 /* Pods-HandiMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HandiMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-HandiMap/Pods-HandiMap.release.xcconfig"; sourceTree = "<group>"; };
 		931571131A7F0D8000F298FE /* logo_alpha.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logo_alpha.gif; sourceTree = "<group>"; };
+		931571151A7F19F000F298FE /* info-32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-32@2x.png"; sourceTree = "<group>"; };
 		931974681A74397000BF7EAD /* HNDMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDMapViewController.h; sourceTree = "<group>"; };
 		931974691A74397000BF7EAD /* HNDMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDMapViewController.m; sourceTree = "<group>"; };
 		932EB31D1A7EE5080022E865 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				931571131A7F0D8000F298FE /* logo_alpha.gif */,
-				72184A141A7EE307003DB01B /* hamburger@2x.png */,
+				931571151A7F19F000F298FE /* info-32@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -494,8 +494,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				931571161A7F19F000F298FE /* info-32@2x.png in Resources */,
 				931571141A7F0D8000F298FE /* logo_alpha.gif in Resources */,
-				72184A151A7EE307003DB01B /* hamburger@2x.png in Resources */,
 				93958EF81A6C8F9F00057481 /* Images.xcassets in Resources */,
 				932EB3241A7F074D0022E865 /* Launch Screen.xib in Resources */,
 			);
