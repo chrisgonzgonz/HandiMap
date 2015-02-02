@@ -69,7 +69,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 }
 
 - (void)centerAnnotion:(CLLocation *)location {
-  [self centerAnnotation:location.coordinate inMap:self.mapView];
+  [self centerCoordinate:location.coordinate inMap:self.mapView];
 }
 
 #pragma mark - TargetActions
@@ -128,7 +128,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
   if ([self.selectedAnnotationView isEqual:view]) return;
-  [self centerAnnotation:view.annotation.coordinate inMap:mapView];
+  [self centerCoordinate:view.annotation.coordinate inMap:mapView];
   if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
     self.selectedAnnotationView = view;
     ((ZSPinAnnotation *)view).annotationColor = [HNDColor mainColor];
@@ -169,7 +169,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   [map setRegion:mapRegion animated:NO];
 }
 
-- (void)centerAnnotation:(CLLocationCoordinate2D)coordinate inMap:(MKMapView *)mapView {
+- (void)centerCoordinate:(CLLocationCoordinate2D)coordinate inMap:(MKMapView *)mapView {
   MKMapPoint point = MKMapPointForCoordinate(coordinate);
   MKMapRect rect = [mapView visibleMapRect];
   rect.origin.x = point.x - rect.size.width * 0.5;
@@ -188,19 +188,26 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 - (void)showStationDetailsPreview {
   self.detailViewState = HNDDetailViewStatePreview;
   self.detailViewPositionContraint = [self previewDetailViewContraint];
-  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseOut];
+  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseOut onComplete:nil];
 }
 
 - (void)showStationDetails {
   self.detailViewState = HNDDetailViewStateShow;
   self.detailViewPositionContraint = [self showDetailViewContraint];
-  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseInOut];
+
+
+  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseInOut onComplete:^(BOOL finished) {
+    // Scrolls map up to center selected annotation.
+    CLLocationCoordinate2D center = self.selectedAnnotationView.annotation.coordinate;
+    center.latitude -= self.mapView.region.span.latitudeDelta * (kDetailViewSpan * 0.5f);
+    [self.mapView setCenterCoordinate:center animated:YES];
+  }];
 }
 
 - (void)hideStationDetails {
   self.detailViewState = HNDDetailViewStateHidden;
   self.detailViewPositionContraint = [self hideDetailViewContraint];
-  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseIn];
+  [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseIn onComplete:nil];
 }
 
 #pragma mark AutoLayout
@@ -278,12 +285,13 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 }
 
 
-- (void)animateLayoutWithStyle:(UIViewAnimationOptions)animationOption {
+- (void)animateLayoutWithStyle:(UIViewAnimationOptions)animationOption
+                    onComplete:(void (^)(BOOL finished))completion {
   [UIView animateWithDuration:kAnimationDuration
                         delay:0
                       options:animationOption
                    animations:^{ [self layoutIfNeeded]; }
-                   completion:nil];
+                   completion:completion];
 }
 
 @end
