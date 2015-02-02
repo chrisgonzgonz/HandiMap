@@ -30,6 +30,8 @@
 	<string>Where you at?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Where you at?</string>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
