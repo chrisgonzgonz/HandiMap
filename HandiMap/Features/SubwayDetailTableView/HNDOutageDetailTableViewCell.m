@@ -1,15 +1,8 @@
-//
-//  HNDOutageDetailTableViewCell.m
-//  HandiMap
-//
-//  Created by Chris Gonzales on 1/31/15.
-//  Copyright (c) 2015 FSDC. All rights reserved.
-//
-
 #import "HNDOutageDetailTableViewCell.h"
 
 #import "HNDLabel.h"
 #import "HNDManagedOutage.h"
+
 @interface HNDOutageDetailTableViewCell ()
 @property (weak, nonatomic) HNDLabel *servingLabel;
 @property (weak, nonatomic) HNDLabel *equipmentTypeLabel;
