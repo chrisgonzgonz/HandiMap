@@ -217,6 +217,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   self.detailViewPositionContraint = [self hideDetailViewContraint];
   [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseIn onComplete:nil];
   if (self.selectedAnnotationView) {
+//    [self.mapView deselectAnnotation:self.selectedAnnotationView.annotation animated:YES];
     [self mapView:self.mapView didDeselectAnnotationView:self.selectedAnnotationView];
   }
 }
