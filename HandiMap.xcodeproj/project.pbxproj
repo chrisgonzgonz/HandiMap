@@ -222,6 +222,14 @@
 			path = SubwayMap;
 			sourceTree = "<group>";
 		};
+		932EB3221A7F055E0022E865 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				72184A141A7EE307003DB01B /* hamburger@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		934AA8131A7C8F950091D9BC /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +282,7 @@
 		93958EEA1A6C8F9F00057481 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				72184A141A7EE307003DB01B /* hamburger@2x.png */,
+				932EB3221A7F055E0022E865 /* Images */,
 				93958EF71A6C8F9F00057481 /* Images.xcassets */,
 				93958EEB1A6C8F9F00057481 /* Info.plist */,
 				93958EEC1A6C8F9F00057481 /* main.m */,
