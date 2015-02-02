@@ -20,19 +20,16 @@ PODS:
   - AFNetworking/UIKit (HEAD based on 2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - CCHMapClusterController (HEAD based on 1.6.6)
   - HockeySDK (HEAD based on 3.6.2)
   - INTULocationManager (HEAD based on 2.0.1)
 
 DEPENDENCIES:
   - AFNetworking (HEAD)
-  - CCHMapClusterController (HEAD)
   - HockeySDK (HEAD)
   - INTULocationManager (HEAD)
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
-  CCHMapClusterController: dfa1665e9915d192000d74da74b95942634f436a
   HockeySDK: bfd1f5ac75938b07499c4ac12932244b72a2e70b
   INTULocationManager: b203ddf15e4277a1d68f13ba65ff30fe5af43b0e
 

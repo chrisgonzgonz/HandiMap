@@ -153,8 +153,12 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-  if( mapView.zoomLevel < kZoomLevel ) {
-    [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:kZoomLevel animated:YES];
+  id<MKAnnotation> centerView = self.selectedAnnotationView.annotation ?: mapView.userLocation;
+  // Should not be comparing floats...whatever...
+  BOOL validCenter = centerView.coordinate.latitude != 0.0f;
+  if(mapView.zoomLevel < kZoomLevel && validCenter) {
+    NSLog(@"coords: %f %f", centerView.coordinate.latitude, centerView.coordinate.longitude);
+    [mapView setCenterCoordinate:centerView.coordinate zoomLevel:kZoomLevel animated:YES];
   }
 }
 
