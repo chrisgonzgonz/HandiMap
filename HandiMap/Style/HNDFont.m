@@ -14,6 +14,11 @@ static CGFloat const kTitleSize = 22.0f;
   return [UIFont fontWithName:kDefaultFont size:kDefaultSize];
 }
 
++ (UIFont *)boldFont {
+  return [UIFont fontWithName:kDefaultBoldFont size:kDefaultSize];
+}
+
+
 + (UIFont *)titleFont {
   return [UIFont fontWithName:kDefaultFont size:kTitleSize];
 }

@@ -25,6 +25,11 @@
   return self;
 }
 
+- (instancetype)typeBold {
+  self.font = [HNDFont boldFont];
+  return self;
+}
+
 - (instancetype)typeTitle {
   self.font = [HNDFont titleFont];
   return self;
