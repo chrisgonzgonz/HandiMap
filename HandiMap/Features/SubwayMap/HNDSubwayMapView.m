@@ -131,6 +131,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   [self centerAnnotation:view.annotation.coordinate inMap:mapView];
   if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
     self.selectedAnnotationView = view;
+    ((ZSPinAnnotation *)view).annotationColor = [HNDColor mainColor];
     [self showStationDetailsPreview];
     [self.delegate didSelectStation:self.selectedAnnotationView.annotation];
   }
@@ -139,6 +140,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
   if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
     self.selectedAnnotationView = nil;
+    ((ZSPinAnnotation *)view).annotationColor = ((HNDStation *)view.annotation).annotationColor;
     [self hideStationDetails];
     if ([self.delegate respondsToSelector:@selector(didDeselectStation:)]) {
       [self.delegate didDeselectStation:view.annotation];
