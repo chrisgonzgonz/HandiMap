@@ -72,6 +72,10 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   [self centerCoordinate:location.coordinate inMap:self.mapView];
 }
 
+- (void)centerUser {
+  [self centerCoordinate:self.mapView.userLocation.location.coordinate inMap:self.mapView];
+}
+
 #pragma mark - TargetActions
 
 - (void)panDetailView:(UIPanGestureRecognizer *)recognizer {
@@ -170,6 +174,10 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 }
 
 - (void)centerCoordinate:(CLLocationCoordinate2D)coordinate inMap:(MKMapView *)mapView {
+  if (self.detailViewState == HNDDetailViewStateShow) { // adjust the center
+    coordinate.latitude -= self.mapView.region.span.latitudeDelta * (kDetailViewSpan * 0.5f);
+  }
+
   MKMapPoint point = MKMapPointForCoordinate(coordinate);
   MKMapRect rect = [mapView visibleMapRect];
   rect.origin.x = point.x - rect.size.width * 0.5;
@@ -194,13 +202,9 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 - (void)showStationDetails {
   self.detailViewState = HNDDetailViewStateShow;
   self.detailViewPositionContraint = [self showDetailViewContraint];
-
-
+  // Need to readjust the center of the map.
   [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseInOut onComplete:^(BOOL finished) {
-    // Scrolls map up to center selected annotation.
-    CLLocationCoordinate2D center = self.selectedAnnotationView.annotation.coordinate;
-    center.latitude -= self.mapView.region.span.latitudeDelta * (kDetailViewSpan * 0.5f);
-    [self.mapView setCenterCoordinate:center animated:YES];
+    [self centerCoordinate:self.selectedAnnotationView.annotation.coordinate inMap:self.mapView];
   }];
 }
 

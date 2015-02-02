@@ -42,7 +42,13 @@
   [super viewDidLoad];
   [self getCurrentLocation];
   [self loadStations];
-  self.view.delegate = self;
+  [self setupViews];
+}
+
+#pragma mark - TargetAction
+
+- (void)centerUserLocation:(UIBarButtonItem *)sender {
+  [self.view centerUser];
 }
 
 #pragma mark - Protocols
@@ -59,6 +65,20 @@
 }
 
 #pragma mark - Private
+
+- (void)setupViews {
+  self.view.delegate = self;
+  UIImage *gpsImage =
+    [[UIImage imageNamed:@"gps-32_skinny"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+  UIImageView *infoView = [[UIImageView alloc] initWithImage:gpsImage];
+  infoView.tintColor = [HNDColor lightColor];
+  infoView.contentMode = UIViewContentModeScaleAspectFit;
+  self.navigationItem.rightBarButtonItem =
+      [[UIBarButtonItem alloc] initWithImage:gpsImage
+                                       style:UIBarButtonItemStylePlain
+                                      target:self
+                                      action:@selector(centerUserLocation:)];
+}
 
 - (void)loadSubviewController {
   self.stationDetailVC = [[HNDStationDetailViewController alloc] init];

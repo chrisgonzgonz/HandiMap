@@ -789,6 +789,7 @@ fi</string>
 		<dict>
 			<key>children</key>
 			<array>
+				<string>93A59F621A7F36C20047B8B8</string>
 				<string>931571171A7F248300F298FE</string>
 				<string>931571151A7F19F000F298FE</string>
 				<string>931571191A7F24FC00F298FE</string>
@@ -1106,6 +1107,7 @@ fi</string>
 				<string>931571181A7F248300F298FE</string>
 				<string>93958EF81A6C8F9F00057481</string>
 				<string>932EB3241A7F074D0022E865</string>
+				<string>93A59F631A7F36C20047B8B8</string>
 			</array>
 			<key>isa</key>
 			<string>PBXResourcesBuildPhase</string>
@@ -2074,6 +2076,24 @@ fi</string>
 		<dict>
 			<key>fileRef</key>
 			<string>939E68181A79E6A200D6042E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>93A59F621A7F36C20047B8B8</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>gps-32_skinny@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>93A59F631A7F36C20047B8B8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>93A59F621A7F36C20047B8B8</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>

@@ -17,5 +17,6 @@
 /// \param stations is expected to conform to the \protocol MKAnnotation
 - (void)updateStations:(NSArray *)stations;
 - (void)centerAnnotion:(CLLocation *)location;
+- (void)centerUser;
 
 @end
