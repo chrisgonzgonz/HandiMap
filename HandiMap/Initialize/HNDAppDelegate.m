@@ -36,16 +36,11 @@ static NSString *const kHockeyId = @"f7b9bbd12bb0d75390f8dd8894f8f70a";
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [self startHockey];
   [self preloadData];
-  [self setupDefaults];
   self.window.rootViewController = [self.currentFlow initialViewController];
   return YES;
 }
 
 #pragma mark - Private
-
-- (void)setupDefaults {
-  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-}
 
 - (void)preloadData {
   [[HNDDataStore sharedStore] loadStationsWithSuccess:^{
