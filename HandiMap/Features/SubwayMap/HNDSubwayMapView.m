@@ -163,7 +163,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 
   // Default zoom.
   MKCoordinateRegion mapRegion;
-  mapRegion.center = CLLocationCoordinate2DMake(40.759211, -73.984638); // Empire State Building
+  mapRegion.center = CLLocationCoordinate2DMake(40.759211, -73.984638); // Times Square
   mapRegion.span.latitudeDelta = kMapCoordSpan;
   mapRegion.span.longitudeDelta = kMapCoordSpan;
   [map setRegion:mapRegion animated:NO];
