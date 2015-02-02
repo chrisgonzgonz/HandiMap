@@ -13,13 +13,17 @@ typedef NS_ENUM(NSUInteger, HNDStationStatus) {
 };
 
 @interface HNDStation ()
-@property(nonatomic, readwrite) HNDManagedStation *managedStation;
+@property(nonatomic) HNDManagedStation *managedStation;
 @property(nonatomic, readonly) HNDStationStatus stationStatus;
 @end
 
 @implementation HNDStation
 
 #pragma mark - Public
+
+- (NSArray *)outages {
+  return [self.managedStation.outages allObjects];
+}
 
 - (instancetype)initWithManagedStation:(HNDManagedStation *)managedStation {
   if (self = [super init]) {

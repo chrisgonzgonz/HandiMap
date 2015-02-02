@@ -10,14 +10,9 @@
                                              UITableViewDelegate>
 // Casts root view.
 @property(nonatomic) HNDStationDetailView *view;
-@property(nonatomic, readonly) NSArray *currentOutages;
 @end
 
 @implementation HNDStationDetailViewController
-
-- (NSArray *)currentOutages {
-  return [self.selectedStation.managedStation.outages allObjects];
-}
 
 - (void)loadView {
   self.view = [[HNDStationDetailView alloc] init];
@@ -40,7 +35,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 2;
+  return self.selectedStation.outages.count ? 2 : 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -48,7 +43,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return section ? self.selectedStation.managedStation.outages.count : 1;
+  return section ? self.selectedStation.outages.count : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -70,7 +65,7 @@
     if (!outageCell) {
       outageCell = [[HNDOutageDetailTableViewCell alloc] init];
     }
-    outageCell.outage = self.currentOutages[indexPath.row];
+    outageCell.outage = self.selectedStation.outages[indexPath.row];
     cell = outageCell;
   }
   return cell;
@@ -94,7 +89,7 @@
     if (!sizingCell) {
       sizingCell = [[HNDOutageDetailTableViewCell alloc] init];
     }
-    sizingCell.outage = self.currentOutages[indexPath.row];
+    sizingCell.outage = self.selectedStation.outages[indexPath.row];
     [sizingCell setNeedsLayout];
     [sizingCell layoutIfNeeded];
     CGSize size =
@@ -109,25 +104,5 @@
   self.view.titleView.text = self.selectedStation.name;
   [self.view.tableView reloadData];
 }
-
-//
-//- (CGFloat)heightForBasicCellAtIndexPath:(NSIndexPath *)indexPath {
-//  static HNDStationDetailTableViewCell *sizingCell = nil;
-//  static dispatch_once_t onceToken;
-//  dispatch_once(&onceToken, ^{
-//    sizingCell = [self.view.tableView dequeueReusableCellWithIdentifier:stationCellID];
-//  });
-// 
-////  [self configureBasicCell:sizingCell atIndexPath:indexPath];
-//  return [self calculateHeightForConfiguredSizingCell:sizingCell];
-//}
-// 
-//- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
-//  [sizingCell setNeedsLayout];
-//  [sizingCell layoutIfNeeded];
-// 
-//  CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-//  return size.height + 1.0f; // Add 1.0f for the cell separator height
-//}
 
 @end

@@ -7,7 +7,8 @@
 @class UIColor;
 
 @interface HNDStation : NSObject <MKAnnotation>
-@property (nonatomic, readonly) HNDManagedStation *managedStation;
+
+@property(nonatomic, readonly) NSArray *outages;
 - (NSString *)name;
 - (NSString *)subwayLines;
 - (NSString *)accessibleLines;
