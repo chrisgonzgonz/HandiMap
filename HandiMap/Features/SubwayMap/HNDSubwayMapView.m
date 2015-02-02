@@ -154,7 +154,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
   if( mapView.zoomLevel < kZoomLevel ) {
-    [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:kZoomLevel animated:YES];
+//    [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:kZoomLevel animated:YES];
   }
 }
 
