@@ -208,6 +208,9 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   self.detailViewState = HNDDetailViewStateHidden;
   self.detailViewPositionContraint = [self hideDetailViewContraint];
   [self animateLayoutWithStyle:UIViewAnimationOptionCurveEaseIn onComplete:nil];
+  if (self.selectedAnnotationView) {
+    [self mapView:self.mapView didDeselectAnnotationView:self.selectedAnnotationView];
+  }
 }
 
 #pragma mark AutoLayout
