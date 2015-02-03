@@ -35,9 +35,12 @@ static NSString *const kHockeyId = @"f7b9bbd12bb0d75390f8dd8894f8f70a";
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [self startHockey];
-  [self preloadData];
   self.window.rootViewController = [self.currentFlow initialViewController];
   return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [self preloadData];
 }
 
 #pragma mark - Private
