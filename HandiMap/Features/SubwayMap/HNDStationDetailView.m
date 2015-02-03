@@ -75,6 +75,8 @@
     _tableView = tableView;
     _tableView.backgroundColor = [HNDColor lightColor];
     _tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.allowsSelection = NO;
     [self addSubview:_tableView];
   }
   return _tableView;
@@ -92,12 +94,12 @@
       [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[containerView]|"
                                               options:0
                                               metrics:nil
-                                              views:views]];
+                                                views:views]];
   [self addConstraints:
       [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|"
                                               options:0
                                               metrics:nil
-                                              views:views]];
+                                                views:views]];
 }
 
 @end

@@ -1,5 +1,6 @@
 #import "HNDStationDetailViewController.h"
 
+#import "HNDColor.h"
 #import "HNDLabel.h"
 #import "HNDOutageDetailTableViewCell.h"
 #import "HNDStation.h"
@@ -58,7 +59,7 @@
     }
     stationCell.station = self.selectedStation;
     cell = stationCell;
-  } else{
+  } else {
     static NSString *outageCellID = @"outageCell";
     HNDOutageDetailTableViewCell *outageCell =
         [tableView dequeueReusableCellWithIdentifier:outageCellID];
@@ -96,6 +97,23 @@
         [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height + 1.0f;
   }
+}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//  UIView *outagesHeader = [[UIView alloc] init];
+//  outagesHeader.backgroundColor = [HNDColor lightColor];
+//  return outagesHeader;
+//}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+  UIView *outagesHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 36)];
+  UILabel *outagesLabel = [[[[HNDLabel alloc] init] typeTitle] alignCenter];
+  outagesLabel.text = @"Outages";
+  outagesLabel.frame = outagesHeader.bounds;
+  outagesLabel.backgroundColor = [HNDColor lightColor];
+  [outagesHeader addSubview:outagesLabel];
+  return outagesHeader;
 }
 
 #pragma mark - Private
