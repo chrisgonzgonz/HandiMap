@@ -157,7 +157,6 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
   // Should not be comparing floats...whatever...
   BOOL validCenter = centerView.coordinate.latitude != 0.0f;
   if(mapView.zoomLevel < kZoomLevel && validCenter) {
-    NSLog(@"coords: %f %f", centerView.coordinate.latitude, centerView.coordinate.longitude);
     [mapView setCenterCoordinate:centerView.coordinate zoomLevel:kZoomLevel animated:YES];
   }
 }
@@ -167,6 +166,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
 
 - (void)setUpMap:(MKMapView *)map {
   _mapView.showsUserLocation = YES;
+  _mapView.userLocation.title = nil;
   _mapView.delegate = self;
 
   // Default zoom.
