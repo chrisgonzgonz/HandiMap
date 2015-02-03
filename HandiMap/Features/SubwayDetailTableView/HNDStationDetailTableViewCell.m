@@ -1,9 +1,9 @@
 #import "HNDStationDetailTableViewCell.h"
 
+#import "HNDColor.h"
 #import "HNDLabel.h"
-#import "HNDStation.h"
-
-static NSUInteger const kStandardPadding = 16;
+#import "HNDStation.h" // WOAH! This should not be here...The controller do the binding.
+#import "HNDTableViewCell+Protected.h"
 
 @interface HNDStationDetailTableViewCell()
 @property(nonatomic) UILabel *subwayLinesLabel;
@@ -15,6 +15,8 @@ static NSUInteger const kStandardPadding = 16;
 
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
+    self.contentView.backgroundColor = [HNDColor lightColor];
+    
     _subwayLinesLabel = [[HNDLabel alloc] init];
     _accessibleLinesLabel = [[HNDLabel alloc] init];
     _adaLabel = [[HNDLabel alloc] init];
@@ -62,8 +64,7 @@ static NSUInteger const kStandardPadding = 16;
     @"subwayLinesTitle": subwayLinesTitle,
   };
 
-  NSString *constraint;
-  constraint = @"V:|-[subwayLinesTitle][accessibleLinesTitle][adaTitle]-|";
+  NSString *constraint = @"V:|-[subwayLinesTitle][accessibleLinesTitle][adaTitle]-|";
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:constraint
                                                                           options:0
                                                                            metrics:nil
@@ -72,17 +73,6 @@ static NSUInteger const kStandardPadding = 16;
   [self layoutTitle:subwayLinesTitle withSubTitle:self.subwayLinesLabel];
   [self layoutTitle:accessibleLinesTitle withSubTitle:self.accessibleLinesLabel];
   [self layoutTitle:adaTitle withSubTitle:self.adaLabel];
-}
-
-- (void)layoutTitle:(UIView *)title withSubTitle:(UIView *)subtitle {
-  NSString *constraint = [NSString stringWithFormat:
-      @"H:|-(%lu)-[title]-[subtitle]-(>=%lu)-|", kStandardPadding, kStandardPadding];
-  [self.contentView addConstraints:
-      [NSLayoutConstraint constraintsWithVisualFormat:constraint
-                                              options:NSLayoutFormatAlignAllTop
-                                              metrics:nil
-                                                views:NSDictionaryOfVariableBindings(title,
-                                                                                     subtitle)]];
 }
 
 @end

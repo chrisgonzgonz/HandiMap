@@ -1,7 +1,7 @@
-#import <UIKit/UIKit.h>
+#import "HNDTableViewCell.h"
 
 @class HNDManagedOutage;
 
-@interface HNDOutageDetailTableViewCell : UITableViewCell
+@interface HNDOutageDetailTableViewCell : HNDTableViewCell
 @property (nonatomic) HNDManagedOutage *outage;
 @end

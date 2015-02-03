@@ -1,7 +1,7 @@
-#import <UIKit/UIKit.h>
+#import "HNDTableViewCell.h"
 
 @class HNDStation;
 
-@interface HNDStationDetailTableViewCell : UITableViewCell
+@interface HNDStationDetailTableViewCell : HNDTableViewCell
 @property (nonatomic) HNDStation *station;
 @end
