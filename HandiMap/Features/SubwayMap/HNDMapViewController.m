@@ -9,7 +9,7 @@
 // TODO: Generalize this to UIViewController to break this dependency.
 // This should be injected and conforms to HNDStationDetail protocol.
 #import "HNDStationDetailViewController.h"
-
+#import <SVProgressHUD.h>
 @interface HNDMapViewController () <HNDStationFilterDelegate,
                                     HNDSubwayMapViewDelegate>
 @property(nonatomic) HNDSubwayMapView *view; // Casts root view.
@@ -43,6 +43,7 @@
   [self getCurrentLocation];
   [self loadStations];
   [self setupViews];
+  [SVProgressHUD showWithStatus:@"Loading Outages"];
 }
 
 #pragma mark - TargetAction

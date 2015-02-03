@@ -5,7 +5,6 @@
 #import "HNDSubwayLine.h"
 #import "HNDSubwayLinesList.h"
 #import "HNDSubwayListView.h"
-
 @interface HNDSubwayLineFilterViewController() <UITableViewDataSource,
                                                 UITableViewDelegate>
 @property(nonatomic) HNDSubwayLinesList *subwayList;
@@ -28,6 +27,7 @@
   [super viewDidLoad];
   _subwayList = [[HNDSubwayLinesList alloc] init];
   [self setupViews];
+  
 }
 
 #pragma mark - Protocols
