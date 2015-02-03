@@ -57,7 +57,7 @@
 #pragma mark - TargetActions
 
 - (void)showAppInfo:(UIButton *)sender {
-  NSLog(@"tap me");
+  [self.flow presentAppInfo:self];
 }
 
 #pragma mark - Private
