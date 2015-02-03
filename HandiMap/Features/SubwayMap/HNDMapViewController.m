@@ -45,6 +45,8 @@
   [self loadStations];
   [self setupViews];
   if (!self.stationManager.filteredStations.count) {
+    [SVProgressHUD setBackgroundColor:[HNDColor mainColor]];
+    [SVProgressHUD setForegroundColor:[HNDColor lightColor]];
     [SVProgressHUD show];
   }
 }
