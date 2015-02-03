@@ -1,5 +1,6 @@
 #import "HNDMapFlow.h"
 
+#import "HNDInfoViewController.h"
 #import "HNDLabel.h"
 #import "HNDMapViewController.h"
 #import "HNDStyleKit.h"
@@ -40,6 +41,13 @@ static NSString *const kDefaultNavigationTitle = @"HandiMap";
 
 - (UIViewController *)initialViewController {
   return self.navController;
+}
+
+- (void)presentAppInfo:(UIViewController *)sender {
+  UIViewController *infoViewController = [[HNDInfoViewController alloc] init];
+  infoViewController.title = @"HandiMap";
+  // TODO: Make this a modal instead...too lazy to implement back button.
+  [self.navController pushViewController:infoViewController animated:YES];
 }
 
 - (void)presentNext:(UIViewController *)sender {

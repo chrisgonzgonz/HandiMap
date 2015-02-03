@@ -99,12 +99,6 @@
   }
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//  UIView *outagesHeader = [[UIView alloc] init];
-//  outagesHeader.backgroundColor = [HNDColor lightColor];
-//  return outagesHeader;
-//}
-
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
   UIView *outagesHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 36)];
