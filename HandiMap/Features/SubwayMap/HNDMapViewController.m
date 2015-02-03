@@ -49,6 +49,12 @@
     [SVProgressHUD setForegroundColor:[HNDColor lightColor]];
     [SVProgressHUD show];
   }
+  
+  [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidBecomeActiveNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+    [SVProgressHUD setBackgroundColor:[HNDColor mainColor]];
+    [SVProgressHUD setForegroundColor:[HNDColor lightColor]];
+    [SVProgressHUD show];
+  }];
 }
 
 #pragma mark - TargetAction
@@ -61,7 +67,9 @@
 #pragma mark HNDStationFilterDelegate
 
 - (void)filteredStationsDidChange:(NSArray *)filteredStations {
-  [SVProgressHUD dismiss];
+  if (filteredStations.count) {
+    [SVProgressHUD dismiss];
+  }
   [self.view updateStations:filteredStations];
 }
 
