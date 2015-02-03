@@ -91,8 +91,8 @@
                                                               _warningDescription,
                                                               _errorDescription);
 
-  NSString *constraint = @"V:|-(30)-[_subTitleLabel]-[_normalPin(44)]-[_normalDescription]"
-      "-[_warningPin(44)]-[_warningDescription]-[_errorPin(44)]-[_errorDescription]";
+  NSString *constraint = @"V:|-(30)-[_subTitleLabel]-[_normalPin(100)]-(-44)-[_normalDescription]"
+      "-[_warningPin(100)]-(-44)-[_warningDescription]-[_errorPin(100)]-(-44)-[_errorDescription]";
   [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:constraint
                                                                options:0
                                                                metrics:nil
