@@ -39,7 +39,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-  return section == 0 ? @"Station Information" : @"Outages";
+  return section == 0 ? nil : @"Outages";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

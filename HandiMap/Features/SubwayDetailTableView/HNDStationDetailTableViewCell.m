@@ -3,7 +3,9 @@
 #import "HNDLabel.h"
 #import "HNDStation.h"
 
-@interface HNDStationDetailTableViewCell ()
+static NSUInteger const kStandardPadding = 16;
+
+@interface HNDStationDetailTableViewCell()
 @property (nonatomic, weak) HNDLabel *subwayLinesLabel;
 @property (nonatomic, weak) HNDLabel *accessibleLinesLabel;
 @property (nonatomic, weak) HNDLabel *adaLabel;
@@ -16,66 +18,6 @@
     [self autolayoutSubviews];
   }
   return self;
-}
-
-- (void)autolayoutSubviews {
-  HNDLabel *subwayLinesTitle = [[[HNDLabel alloc] init] typeBold];
-  subwayLinesTitle.text = @"Subway Lines:";
-  HNDLabel *accessibleLinesTitle = [[[HNDLabel alloc] init] typeBold];
-  accessibleLinesTitle.text = @"Accessible Lines:";
-  HNDLabel *adaTitle = [[[HNDLabel alloc] init] typeBold];
-  adaTitle.text = @"ADA:";
-  subwayLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
-  accessibleLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
-  adaTitle.translatesAutoresizingMaskIntoConstraints = NO;
-  
-  [self.contentView addSubview:subwayLinesTitle];
-  [self.contentView addSubview:accessibleLinesTitle];
-  [self.contentView addSubview:adaTitle];
-  
-  NSDictionary *views = @{
-    @"accessibleLinesLabel": self.accessibleLinesLabel,
-    @"accessibleLinesTitle": accessibleLinesTitle,
-    @"adaLabel": self.adaLabel,
-    @"adaTitle": adaTitle,
-    @"subwayLinesLabel": self.subwayLinesLabel,
-    @"subwayLinesTitle": subwayLinesTitle,
-  };
-
-  NSString *constraint;
-  constraint = @"V:|[subwayLinesLabel][accessibleLinesLabel][adaLabel]|";
-  [self.contentView addConstraints:
-      [NSLayoutConstraint constraintsWithVisualFormat:constraint
-                                              options:0
-                                              metrics:nil
-                                                views:views]];
-
-  constraint = @"H:|-(15)-[subwayLinesTitle]-[subwayLinesLabel]-(>=15)-|";
-  [self.contentView addConstraints:
-      [NSLayoutConstraint constraintsWithVisualFormat:constraint
-                                              options:NSLayoutFormatAlignAllTop
-                                              metrics:nil
-                                                views:views]];
-  constraint = @"H:|-(15)-[accessibleLinesTitle]-[accessibleLinesLabel]-(>=15)-|";
-  [self.contentView addConstraints:
-      [NSLayoutConstraint constraintsWithVisualFormat:constraint
-                                              options:NSLayoutFormatAlignAllTop
-                                              metrics:nil
-                                                views:views]];
-  constraint =  @"H:|-(15)-[adaTitle]-[adaLabel]-(>=15)-|";
-  [self.contentView addConstraints:
-      [NSLayoutConstraint constraintsWithVisualFormat:constraint
-                                              options:NSLayoutFormatAlignAllTop
-                                              metrics:nil
-                                                views:views]];
-  [self.contentView addConstraint:
-      [NSLayoutConstraint constraintWithItem:adaTitle
-                                   attribute:NSLayoutAttributeHeight
-                                   relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                      toItem:self.adaLabel
-                                   attribute:NSLayoutAttributeHeight
-                                  multiplier:1.0
-                                    constant:0]];
 }
 
 - (HNDLabel *)subwayLinesLabel {
@@ -109,7 +51,8 @@
     HNDLabel *adaLabel = [[HNDLabel alloc] init];
     _adaLabel = adaLabel;
     _adaLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_adaLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [_adaLabel setContentCompressionResistancePriority:UILayoutPriorityRequired
+                                               forAxis:UILayoutConstraintAxisVertical];
     _adaLabel.preferredMaxLayoutWidth = self.bounds.size.width;
     [self.contentView addSubview:_adaLabel];
   }
@@ -123,10 +66,52 @@
   self.adaLabel.text = station.adaText;
 }
 
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-//    [super setSelected:selected animated:animated];
-//
-//    // Configure the view for the selected state
-//}
+#pragma mark - Private
+#pragma mark Autolayout
+
+- (void)autolayoutSubviews {
+  HNDLabel *subwayLinesTitle = [[[HNDLabel alloc] init] typeBold];
+  subwayLinesTitle.text = @"Subway Lines:";
+  HNDLabel *accessibleLinesTitle = [[[HNDLabel alloc] init] typeBold];
+  accessibleLinesTitle.text = @"Accessible Lines:";
+  HNDLabel *adaTitle = [[[HNDLabel alloc] init] typeBold];
+  adaTitle.text = @"ADA:";
+
+  subwayLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
+  accessibleLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
+  adaTitle.translatesAutoresizingMaskIntoConstraints = NO;
+
+  [self.contentView addSubview:subwayLinesTitle];
+  [self.contentView addSubview:accessibleLinesTitle];
+  [self.contentView addSubview:adaTitle];
+
+  NSDictionary *views = @{
+    @"accessibleLinesTitle": accessibleLinesTitle,
+    @"adaTitle": adaTitle,
+    @"subwayLinesTitle": subwayLinesTitle,
+  };
+
+  NSString *constraint;
+  constraint = @"V:|-[subwayLinesTitle][accessibleLinesTitle][adaTitle]-|";
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:constraint
+                                                                          options:0
+                                                                           metrics:nil
+                                                                             views:views]];
+
+  [self layoutTitle:subwayLinesTitle withSubTitle:self.subwayLinesLabel];
+  [self layoutTitle:accessibleLinesTitle withSubTitle:self.accessibleLinesLabel];
+  [self layoutTitle:adaTitle withSubTitle:self.adaLabel];
+}
+
+- (void)layoutTitle:(UIView *)title withSubTitle:(UIView *)subtitle {
+  NSString *constraint = [NSString stringWithFormat:
+      @"H:|-(%lu)-[title]-[subtitle]-(>=%lu)-|", kStandardPadding, kStandardPadding];
+  [self.contentView addConstraints:
+      [NSLayoutConstraint constraintsWithVisualFormat:constraint
+                                              options:NSLayoutFormatAlignAllTop
+                                              metrics:nil
+                                                views:NSDictionaryOfVariableBindings(title,
+                                                                                    subtitle)]];
+}
 
 @end
