@@ -15,33 +15,16 @@ static NSUInteger const kStandardPadding = 16;
 
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
-    [self.contentView addSubview:self.subwayLinesLabel];
-    [self.contentView addSubview:self.accessibleLinesLabel];
-    [self.contentView addSubview:self.adaLabel];
+    _subwayLinesLabel = [[HNDLabel alloc] init];
+    _accessibleLinesLabel = [[HNDLabel alloc] init];
+    _adaLabel = [[HNDLabel alloc] init];
+
+    [self.contentView addSubview:_subwayLinesLabel];
+    [self.contentView addSubview:_accessibleLinesLabel];
+    [self.contentView addSubview:_adaLabel];
     [self autolayoutSubviews];
   }
   return self;
-}
-
-- (UILabel *)subwayLinesLabel {
-  if (!_subwayLinesLabel) {
-    _subwayLinesLabel = [[HNDLabel alloc] init];
-  }
-  return _subwayLinesLabel;
-}
-
-- (UILabel *)accessibleLinesLabel {
-  if (!_accessibleLinesLabel) {
-    _accessibleLinesLabel = [[HNDLabel alloc] init];
-  }
-  return _accessibleLinesLabel;
-}
-
-- (UILabel *)adaLabel {
-  if (!_adaLabel) {
-    _adaLabel = [[HNDLabel alloc] init];;
-  }
-  return _adaLabel;
 }
 
 - (void)setStation:(HNDStation *)station {
