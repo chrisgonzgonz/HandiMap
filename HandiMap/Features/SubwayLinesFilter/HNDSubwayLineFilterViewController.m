@@ -54,11 +54,28 @@
   [self.flow presentNext:self];
 }
 
+#pragma mark - TargetActions
+
+- (void)showAppInfo:(UIButton *)sender {
+  NSLog(@"tap me");
+}
+
 #pragma mark - Private
 
 - (void)setupViews {
   self.view.subwayLinesTableView.dataSource = self;
   self.view.subwayLinesTableView.delegate = self;
+
+  UIImage *gpsImage =
+  [[UIImage imageNamed:@"info-32"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+  UIImageView *infoView = [[UIImageView alloc] initWithImage:gpsImage];
+  infoView.tintColor = [HNDColor lightColor];
+  infoView.contentMode = UIViewContentModeScaleAspectFit;
+  self.navigationItem.rightBarButtonItem =
+  [[UIBarButtonItem alloc] initWithImage:gpsImage
+                                   style:UIBarButtonItemStylePlain
+                                  target:self
+                                  action:@selector(showAppInfo:)];
 }
 
 - (UITableViewCell *)configureCell:(HNDSubwayLineCell *)cell withLine:(HNDSubwayLine *)subwayLine {

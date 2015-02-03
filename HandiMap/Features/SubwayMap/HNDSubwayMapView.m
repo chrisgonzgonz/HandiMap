@@ -125,7 +125,7 @@ typedef NS_ENUM(NSUInteger, HNDDetailViewState) {
       ?: [[ZSPinAnnotation alloc] initWithAnnotation:stationAnnotaion reuseIdentifier:kPinReuseId]);
   pinView.annotation = stationAnnotaion;
   pinView.annotationType = ZSPinAnnotationTypeTag;
-  pinView.annotationColor = stationAnnotaion.annotationColor; // will break with clusters.
+  pinView.annotationColor = stationAnnotaion.annotationColor;
   pinView.canShowCallout = NO;
   return pinView;
 }
