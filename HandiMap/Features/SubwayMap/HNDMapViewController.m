@@ -1,6 +1,7 @@
 #import "HNDMapViewController.h"
 
 #import "INTULocationManager.h"
+#import <SVProgressHUD.h>
 
 #import "HNDColor.h"
 #import "HNDStation.h"
@@ -9,7 +10,7 @@
 // TODO: Generalize this to UIViewController to break this dependency.
 // This should be injected and conforms to HNDStationDetail protocol.
 #import "HNDStationDetailViewController.h"
-#import <SVProgressHUD.h>
+
 @interface HNDMapViewController () <HNDStationFilterDelegate,
                                     HNDSubwayMapViewDelegate>
 @property(nonatomic) HNDSubwayMapView *view; // Casts root view.
@@ -43,7 +44,9 @@
   [self getCurrentLocation];
   [self loadStations];
   [self setupViews];
-  [SVProgressHUD showWithStatus:@"Loading Outages"];
+  if (!self.stationManager.filteredStations.count) {
+    [SVProgressHUD show];
+  }
 }
 
 #pragma mark - TargetAction
@@ -56,6 +59,7 @@
 #pragma mark HNDStationFilterDelegate
 
 - (void)filteredStationsDidChange:(NSArray *)filteredStations {
+  [SVProgressHUD dismiss];
   [self.view updateStations:filteredStations];
 }
 
