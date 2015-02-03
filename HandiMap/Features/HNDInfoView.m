@@ -28,9 +28,12 @@
     for (ZSPinAnnotation *pin in @[_normalPin, _warningPin, _errorPin]) {
       pin = [[ZSPinAnnotation alloc] initWithAnnotation:nil reuseIdentifier:nil];
       pin.annotationType = ZSPinAnnotationTypeTag;
-      pin.annotationColor = [HNDColor highlightColor];
       pin.contentMode = UIViewContentModeScaleAspectFit;  
     }
+    _normalPin.annotationColor = [HNDColor highlightColor];
+    _warningPin.annotationColor = [HNDColor warningColor];
+    _errorPin.annotationColor = [HNDColor errorColor];
+    
     
     for (UIlabel *description in @[_normalDescription, _warningDescription, _errorDescription]) {
       description = [[[HNDLabel alloc] init] alignCenter];
