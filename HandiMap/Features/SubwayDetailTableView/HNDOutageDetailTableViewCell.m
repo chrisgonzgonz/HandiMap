@@ -99,14 +99,14 @@
   HNDLabel *updatedAtTitle = [[[HNDLabel alloc] init] typeBold];
   updatedAtTitle.text = @"Updated At:";
 
-  _servingLabel.translatesAutoresizingMaskIntoConstraints = NO;
-  _equipmentTypeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-  _routesAffectedLabel.translatesAutoresizingMaskIntoConstraints = NO;
-  _reasonLabel.translatesAutoresizingMaskIntoConstraints = NO;
-  _outageStartDateLabel.translatesAutoresizingMaskIntoConstraints = NO;
-  _estimatedReturnOfServiceLabel.translatesAutoresizingMaskIntoConstraints = NO;
-  _adaLabel.translatesAutoresizingMaskIntoConstraints = NO;
-  _updatedAtLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  self.servingLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  self.equipmentTypeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  self.routesAffectedLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  self.reasonLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  self.outageStartDateLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  self.estimatedReturnOfServiceLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  self.adaLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  self.updatedAtLabel.translatesAutoresizingMaskIntoConstraints = NO;
   servingTitle.translatesAutoresizingMaskIntoConstraints = NO;
   equipmentTypeTitle.translatesAutoresizingMaskIntoConstraints = NO;
   routesAffectedTitle.translatesAutoresizingMaskIntoConstraints = NO;
