@@ -1,116 +1,47 @@
 #import "HNDOutageDetailTableViewCell.h"
 
+#import "HNDColor.h"
 #import "HNDLabel.h"
 #import "HNDManagedOutage.h" // WOAH! This should not be here...The controller do the binding.
 #import "HNDTableViewCell+Protected.h"
 
 @interface HNDOutageDetailTableViewCell ()
-@property (nonatomic) HNDLabel *servingLabel;
-@property (nonatomic) HNDLabel *equipmentTypeLabel;
-@property (nonatomic) HNDLabel *routesAffectedLabel;
-@property (nonatomic) HNDLabel *reasonLabel;
-@property (nonatomic) HNDLabel *outageStartDateLabel;
-@property (nonatomic) HNDLabel *estimatedReturnOfServiceLabel;
-@property (nonatomic) HNDLabel *adaLabel;
-@property (nonatomic) HNDLabel *updatedAtLabel;
+@property(nonatomic) HNDLabel *servingLabel;
+@property(nonatomic) HNDLabel *equipmentTypeLabel;
+@property(nonatomic) HNDLabel *routesAffectedLabel;
+@property(nonatomic) HNDLabel *reasonLabel;
+@property(nonatomic) HNDLabel *outageStartDateLabel;
+@property(nonatomic) HNDLabel *estimatedReturnOfServiceLabel;
+@property(nonatomic) HNDLabel *adaLabel;
+@property(nonatomic) HNDLabel *updatedAtLabel;
 @end
 
 @implementation HNDOutageDetailTableViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
+    self.backgroundColor = [HNDColor lightColor];
+
+    _servingLabel = [[HNDLabel alloc] init];
+    _equipmentTypeLabel = [[HNDLabel alloc] init];
+    _routesAffectedLabel = [[HNDLabel alloc] init];
+    _reasonLabel = [[HNDLabel alloc] init];
+    _outageStartDateLabel = [[HNDLabel alloc] init];
+    _estimatedReturnOfServiceLabel = [[HNDLabel alloc] init];
+    _adaLabel = [[HNDLabel alloc] init];
+    _updatedAtLabel = [[HNDLabel alloc] init];
+
+    [self.contentView addSubview:_servingLabel];
+    [self.contentView addSubview:_equipmentTypeLabel];
+    [self.contentView addSubview:_routesAffectedLabel];
+    [self.contentView addSubview:_reasonLabel];
+    [self.contentView addSubview:_outageStartDateLabel];
+    [self.contentView addSubview:_estimatedReturnOfServiceLabel];
+    [self.contentView addSubview:_adaLabel];
+    [self.contentView addSubview:_updatedAtLabel];
     [self autolayoutSubviews];
   }
   return self;
-}
-
-- (HNDLabel *)servingLabel {
-  if (!_servingLabel) {
-    HNDLabel *servingLabel = [[HNDLabel alloc] init];
-    _servingLabel = servingLabel;
-    _servingLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_servingLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [self.contentView addSubview:_servingLabel];
-  }
-  return _servingLabel;
-}
-
-- (HNDLabel *)equipmentTypeLabel {
-  if (!_equipmentTypeLabel) {
-    HNDLabel *equipmentTypeLabel = [[HNDLabel alloc] init];
-    _equipmentTypeLabel = equipmentTypeLabel;
-    _equipmentTypeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_equipmentTypeLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [self.contentView addSubview:_equipmentTypeLabel];
-  }
-  return _equipmentTypeLabel;
-}
-
-- (HNDLabel *)routesAffectedLabel {
-  if (!_routesAffectedLabel) {
-    HNDLabel *routesAffectedLabel = [[HNDLabel alloc] init];
-    _routesAffectedLabel = routesAffectedLabel;
-    _routesAffectedLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_routesAffectedLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [self.contentView addSubview:_routesAffectedLabel];
-  }
-  return _routesAffectedLabel;
-}
-
-
-- (HNDLabel *)reasonLabel {
-  if (!_reasonLabel) {
-    HNDLabel *reasonLabel = [[HNDLabel alloc] init];
-    _reasonLabel = reasonLabel;
-    _reasonLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_reasonLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [self.contentView addSubview:_reasonLabel];
-  }
-  return _reasonLabel;
-}
-
-- (HNDLabel *)outageStartDateLabel {
-  if (!_outageStartDateLabel) {
-    HNDLabel *outageStartLabel = [[HNDLabel alloc] init];
-    _outageStartDateLabel = outageStartLabel;
-    _outageStartDateLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_outageStartDateLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [self.contentView addSubview:_outageStartDateLabel];
-  }
-  return _outageStartDateLabel;
-}
-
-- (HNDLabel *)estimatedReturnOfServiceLabel {
-  if (!_estimatedReturnOfServiceLabel) {
-    HNDLabel *estimatedReturnOfService = [[HNDLabel alloc] init];
-    _estimatedReturnOfServiceLabel = estimatedReturnOfService;
-    _estimatedReturnOfServiceLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_estimatedReturnOfServiceLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [self.contentView addSubview:_estimatedReturnOfServiceLabel];
-  }
-  return _estimatedReturnOfServiceLabel;
-}
-
-- (HNDLabel *)adaLabel {
-  if (!_adaLabel) {
-    HNDLabel *adaLabel = [[HNDLabel alloc] init];
-    _adaLabel = adaLabel;
-    _adaLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_adaLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [self.contentView addSubview:_adaLabel];
-  }
-  return _adaLabel;
-}
-
-- (HNDLabel *)updatedAtLabel {
-  if (!_updatedAtLabel) {
-    HNDLabel *updatedAtLabel = [[HNDLabel alloc] init];
-    _updatedAtLabel = updatedAtLabel;
-    _updatedAtLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_updatedAtLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [self.contentView addSubview:_updatedAtLabel];
-  }
-  return _updatedAtLabel;
 }
 
 // TODO: This needs a view model like station.
@@ -168,6 +99,14 @@
   HNDLabel *updatedAtTitle = [[[HNDLabel alloc] init] typeBold];
   updatedAtTitle.text = @"Updated At:";
 
+  _servingLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  _equipmentTypeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  _routesAffectedLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  _reasonLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  _outageStartDateLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  _estimatedReturnOfServiceLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  _adaLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  _updatedAtLabel.translatesAutoresizingMaskIntoConstraints = NO;
   servingTitle.translatesAutoresizingMaskIntoConstraints = NO;
   equipmentTypeTitle.translatesAutoresizingMaskIntoConstraints = NO;
   routesAffectedTitle.translatesAutoresizingMaskIntoConstraints = NO;
