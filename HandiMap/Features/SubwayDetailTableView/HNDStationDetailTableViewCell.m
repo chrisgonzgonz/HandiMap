@@ -6,55 +6,40 @@
 static NSUInteger const kStandardPadding = 16;
 
 @interface HNDStationDetailTableViewCell()
-@property (nonatomic, weak) HNDLabel *subwayLinesLabel;
-@property (nonatomic, weak) HNDLabel *accessibleLinesLabel;
-@property (nonatomic, weak) HNDLabel *adaLabel;
+@property(nonatomic) UILabel *subwayLinesLabel;
+@property(nonatomic) UILabel *accessibleLinesLabel;
+@property(nonatomic) UILabel *adaLabel;
 @end
 
 @implementation HNDStationDetailTableViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
+    [self.contentView addSubview:self.subwayLinesLabel];
+    [self.contentView addSubview:self.accessibleLinesLabel];
+    [self.contentView addSubview:self.adaLabel];
     [self autolayoutSubviews];
   }
   return self;
 }
 
-- (HNDLabel *)subwayLinesLabel {
+- (UILabel *)subwayLinesLabel {
   if (!_subwayLinesLabel) {
-    HNDLabel *subwayLinesLabel = [[HNDLabel alloc] init];
-    _subwayLinesLabel = subwayLinesLabel;
-    _subwayLinesLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_subwayLinesLabel setContentCompressionResistancePriority:UILayoutPriorityRequired
-                                                       forAxis:UILayoutConstraintAxisVertical];
-    _subwayLinesLabel.preferredMaxLayoutWidth = self.bounds.size.width;
-    [self.contentView addSubview:_subwayLinesLabel];
+    _subwayLinesLabel = [[HNDLabel alloc] init];
   }
   return _subwayLinesLabel;
 }
 
-- (HNDLabel *)accessibleLinesLabel {
+- (UILabel *)accessibleLinesLabel {
   if (!_accessibleLinesLabel) {
-    HNDLabel *accessibleLinesLabel = [[HNDLabel alloc] init];
-    _accessibleLinesLabel = accessibleLinesLabel;
-    _accessibleLinesLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_accessibleLinesLabel setContentCompressionResistancePriority:UILayoutPriorityRequired
-                                                           forAxis:UILayoutConstraintAxisVertical];
-    _accessibleLinesLabel.preferredMaxLayoutWidth = self.bounds.size.width;
-    [self.contentView addSubview:_accessibleLinesLabel];
+    _accessibleLinesLabel = [[HNDLabel alloc] init];
   }
   return _accessibleLinesLabel;
 }
 
-- (HNDLabel *)adaLabel {
+- (UILabel *)adaLabel {
   if (!_adaLabel) {
-    HNDLabel *adaLabel = [[HNDLabel alloc] init];
-    _adaLabel = adaLabel;
-    _adaLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_adaLabel setContentCompressionResistancePriority:UILayoutPriorityRequired
-                                               forAxis:UILayoutConstraintAxisVertical];
-    _adaLabel.preferredMaxLayoutWidth = self.bounds.size.width;
-    [self.contentView addSubview:_adaLabel];
+    _adaLabel = [[HNDLabel alloc] init];;
   }
   return _adaLabel;
 }
@@ -77,6 +62,9 @@ static NSUInteger const kStandardPadding = 16;
   HNDLabel *adaTitle = [[[HNDLabel alloc] init] typeBold];
   adaTitle.text = @"ADA:";
 
+  self.subwayLinesLabel.translatesAutoresizingMaskIntoConstraints = NO;
+  self.accessibleLinesLabel.translatesAutoresizingMaskIntoConstraints  = NO;
+  self.adaLabel.translatesAutoresizingMaskIntoConstraints = NO;
   subwayLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
   accessibleLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
   adaTitle.translatesAutoresizingMaskIntoConstraints = NO;
