@@ -19,19 +19,34 @@
 }
 
 #pragma mark - Public
+#pragma mark - Alignment
+
+- (instancetype)alignCenter {
+  self.textAlignment = NSTextAlignmentCenter;
+  return self;
+}
+
+- (instancetype)alignRight {
+  self.textAlignment = NSTextAlignmentRight;
+  return self;
+}
+
+#pragma mark - Color
 
 - (instancetype)invertTextColor {
   self.textColor = [HNDColor lightColor];
   return self;
 }
 
+#pragma mark - Font
+
 - (instancetype)typeBold {
   self.font = [HNDFont boldFont];
   return self;
 }
 
-- (instancetype)typeTitle {
-  self.font = [HNDFont titleFont];
+- (instancetype)typeLargeText {
+  self.font = [HNDFont largeFont];
   return self;
 }
 
@@ -40,8 +55,8 @@
   return self;
 }
 
-- (instancetype)typeLargeText {
-  self.font = [HNDFont largeFont];
+- (instancetype)typeTitle {
+  self.font = [HNDFont titleFont];
   return self;
 }
 

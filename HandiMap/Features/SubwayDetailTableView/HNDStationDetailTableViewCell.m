@@ -111,7 +111,7 @@ static NSUInteger const kStandardPadding = 16;
                                               options:NSLayoutFormatAlignAllTop
                                               metrics:nil
                                                 views:NSDictionaryOfVariableBindings(title,
-                                                                                    subtitle)]];
+                                                                                     subtitle)]];
 }
 
 @end

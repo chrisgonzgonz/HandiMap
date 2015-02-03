@@ -2,10 +2,17 @@
 
 @interface HNDLabel : UILabel
 
+// Aignment
+- (instancetype)alignCenter;
+- (instancetype)alignRight;
+
+// Color
 - (instancetype)invertTextColor;
+
+// Font
 - (instancetype)typeBold;
-- (instancetype)typeTitle;
-- (instancetype)typeSubtitle;
 - (instancetype)typeLargeText;
+- (instancetype)typeSubtitle;
+- (instancetype)typeTitle;
 
 @end

@@ -60,9 +60,8 @@
 
 - (HNDLabel *)titleView {
   if (!_titleView) {
-    HNDLabel *titleView = [[[[HNDLabel alloc] init] typeSubtitle] invertTextColor];
+    HNDLabel *titleView = [[[[[HNDLabel alloc] init] typeSubtitle] invertTextColor] alignCenter];
     _titleView = titleView;
-    _titleView.textAlignment = NSTextAlignmentCenter;
     _titleView.translatesAutoresizingMaskIntoConstraints = NO;
     _titleView.backgroundColor = [HNDColor mainColor];
     [self addSubview:_titleView];
