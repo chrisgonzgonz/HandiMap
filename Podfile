@@ -5,4 +5,5 @@ target 'HandiMap' do
   pod 'AFNetworking', :head
   pod 'HockeySDK', :head
   pod 'INTULocationManager', :head
+  pod 'SVProgressHUD'
 end
