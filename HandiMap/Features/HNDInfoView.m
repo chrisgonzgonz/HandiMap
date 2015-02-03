@@ -57,10 +57,10 @@
 #pragma mark - Private
 
 - (void)fillWithText {
-  _subTitleLabel.text = @"HandiMap is a handy map that helps people with handicap.";
-  _normalDescription.text = @"This station is ADA and is operating normally.";
-  _warningDescription.text = @"This station is not ADA.";
-  _errorDescription.text = @"This station has at least one outage of an ADA equipment.";
+  _subTitleLabel.text = @"HandiMap is a handy map that helps people stay informed about MTA accessibility.";
+  _normalDescription.text = @"This station is ADA accessible and is operating normally.";
+  _warningDescription.text = @"This station is not ADA accessible.";
+  _errorDescription.text = @"This station has at least one outage of ADA accessible equipment outage.";
 
   [_subTitleLabel sizeToFit];
   [_normalDescription sizeToFit];
