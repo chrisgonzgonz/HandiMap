@@ -24,17 +24,21 @@
     self.backgroundColor = [HNDColor lightColor];
 
     _subTitleLabel = [[[[HNDLabel alloc] init] typeTitle] alignCenter];
-    
-    for (ZSPinAnnotation *pin in @[_normalPin, _warningPin, _errorPin]) {
-      pin = [[ZSPinAnnotation alloc] initWithAnnotation:nil reuseIdentifier:nil];
-      pin.annotationType = ZSPinAnnotationTypeTag;
-      pin.annotationColor = [HNDColor highlightColor];
-      pin.contentMode = UIViewContentModeScaleAspectFit;  
-    }
-    
-    for (UIlabel *description in @[_normalDescription, _warningDescription, _errorDescription]) {
-      description = [[[HNDLabel alloc] init] alignCenter];
-    }
+    _normalPin = [[ZSPinAnnotation alloc] initWithAnnotation:nil reuseIdentifier:nil];
+    _warningPin = [[ZSPinAnnotation alloc] initWithAnnotation:nil reuseIdentifier:nil];
+    _errorPin = [[ZSPinAnnotation alloc] initWithAnnotation:nil reuseIdentifier:nil];
+    _normalPin.annotationType = ZSPinAnnotationTypeTag;
+    _warningPin.annotationType = ZSPinAnnotationTypeTag;
+    _errorPin.annotationType = ZSPinAnnotationTypeTag;
+    _normalPin.annotationColor = [HNDColor highlightColor];
+    _warningPin.annotationColor = [HNDColor warningColor];
+    _errorPin.annotationColor = [HNDColor errorColor];
+    _normalPin.contentMode = UIViewContentModeScaleAspectFit;
+    _warningPin.contentMode = UIViewContentModeScaleAspectFit;
+    _errorPin.contentMode = UIViewContentModeScaleAspectFit;
+    _normalDescription = [[[HNDLabel alloc] init] alignCenter];
+    _warningDescription = [[[HNDLabel alloc] init] alignCenter];
+    _errorDescription = [[[HNDLabel alloc] init] alignCenter];
 
     [self addSubview:_subTitleLabel];
     [self addSubview:_normalPin];
