@@ -19,8 +19,8 @@
 }
 
 - (void)loadStationsWithSuccess:(void (^)())success failure:(void (^)())failure {
-  [self clearStationsWithSuccess:^{
-    [[HNDJobNetworkManager sharedManager] getStationsWithCompletionBlock:^(id response) {
+  [[HNDJobNetworkManager sharedManager] getStationsWithCompletionBlock:^(id response) {
+    [self clearStationsWithSuccess:^{
       NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
       [workerContext performBlock:^{
         for (NSDictionary *station in response) {
@@ -38,10 +38,9 @@
           success();
         }];
       }];
+    } failure:^{
+      NSLog(@"Failed to clear stations fuck me");
     }];
-
-  } failure:^{
-    NSLog(@"Failed to clear stations fuck me");
   }];
 }
 
