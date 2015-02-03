@@ -61,7 +61,7 @@
 #pragma mark HNDStationFilterDelegate
 
 - (void)filteredStationsDidChange:(NSArray *)filteredStations {
-  [SVProgressHUD dismiss];
+  filterStations.count ? [SVProgressHUD dismiss] : [SVProgressHUD show];
   [self.view updateStations:filteredStations];
 }
 
