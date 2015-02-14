@@ -24,18 +24,20 @@
     self.backgroundColor = [HNDColor lightColor];
 
     _subTitleLabel = [[[[HNDLabel alloc] init] typeTitle] alignCenter];
+
     _normalPin = [[ZSPinAnnotation alloc] initWithAnnotation:nil reuseIdentifier:nil];
     _warningPin = [[ZSPinAnnotation alloc] initWithAnnotation:nil reuseIdentifier:nil];
     _errorPin = [[ZSPinAnnotation alloc] initWithAnnotation:nil reuseIdentifier:nil];
-    _normalPin.annotationType = ZSPinAnnotationTypeTag;
-    _warningPin.annotationType = ZSPinAnnotationTypeTag;
-    _errorPin.annotationType = ZSPinAnnotationTypeTag;
+
+    for (ZSPinAnnotation *pin in @[_normalPin, _warningPin, _errorPin]) {
+      pin.annotationType = ZSPinAnnotationTypeTag;
+      pin.contentMode = UIViewContentModeScaleAspectFit;
+    }
+
     _normalPin.annotationColor = [HNDColor highlightColor];
     _warningPin.annotationColor = [HNDColor warningColor];
     _errorPin.annotationColor = [HNDColor errorColor];
-    _normalPin.contentMode = UIViewContentModeScaleAspectFit;
-    _warningPin.contentMode = UIViewContentModeScaleAspectFit;
-    _errorPin.contentMode = UIViewContentModeScaleAspectFit;
+
     _normalDescription = [[[HNDLabel alloc] init] alignCenter];
     _warningDescription = [[[HNDLabel alloc] init] alignCenter];
     _errorDescription = [[[HNDLabel alloc] init] alignCenter];
@@ -57,7 +59,8 @@
 #pragma mark - Private
 
 - (void)fillWithText {
-  _subTitleLabel.text = @"HandiMap is a handy map that helps people stay informed about MTA accessibility.";
+  _subTitleLabel.text =
+      @"HandiMap is a handy map that helps people stay informed about MTA accessibility.";
   _normalDescription.text = @"This station is ADA accessible and is operating normally.";
   _warningDescription.text = @"This station is not ADA accessible.";
   _errorDescription.text = @"This station has at least one ADA accessible equipment outage.";
