@@ -1,3 +1,3 @@
 # HandiMap
 
-HandiMap is a handy map to help people with handicap.
+HandiMap: The Handy Map for MTA Accessiblity

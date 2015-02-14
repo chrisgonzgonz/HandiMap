@@ -19,10 +19,9 @@
 }
 
 - (void)loadStationsWithSuccess:(void (^)())success failure:(void (^)())failure {
-  [self clearStationsWithSuccess:^{
-
-    NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
-    [[HNDJobNetworkManager sharedManager] getStationsWithCompletionBlock:^(id response) {
+  [[HNDJobNetworkManager sharedManager] getStationsWithCompletionBlock:^(id response) {
+    [self clearStationsWithSuccess:^{
+      NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
       [workerContext performBlock:^{
         for (NSDictionary *station in response) {
           NSEntityDescription *ed = [NSEntityDescription entityForName:@"HNDManagedStation"
@@ -39,10 +38,9 @@
           success();
         }];
       }];
+    } failure:^{
+      NSLog(@"Failed to clear stations fuck me");
     }];
-
-  } failure:^{
-    NSLog(@"Failed to clear stations fuck me");
   }];
 }
 
@@ -70,8 +68,8 @@
 - (void)loadOutagesWithSuccess:(void (^)())success failure:(void (^)())failure {
   [self clearOutagesWithSuccess:^{
 
-    NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
     [[HNDJobNetworkManager sharedManager] getOutagesWithCompletionBlock:^(id response) {
+      NSManagedObjectContext *workerContext = [[HNDCoreDataManager sharedManager] newWorkerContext];
       [workerContext performBlock:^{
         for (NSDictionary *station in response) {
           NSString *stationNumber = station[@"station_id"];
