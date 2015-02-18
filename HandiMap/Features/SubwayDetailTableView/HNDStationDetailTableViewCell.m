@@ -41,22 +41,20 @@
 
 - (void)autolayoutSubviews {
   HNDLabel *subwayLinesTitle = [[[HNDLabel alloc] init] typeBold];
-  subwayLinesTitle.text = @"Subway Lines:";
   HNDLabel *accessibleLinesTitle = [[[HNDLabel alloc] init] typeBold];
-  accessibleLinesTitle.text = @"Accessible Lines:";
   HNDLabel *adaTitle = [[[HNDLabel alloc] init] typeBold];
+  
+  subwayLinesTitle.text = @"Subway Lines:";
+  accessibleLinesTitle.text = @"Accessible Lines:";
   adaTitle.text = @"ADA:";
-
-  self.subwayLinesLabel.translatesAutoresizingMaskIntoConstraints = NO;
-  self.accessibleLinesLabel.translatesAutoresizingMaskIntoConstraints  = NO;
-  self.adaLabel.translatesAutoresizingMaskIntoConstraints = NO;
-  subwayLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
-  accessibleLinesTitle.translatesAutoresizingMaskIntoConstraints = NO;
-  adaTitle.translatesAutoresizingMaskIntoConstraints = NO;
-
+  
   [self.contentView addSubview:subwayLinesTitle];
   [self.contentView addSubview:accessibleLinesTitle];
   [self.contentView addSubview:adaTitle];
+  
+  for (UIView *subview in self.subviews) {
+    subview.translatesAutoresizingMaskIntoConstraints = NO;
+  }
 
   NSDictionary *views = @{
     @"accessibleLinesTitle": accessibleLinesTitle,
@@ -66,7 +64,7 @@
 
   NSString *constraint = @"V:|-[subwayLinesTitle][accessibleLinesTitle][adaTitle]-|";
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:constraint
-                                                                          options:0
+                                                                           options:0
                                                                            metrics:nil
                                                                              views:views]];
 
